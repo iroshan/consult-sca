@@ -2,17 +2,11 @@
 
 Source uploaded to https://github.com/iroshan/consult-sca. The first GitHub validation run passed. Public website access at `sca.iroshan.com` was approved by the owner. The Cloudflare CNAME was verified as pointing at `iroshan.github.io`.
 
-## Remaining one-time repository settings
+## GitHub Pages publication
 
-GitHub rejected the integration's API call to enable Pages with HTTP 403, “Resource not accessible by integration”. The source repository is accessible and uploads succeeded. No repository creation or extra credentials are needed now.
+The owner enabled Pages from `main` and `/ (root)` and saved `sca.iroshan.com`. Application files are now at the repository root to match this setting. GitHub's built-in Pages build/deploy handles publication; the custom workflow validates only. The original `site/` directory was moved without dropping its content. The owner's root CNAME was preserved.
 
-Open https://github.com/iroshan/consult-sca/settings/pages and:
-
-1. Under Build and deployment, select **GitHub Actions** as the Source.
-2. Set the custom domain to **sca.iroshan.com** and save it.
-3. After GitHub validates DNS and issues the certificate, enable **Enforce HTTPS** when available.
-
-The workflow publishes each push after the Pages setup is enabled. If a previous deployment failed while Pages was disabled, rerun it or dispatch the workflow. The prepared deployment workflow and `site/CNAME` use the selected hostname.
+GitHub reports the custom-domain certificate approved. HTTPS enforcement still needs to be enabled in the Pages settings once GitHub makes that option available. The integration cannot change Pages settings (HTTP 403), so the owner may need to enable that switch.
 
 ## Cloudflare DNS and TLS
 

@@ -1,6 +1,6 @@
 # Consult — SCA learning website
 
-A portable static website for UK GP consultation learning. All application files are in `site/`; no Sites platform, server-side service or build installation is required to run them.
+A portable static website for UK GP consultation learning. The application entry points are `index.html` and `clinical/index.html`; no Sites platform, server-side service or build installation is required to run them.
 
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 46 core cases and 138 management permutations in mental health, paediatrics, and older-person/palliative care.
@@ -9,17 +9,17 @@ A portable static website for UK GP consultation learning. All application files
 
 ## Run locally
 
-Serve `site/` with any static web server. For example, from this repository run `python -m http.server 8000 --directory site`, then open `http://localhost:8000/`. No Python application code is involved; it only serves files. JavaScript is required for the interactive features.
+Serve the repository root with any static web server. For example, from this repository run `python -m http.server 8000`, then open `http://localhost:8000/`. No Python application code is involved; it only serves files. JavaScript is required for the interactive features.
 
 Run checks with `node scripts/validate.cjs`.
 
 ## GitHub Pages
 
-The workflow validates each push and then deploys the static `site/` directory. The owner has approved public website access. GitHub Pages must first be enabled once in the repository settings with **GitHub Actions** as its source. The connected integration could upload source and workflows but GitHub rejected its attempt to enable Pages (HTTP 403). The repository owner must complete that one-time settings step. Afterward, pushes to `main` or manual workflow runs publish the site.
+The workflow validates each push. GitHub's built-in Pages deployment publishes from the `main` branch and `/ (root)` folder, matching the owner's current Pages setting. `.nojekyll` keeps this a plain static deployment. Public website access is approved for `sca.iroshan.com`. No custom publishing workflow or deployment variable is needed.
 
 A GitHub Pages website is normally public even if the repository is private. Pages from a private repository depends on the account plan. Do not change repository visibility without the owner's decision.
 
-The selected public website hostname is `sca.iroshan.com`. Its configuration is recorded in `site/CNAME`. Configure GitHub Pages with this exact custom domain; a CNAME file alone does not configure an Actions deployment's repository settings.
+The selected public website hostname is `sca.iroshan.com`. Its configuration is recorded in `CNAME`. Configure GitHub Pages with this exact custom domain; the same custom domain must also be saved in the repository's Pages settings.
 
 In the existing Cloudflare `iroshan.com` zone, the intended record is:
 
@@ -31,7 +31,7 @@ Only the `sca` hostname is in scope. Preserve existing apex, www, mail and other
 
 Configure the custom domain in GitHub Pages before pointing DNS at the deployment. Complete any domain-verification TXT record using the exact token GitHub provides; no verification token is included in this repository. After successful DNS validation and certificate issuance, enable **Enforce HTTPS**. All SCA routes remain beneath this hostname: `/` for the studio and `/clinical/` for the atlas, including its hash-based practice and language routes.
 
-Source-repository visibility is separate from website visibility. The owner approved public website access; a private source repository is the starting configuration. GitHub Pages from a private repository depends on the account plan. If a public source repository is required, obtain that separate choice before changing visibility.
+The owner created the public source repository and approved public website access. No private notes or learning records are included in the repository.
 
 Official setup documentation: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
 
