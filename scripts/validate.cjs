@@ -5,3 +5,7 @@ assert.strictEqual(window.UK_LANGUAGE.length,50);assert.strictEqual(window.UK_DI
 vm.runInContext(`(async()=>{await importData({target:{files:[{size:100,text:async()=>JSON.stringify({version:1,saved:[],read:[],notes:{'language-uk-2':'A short practice sentence'}})}]}});assert.strictEqual(data.notes['language-uk-2'],'A short practice sentence');console.log('PASS: language-practice backup import preserves written attempts.');})();`,ctx);
 
 vm.runInContext(`const paed=CASES.find(c=>c.id==='pd-fever');assert(paed);assert(detail(paed.id).includes(paed.title));assert(AREAS.length===3);console.log('PASS: all specialty areas and new case routes.');`,ctx);
+
+cp.execFileSync(process.execPath,['scripts/validate-studio.cjs'],{stdio:'inherit'});
+
+vm.runInContext(`(async()=>{await importData({target:{files:[{size:100,text:async()=>JSON.stringify({version:1,saved:['pd-fever','op-delirium'],read:[],notes:{'discussion-pd-fever':'Paediatric sample','practice-op-delirium-1':'Older-person sample'}})}]}});assert.strictEqual(data.notes['discussion-pd-fever'],'Paediatric sample');assert.strictEqual(data.notes['practice-op-delirium-1'],'Older-person sample');assert(data.saved.includes('pd-fever'));console.log('PASS: new specialty notes and saved cases survive backup import.');})();`,ctx);
