@@ -19,7 +19,19 @@ The workflow validates each push. Publishing is disabled until the repository va
 
 A GitHub Pages website is normally public even if the repository is private. Pages from a private repository depends on the account plan. Do not change repository visibility without the owner's decision.
 
-For a custom subdomain, configure its CNAME DNS record to point to `iroshan.github.io` and set that exact hostname in the repository's Pages settings. For a root domain, use GitHub's current apex DNS records instead. Domain verification is recommended; HTTPS enforcement follows successful DNS validation and certificate issuance. Do not add a domain to the site until the owner supplies and controls it.
+The selected public website hostname is `sca.iroshan.com`. Its configuration is recorded in `site/CNAME`. Configure GitHub Pages with this exact custom domain; a CNAME file alone does not configure an Actions deployment's repository settings.
+
+In the existing Cloudflare `iroshan.com` zone, the intended record is:
+
+| Type | Name | Target | Proxy | TTL |
+| --- | --- | --- | --- | --- |
+| CNAME | sca | iroshan.github.io | DNS only initially | Auto |
+
+Only the `sca` hostname is in scope. Preserve existing apex, www, mail and other service records. Inspect any existing `sca` record before changing it; do not add conflicting A/AAAA and CNAME records at that exact hostname. The CNAME target is a hostname, with no `https://` prefix or repository path.
+
+Configure the custom domain in GitHub Pages before pointing DNS at the deployment. Complete any domain-verification TXT record using the exact token GitHub provides; no verification token is included in this repository. After successful DNS validation and certificate issuance, enable **Enforce HTTPS**. All SCA routes remain beneath this hostname: `/` for the studio and `/clinical/` for the atlas, including its hash-based practice and language routes.
+
+Source-repository visibility is separate from website visibility. The owner approved public website access; a private source repository is the starting configuration. GitHub Pages from a private repository depends on the account plan. If a public source repository is required, obtain that separate choice before changing visibility.
 
 Official setup documentation: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
 
