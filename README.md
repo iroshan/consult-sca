@@ -15,7 +15,7 @@ Run checks with `node scripts/validate.cjs`.
 
 ## GitHub Pages
 
-The workflow validates each push. Publishing is disabled until the repository variable `ENABLE_PAGES` is set to `true` and GitHub Pages is configured with GitHub Actions as its source. This lets the owner select the website audience and custom domain before the first publication. After activation, pushes to `main` publish the contents of `site/`.
+The workflow validates each push and then deploys the static `site/` directory. The owner has approved public website access. GitHub Pages must first be enabled once in the repository settings with **GitHub Actions** as its source. The connected integration could upload source and workflows but GitHub rejected its attempt to enable Pages (HTTP 403). The repository owner must complete that one-time settings step. Afterward, pushes to `main` or manual workflow runs publish the site.
 
 A GitHub Pages website is normally public even if the repository is private. Pages from a private repository depends on the account plan. Do not change repository visibility without the owner's decision.
 

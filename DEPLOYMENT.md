@@ -1,23 +1,18 @@
 # Deployment to sca.iroshan.com
 
-Prepared locally; no GitHub repository or DNS mutation has succeeded yet.
+Source uploaded to https://github.com/iroshan/consult-sca. The first GitHub validation run passed. Public website access at `sca.iroshan.com` was approved by the owner. The Cloudflare CNAME was verified as pointing at `iroshan.github.io`.
 
-## Repository
+## Remaining one-time repository settings
 
-The connected GitHub account is `iroshan`. Creation of `iroshan/consult-sca` was rejected by the connected integration with HTTP 403, “Resource not accessible by integration”. Create an empty repository in that account, then grant the existing GitHub connection access if it uses selected repositories. No password or token should be sent in chat.
+GitHub rejected the integration's API call to enable Pages with HTTP 403, “Resource not accessible by integration”. The source repository is accessible and uploads succeeded. No repository creation or extra credentials are needed now.
 
-Once the repository is available, from this checkout:
+Open https://github.com/iroshan/consult-sca/settings/pages and:
 
-```sh
-git remote add origin https://github.com/iroshan/consult-sca.git
-git push -u origin main
-```
+1. Under Build and deployment, select **GitHub Actions** as the Source.
+2. Set the custom domain to **sca.iroshan.com** and save it.
+3. After GitHub validates DNS and issues the certificate, enable **Enforce HTTPS** when available.
 
-If `origin` already exists, inspect it rather than adding it again. If the repository is not empty, inspect and reconcile its history; do not force-push over existing work.
-
-The workflow validates the complete site on each push. The repository variable `ENABLE_PAGES` gates publishing; it is deliberately absent until Pages is configured. Use Settings → Pages → Source: GitHub Actions. Set the custom domain to `sca.iroshan.com`. Set `ENABLE_PAGES=true` under Settings → Secrets and variables → Actions → Variables, then run the workflow or push a change. Confirm the deployment succeeds.
-
-If GitHub reports that Pages from a private repository is unavailable on the account plan, choose a supported plan or explicitly decide whether the source repository may be public. Public website access does not automatically mean the source repository was approved for public access.
+The workflow publishes each push after the Pages setup is enabled. If a previous deployment failed while Pages was disabled, rerun it or dispatch the workflow. The prepared deployment workflow and `site/CNAME` use the selected hostname.
 
 ## Cloudflare DNS and TLS
 
