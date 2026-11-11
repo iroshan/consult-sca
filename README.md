@@ -15,7 +15,7 @@ Run checks with `node scripts/validate.cjs`.
 
 ## GitHub Pages
 
-The workflow validates each push. GitHub's built-in Pages deployment publishes from the `main` branch and `/ (root)` folder, matching the owner's current Pages setting. `.nojekyll` keeps this a plain static deployment. Public website access is approved for `sca.iroshan.com`. No custom publishing workflow or deployment variable is needed.
+The workflow validates each push, packages the static application files, and publishes them with GitHub's official Pages actions. In **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**. The older branch-based deployment suffered a GitHub startup error; this explicit workflow supplies separate build and deployment jobs with time limits. Public website access is approved for `sca.iroshan.com`. No deployment variable or extra hosting service is needed.
 
 A GitHub Pages website is normally public even if the repository is private. Pages from a private repository depends on the account plan. Do not change repository visibility without the owner's decision.
 
