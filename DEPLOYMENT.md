@@ -29,3 +29,5 @@ Use the exact TXT token supplied by GitHub if verifying domain ownership. Wait f
 Both applications use browser localStorage rather than cookies. This is local to the browser profile and hostname; it is not an account and is not shared with other visitors. No login or SQLite service is required for the static deployment. A shared login/database would need an additional backend and authentication design.
 
 Export each application's backup from the previous address before moving. Import the studio backup under My progress and the atlas backup under My learning at the new address. Progress from the old hostname will not appear automatically. Keep exports private if they contain personal reflections.
+
+The deployed artifact includes `https://sca.iroshan.com/build.json` with the Git commit and build timestamp. Use it alongside the matching successful Actions run and live-asset checks when diagnosing a publication. It contains no browser learning records.
