@@ -1,6 +1,12 @@
 # Structure Coach implementation handover
 
-Current implementation: 15 guided consultations / 184 exchanges, all twelve preparation areas linked, a personal plan/reflection log, reusable patterns plus saved case wording and personal versions. The chronological checkpoints below explain the progression.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **60 cases / 180 variations across eight areas**, spoken discussion rehearsal and 55 shorter alternatives across eleven cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+
+Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
+
+Current validation commands: `node scripts/validate.cjs`; browser scripts use a local static server and `SCA_BASE_URL`. Relevant regressions are `browser-coach.cjs`, `browser-coach-branches.cjs`, `browser-coach-stages.cjs`, `browser-coach-help.cjs`, `browser-learning.cjs`, `browser-learning-atlas.cjs`, `browser-atlas-discussion.cjs` and each new specialty script. All run in isolated profiles. Update the generated picker with `node scripts/sync-learning-cases.cjs --write` after adding Atlas cases.
+
+Next content priorities: deepen the remaining original mental-health discussions, then continue uncovered clinical areas one manageable batch at a time. Check current official guidance before changing management; keep case IDs stable. Review feedback and learner pacing before adding more interface options. Publication uses the existing Pages workflow and custom domain; the final deployment/live-asset result is recorded at the end. The older sections below are historical checkpoints.
 
 ## Completed scope
 
@@ -167,3 +173,11 @@ Current NG222, CG113 and NG215 recommendations and NHS insomnia information were
 Validation: full content/routes/persistence checks pass. The discussion Chromium regression now exercises all eleven expanded cases plus speech/text fallback, hiding/revealing, saved personal wording, actual Atlas backup round-trip and mobile layouts. The prior rehearsal checkpoint 439918b deployed successfully in Actions run 43331783336.
 
 Next manageable unit: improve recording of help used when an unfinished independent attempt is interrupted by opening the same case’s full worked model or saved exact sentence; then perform final deployment and live-asset verification.
+
+## Follow-up checkpoint: honest model exposure and filled-in stage examples
+
+Each stage’s Teach me view now includes a relevant case’s actual patient question, fuller/shorter response, reasoning and supplied prior facts, with listening and targeted practice. Other help levels hide that full example. The daily recommendation links to the relevant stage lesson.
+
+An unfinished case attempt now records full-model support when that exact response is opened in its ordinary worked example, saved case wording, revealed case-specific recall or a filled-in stage example. Unrelated case models, alternatives not rendered in the ordinary worked path, prior study before a new attempt and feedback after the attempt do not retrospectively change the rating. The attempt’s draft is retained; a fresh retry can still be independent. Existing progress/backup schema is unchanged. This tracks explicit site model exposure, not outside help or automatic clinical performance.
+
+Validation: the complete validator passes. The full 17-case Chromium regression, six-stage regression and new `browser-coach-help.cjs` all pass, including actual navigation, supported rating after a model detour, retained draft, independent fresh retry, saved/filled model exposure and reload. The earlier mental-health checkpoint ca563d9 deployed successfully in Actions run 43332296870.

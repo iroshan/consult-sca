@@ -14,13 +14,13 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
   const lessons=await page.evaluate(()=>window.SCA_COACH.stageLessons);
   for(const lesson of lessons){
    await page.goto(base+'/#structure/stage/'+lesson.id);await click('level','0');
-   assert.equal(await page.locator('.coach-stage-move').count(),lesson.moves.length);
+   assert.equal(await page.locator('.coach-stage-move').count(),lesson.moves.length);assert.equal(await page.locator('.coach-filled-example').count(),1);
    assert.equal(await page.locator('.coach-stage-move blockquote.model').count(),lesson.moves.length);
    await click('stage-speak',lesson.id+':move:0');
    assert.deepEqual(await page.evaluate(()=>window.__played.at(-1)),{text:lesson.moves[0].model,lang:'en-GB'});
    await click('level','1');assert.equal(await page.locator('.coach-stage-move .coach-starter').count(),lesson.moves.length);
    await click('level','2');assert.equal(await page.locator('.coach-stage-move .coach-starter').count(),0);
-   await click('level','3');assert.equal(await page.locator('.coach-stage-move blockquote.model').count(),0);
+   await click('level','3');assert.equal(await page.locator('.coach-stage-move blockquote.model').count(),0);assert.equal(await page.locator('.coach-filled-example').count(),0);
    await click('stage-reveal',lesson.id+':0');assert.match(await page.locator('.coach-stage-answer .feedback').innerText(),/The useful next action/);
    await click('stage-hide',lesson.id+':0');assert.equal(await page.locator('.coach-stage-answer .feedback').count(),0);
    await click('stage-reveal',lesson.id+':0');await click('level','2');assert.equal(await page.locator('.coach-stage-answer .feedback').count(),0);
