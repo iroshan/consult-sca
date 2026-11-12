@@ -614,7 +614,7 @@ window.SCA_COACH = {
       "patient": "Leena Shah, 52 · Telephone",
       "brief": "A screening HbA1c is 52 mmol/mol. Leena reports no typical diabetes symptoms and no known reason for HbA1c unreliability in the supplied record. Confirm the context and arrange confirmation rather than diagnosing from a text message. Acute symptoms or rapid deterioration change the pathway.",
       "goal": "Practise the structure, explain the next step and respond to this patient’s particular concern.",
-      "atlas": null,
+      "atlas": "em-type2-diabetes",
       "studio": "c15",
       "links": [
         {
@@ -967,7 +967,8 @@ window.SCA_COACH = {
           ],
           "next": null
         }
-      ]
+      ],
+      "atlasLabel": "After confirmation: type 2 management ↗"
     },
     {
       "id": "asthma",
@@ -5021,7 +5022,7 @@ window.SCA_COACH = {
       "patient": "Ana Costa, 54 · Telephone with interpreter",
       "brief": "Ana prefers Portuguese for a detailed medical discussion. A screening HbA1c is 52 mmol/mol and earlier messages were not understood. Establish language and privacy preferences, use appropriate professional interpretation, assess symptoms and agree confirmation with an accessible contact plan.",
       "goal": "Practise clear assessment, a proportionate explanation and a workable shared plan; repeat the hardest exchange with less help.",
-      "atlas": null,
+      "atlas": "em-type2-diabetes",
       "studio": "c15",
       "links": [
         {
@@ -5374,7 +5375,8 @@ window.SCA_COACH = {
           ],
           "next": null
         }
-      ]
+      ],
+      "atlasLabel": "After confirmation: type 2 management ↗"
     },
     {
       "id": "handover",
