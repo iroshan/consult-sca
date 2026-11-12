@@ -2,6 +2,7 @@
 
 A portable static website for UK GP consultation learning. The application entry points are `index.html` and `clinical/index.html`; no Sites platform, server-side service or build installation is required to run them.
 
+- Guided Structure Coach: 6 consultations, 74 exchanges, 16 core/recovery sentence patterns, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 46 core cases and 138 management permutations in mental health, paediatrics, and older-person/palliative care.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.
@@ -11,7 +12,9 @@ A portable static website for UK GP consultation learning. The application entry
 
 Serve the repository root with any static web server. For example, from this repository run `python -m http.server 8000`, then open `http://localhost:8000/`. No Python application code is involved; it only serves files. JavaScript is required for the interactive features.
 
-Run checks with `node scripts/validate.cjs`.
+Run checks with `node scripts/validate.cjs`. This includes coach branching, independence tracking, scheduling, sanitisation and backup compatibility.
+
+For browser regression checks, with the official Playwright package and Chromium installed, serve this directory locally, then run `SCA_BASE_URL=http://127.0.0.1:8000 node scripts/browser-coach.cjs`. `CHROMIUM_PATH` can select an installed Chromium executable. The browser script uses an isolated profile, exercises all six consultations and real backup import/export, and writes screenshots to the system temporary directory.
 
 ## GitHub Pages
 
@@ -43,6 +46,6 @@ No patient data, personal learning records, raw study files or account credentia
 
 ## Clinical scope
 
-This is independent educational material with fictional scenarios. Selected recommendations were checked on 11 November 2026. Content is not automatically updated or independently clinician peer-reviewed, and does not cover every clinical condition, regimen or examination requirement. Use current official prescribing guidance, local pathways, clinical judgement and the legal framework of the relevant UK nation. Self-ratings and practice totals are not clinical grades or pass predictions.
+This is independent educational material with fictional scenarios. Original Atlas/studio recommendations were checked on 11 November 2026; selected new coach facts were checked on 12 November 2026. Content is not automatically updated or independently clinician peer-reviewed, and does not cover every clinical condition, regimen or examination requirement. Use current official prescribing guidance, local pathways, clinical judgement and the legal framework of the relevant UK nation. Self-ratings and practice totals are not clinical grades or pass predictions.
 
 Other specialty areas remain to be added. Official clinical links are included in the cases.

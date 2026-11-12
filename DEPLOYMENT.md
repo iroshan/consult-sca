@@ -6,11 +6,9 @@ Source uploaded to https://github.com/iroshan/consult-sca. The first GitHub vali
 
 The repository now contains an explicit **Validate and publish website** workflow. It validates the application, packages only the public static files, then publishes using GitHub's official Pages actions. Each job has a ten-minute timeout and newer runs cancel superseded ones. Application source files remain at the repository root and the owner's CNAME is preserved.
 
-**Required one-time setting:** in https://github.com/iroshan/consult-sca/settings/pages, change **Build and deployment → Source** from **Deploy from a branch** to **GitHub Actions**. Keep the custom domain `sca.iroshan.com`. The integration cannot edit this setting (HTTP 403). The previous generated branch deployment failed before starting any jobs with GitHub's message: “An unexpected error has occurred and we've been automatically notified.” Switching publication uses the explicit workflow instead.
+The owner has selected **GitHub Actions** as the Pages source, retained `sca.iroshan.com` and enabled **Enforce HTTPS**. On the initial implementation check, the deployment had recovered: GitHub reported `built`, both applications returned HTTPS 200 and HTTP redirected to HTTPS. The integration cannot edit Pages settings (HTTP 403); no further setting change is currently required.
 
-Once the source is changed, run or re-run **Validate and publish website** from the Actions tab. A successful run must include both build and deploy; a locally passing validation alone does not establish a live deployment.
-
-GitHub reports the custom-domain certificate approved. HTTPS enforcement still needs to be enabled in the Pages settings once GitHub makes that option available. The integration cannot change Pages settings (HTTP 403), so the owner may need to enable that switch.
+Pushes to `main` trigger **Validate and publish website**. A successful publication must include both build and deploy. The staging step explicitly copies `coach.js`, `coach-data.js` and `coach.css` alongside the original static assets. Verify the latest commit's Actions result and the live coach assets after future changes; locally passing validation alone does not establish publication.
 
 ## Cloudflare DNS and TLS
 

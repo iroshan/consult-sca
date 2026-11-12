@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
 process.chdir(path.resolve(__dirname,'..'));
-const nodes=new Map();const node=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){}},addEventListener(){},focus(){},setAttribute(){},click(){},showModal(){},close(){}});return nodes.get(k)};
+const nodes=new Map();const node=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){}},addEventListener(){},focus(){},scrollIntoView(){},setAttribute(){},click(){},showModal(){},close(){}});return nodes.get(k)};
 let saved='';const ctx={console,assert,document:{querySelector:node,querySelectorAll:()=>[],addEventListener(){},createElement:()=>node('a')},window:{addEventListener(){},scrollTo(){},print(){}},location:{hash:'#structure'},localStorage:{getItem:()=>null,setItem(k,v){saved=v}},setInterval(){},setTimeout(){},clearTimeout(){},Date,Intl,crypto:require('crypto').webcrypto,URL,Blob};
 vm.createContext(ctx);
 vm.runInContext(['content.js','coach-data.js','coach.js','app.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n'),ctx);
@@ -12,8 +12,8 @@ for(const c of cd.cases){
  for(const n of c.nodes){assert(n.model&&n.simple&&n.purpose&&n.patient&&n.reply);assert(n.essential.length>=2);assert(n.answer>=0&&n.answer<n.options.length);if(n.next)assert(c.nodes.some(x=>x.id===n.next));if(n.branch)assert(c.nodes.some(x=>x.id===n.branch.next));}
  for(const l of c.links)assert(['www.nhs.uk','www.nice.org.uk','www.rcgp.org.uk','www.gmc-uk.org'].includes(new URL(l.url).hostname));
 }
-assert(cd.phrases.length>=12);
-for(const part of [[],['daily'],['review'],['phrases'],['trainer'],['case','not-real']]){const html=coach.page(part);assert(!html.includes('undefined'));assert(!html.includes('[object Object]'));}
+assert.strictEqual(cd.phrases.length,16);assert.strictEqual(cd.cases.length,6);assert.strictEqual(cd.cases.reduce((sum,c)=>sum+c.nodes.length,0),74);
+for(const part of [[],['daily'],['review'],['phrases'],['trainer'],['case','not-real'],['worked','headache']]){const html=coach.page(part);assert(!html.includes('undefined'));assert(!html.includes('[object Object]'));}
 function moveCase(id){location.hash='#structure/case/'+id;render();}
 function run(){return state.coach.runs[location.hash.split('/')[2]];}
 function act(t,v=''){coach.handle(t,v);}
@@ -23,9 +23,11 @@ act('compare');assert.strictEqual(run().phase,'attempt');run().draft='An attempt
 run().checks=[0,1];act('finish','independent');assert.strictEqual(run().results.hello.rating,'again');assert(state.coach.cards.hello.due<=Date.now()+601000);
 act('jump','hello');act('level','3');act('choose','0');act('attempt');run().spoken=true;act('compare');run().checks=[0,1];act('finish','independent');assert.strictEqual(run().results.hello.rating,'independent');assert(state.coach.cards.hello.due>Date.now()+2.9*86400000);
 act('jump','hello');act('level','3');act('choose','0');act('attempt');act('help');assert.strictEqual(run().used,0);run().spoken=true;act('compare');run().checks=[0,1];act('finish','independent');assert.strictEqual(run().results.hello.rating,'again');
+act('level','3');act('jump','hello');assert(coach.page(['case','headache']).includes('data-coach="unprompted"'));act('decision-help');act('choose','0');act('attempt');assert.strictEqual(run().used,2);run().spoken=true;act('compare');run().checks=[0,1];act('finish','independent');assert.strictEqual(run().results.hello.rating,'cue');
 act('jump','focus');act('branch','urgent');assert.strictEqual(run().node,'urgent');act('choose','0');act('attempt');run().spoken=true;act('compare');run().checks=[0,1];act('finish','cue');assert(run().complete);assert.strictEqual(run().phase,'done');assert(!run().results.explain);
 // Every case can traverse its ordinary path and retain specific reviews.
 for(const c of cd.cases){moveCase(c.id);act('restart');let guard=0;while(run().phase!=='done'&&guard++<30){const n=c.nodes.find(n=>n.id===run().node);act('choose',String(n.answer));act('attempt');run().spoken=true;act('compare');run().checks=n.essential.map((x,i)=>i);act('finish','cue');}assert(run().complete,c.id);assert(guard<=20);}
+for(const c of cd.cases)state.coach.runs[c.id].complete=true;const suggestion=coach.recommendation();assert(suggestion.c&&suggestion.node);assert(Number.isInteger(suggestion.level));
 const before=JSON.stringify(state.coach);const imported=coach.clean(JSON.parse(before));assert.deepStrictEqual(JSON.parse(JSON.stringify(imported)),JSON.parse(before));
 const dirty=JSON.parse(before);dirty.saved=['hello','bogus'];dirty.runs.headache.draft='<script>test</script>';dirty.runs.headache.results.hello.checks=[-1,100,0];dirty.cards.hello.interval=999;dirty.runs.bogus={node:'hello'};
 const cleaned=coach.clean(dirty);assert.strictEqual(cleaned.saved.length,1);assert.strictEqual(cleaned.cards.hello.interval,30);assert(!cleaned.runs.bogus);assert.deepStrictEqual(cleaned.runs.headache.results.hello.checks,[0]);
