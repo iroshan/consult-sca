@@ -1,0 +1,211 @@
+'use strict';
+// The coach uses the studio's existing state and backup boundary.
+window.StructureCoach = (() => {
+  const data = window.SCA_COACH;
+  const levels = ['Teach me', 'Help me', 'Prompt me', 'Let me try'];
+  const day = 86400000;
+  const caseById = id => data.cases.find(c => c.id === id);
+  const phraseById = id => data.phrases.find(p => p.id === id);
+  const nodeById = (c, id) => c.nodes.find(n => n.id === id);
+  const object = x => x && typeof x === 'object' && !Array.isArray(x) ? x : {};
+  const text = (x, max = 6000) => typeof x === 'string' ? x.slice(0, max) : '';
+  const num = (x, min, max, fallback = min) => Number.isFinite(x) ? Math.max(min, Math.min(max, x)) : fallback;
+  const indices = (x, max) => [...new Set((Array.isArray(x) ? x : []).filter(i => Number.isInteger(i) && i >= 0 && i < max))];
+  const defaults = () => ({version: 1, level: 0, saved: [], cards: {}, runs: {}, reflection: '', updated: 0});
+  function clean(raw) {
+    raw = object(raw);
+    const out = defaults();
+    out.level = Math.floor(num(raw.level, 0, 3));
+    out.updated = num(raw.updated, 0, 1e15);
+    out.reflection = text(raw.reflection, 3000);
+    out.saved = [...new Set((Array.isArray(raw.saved) ? raw.saved : []).filter(phraseById))];
+    for (const p of data.phrases) {
+      const v = object(object(raw.cards)[p.id]);
+      if (!Number.isFinite(v.due)) continue;
+      out.cards[p.id] = {due: num(v.due, 0, 1e15), interval: num(v.interval, 0, 30), reviews: Math.floor(num(v.reviews, 0, 100000)), at: num(v.at, 0, 1e15), rating: ['again','cue','independent'].includes(v.rating) ? v.rating : 'again', cases: (Array.isArray(v.cases) ? v.cases : []).filter(caseById)};
+    }
+    for (const c of data.cases) {
+      const v = object(object(raw.runs)[c.id]);
+      if (!nodeById(c, v.node)) continue;
+      const n = nodeById(c, v.node);
+      const run = {
+        node: n.id, phase: ['decide','attempt','feedback','done'].includes(v.phase) ? v.phase : 'decide',
+        choice: Number.isInteger(v.choice) && v.choice >= 0 && v.choice < n.options.length ? v.choice : null,
+        draft: text(v.draft), checks: indices(v.checks, n.essential.length), spoken: v.spoken === true,
+        used: Math.floor(num(v.used, 0, 3)), mistake: v.mistake === true,
+        results: {}, updated: num(v.updated, 0, 1e15), complete: v.complete === true,
+        timer: {kind: object(v.timer).kind === 'reading' ? 'reading' : 'consultation', remaining: num(object(v.timer).remaining, 0, 720, 720), running: object(v.timer).running === true, deadline: num(object(v.timer).deadline, 0, 1e15)}
+      };
+      for (const node of c.nodes) {
+        const r = object(object(v.results)[node.id]);
+        if (!Number.isFinite(r.at)) continue;
+        run.results[node.id] = {at: num(r.at, 0, 1e15), rating: ['again','cue','independent'].includes(r.rating) ? r.rating : 'again', support: Math.floor(num(r.support, 0, 3)), checks: indices(r.checks, node.essential.length), attempt: text(r.attempt), mistake: r.mistake === true};
+      }
+      out.runs[c.id] = run;
+    }
+    return out;
+  }
+  function merge(current, incoming) {
+    const a = clean(current), b = clean(incoming), out = b.updated > a.updated ? {...b} : {...a};
+    out.saved = [...new Set([...a.saved, ...b.saved])];
+    out.cards = {...a.cards}; out.runs = {...a.runs};
+    for (const [id, card] of Object.entries(b.cards)) if (!out.cards[id] || card.at > out.cards[id].at) out.cards[id] = card;
+    for (const [id, run] of Object.entries(b.runs)) {
+      const old = out.runs[id];
+      if (!old) {out.runs[id] = run; continue;}
+      const winner = run.updated > old.updated ? run : old;
+      const results = {...old.results};
+      for (const [key, r] of Object.entries(run.results)) if (!results[key] || r.at > results[key].at) results[key] = r;
+      out.runs[id] = {...winner, results};
+    }
+    return out;
+  }
+  function store() {state.coach.updated = Date.now(); persist();}
+  function ensure() {state.coach = clean(state.coach); return state.coach;}
+  function fresh(c, id, previous) {
+    return {node: id, phase: 'decide', choice: null, draft: '', checks: [], spoken: false, used: state.coach.level, mistake: false, results: previous?.results || {}, complete: false, updated: Date.now(), timer: previous?.timer || {kind:'consultation', remaining:720, running:false, deadline:0}};
+  }
+  function runFor(c) {
+    return state.coach.runs[c.id] || (state.coach.runs[c.id] = fresh(c, c.nodes[0].id));
+  }
+  const href = id => '#structure/case/' + id;
+  const action = (label, type, value = '', cls = '') => `<button class="btn ${cls}" data-coach="${type}" data-value="${esc(value)}">${label}</button>`;
+  const link = (label, url, cls = '') => `<a class="button ${cls}" href="${url}">${label}</a>`;
+  const list = items => `<ul>${items.map(t => `<li>${esc(t)}</li>`).join('')}</ul>`;
+  function links(c) {return `<details><summary>Official guidance and clinical scope</summary><p>Selected facts checked ${esc(data.checked)}. These are authored communication exercises with selected clinical decisions. Complete the full assessment, use current local pathways and prescribing guidance, and arrange the actual care.</p>${c.links.map(l => `<p><a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a></p>`).join('')}${c.atlas ? link('Open the related Clinical Atlas case ↗','clinical/#case/'+c.atlas,'secondary') : c.studio ? link('Open a related studio case ↗','#cases/'+c.studio,'secondary') : ''}</details>`;}
+  function banner() {return `<section class="coach-welcome"><div><span class="eyebrow">START HERE · GUIDED SPOKEN PRACTICE</span><h2>Know your next step.<br>Find the words to say it.</h2><p>Follow a consultation one exchange at a time. Start with a full example, then gradually try with less help.</p></div><div class="actions">${link('Guide me through today’s practice →','#structure/daily')}${link('Explore the Structure Coach','#structure','secondary')}</div></section>`;}
+  function navigation(active) {return `<nav class="coach-nav" aria-label="Structure Coach">${[['','Coach'],['daily','Today’s practice'],['phrases','My sentences'],['review','Recall practice'],['trainer','Trainer sheet']].map(([id,label]) => `<a href="#structure${id?'/'+id:''}" ${active===id?'aria-current="page"':''}>${label}</a>`).join('')}</nav>`;}
+  function map(active) {return `<ol class="coach-map" aria-label="Flexible consultation structure">${data.stages.map(s => `<li ${active===s.id?'aria-current="step"':''}><strong>${esc(s.title)}</strong><span>${esc(s.purpose)}</span></li>`).join('')}</ol>`;}
+  function overview() {
+    const s = state.coach;
+    return navigation('') + head('YOUR GUIDED CONSULTATION COACH','One step. One clear response.','Learn the thinking and the sentences together. Speak aloud, compare, repeat, and try with less help.') + banner() + map() + `<div class="callout"><strong>A map you can adapt</strong>Listen to each answer. Return to an earlier question when needed. A new warning symptom changes the priority immediately.</div><div class="grid two">${data.cases.map(c => {
+      const r=s.runs[c.id], count=Object.keys(r?.results||{}).length;
+      return `<article class="card"><span class="tag">${esc(c.category)}</span><h2>${esc(c.title)}</h2><p>${esc(c.patient)}</p><p>${esc(c.goal)}</p><p class="tiny">${count} exchanges self-reviewed${r?.complete?' · A consultation path completed':''}</p>${link(r?'Continue / revisit →':'Start with guidance →',href(c.id))}</article>`;
+    }).join('')}</div><section class="panel"><h2>Choose the help you need</h2><p>Begin with exact sentences. Each exchange can be replayed with fewer prompts. Independent recall means you tried without opening the model during that attempt.</p>${levelButtons()}<p class="tiny">Your preferred level is saved. Your actual use of help is recorded separately from your own recall rating.</p></section><section class="panel"><h2>Your next learning step</h2><p>Practise a short exchange, then use that skill with a different patient. Self-review describes practice, not an official assessment. An observed consultation with your trainer helps check real transfer.</p>${link('Back up all studio and coach progress','#progress','secondary')}</section>`;
+  }
+  function levelButtons() {return `<div class="coach-levels" role="group" aria-label="Amount of support">${levels.map((label,i) => `<button class="pill ${state.coach.level===i?'active':''}" data-coach="level" data-value="${i}" aria-pressed="${state.coach.level===i}">${label}</button>`).join('')}</div>`;}
+  function support(n, level) {
+    if (level===3) return `<p class="coach-independent">Try your response aloud. Ask for help whenever you need it.</p>`;
+    if (level===2) return `<div class="callout"><strong>Your next job</strong>${esc(n.task)}</div>`;
+    if (level===1) return `<div class="callout"><strong>Your next job</strong>${esc(n.task)}</div><div class="coach-starter"><strong>Sentence beginnings</strong><p>${esc(n.starter)}</p></div>`;
+    return `<div class="callout"><strong>Your next job</strong>${esc(n.task)}</div><h3>Try saying this</h3><blockquote class="model">${esc(n.model)}</blockquote><div class="actions">${action('Listen to the model','speak','model','secondary small')}${action('Stop audio','stop','','secondary small')}</div><p><strong>A shorter version:</strong> ${esc(n.simple)}</p><p><strong>Why this helps:</strong> ${esc(n.purpose)}</p><p class="coach-note">${esc(n.tip)}</p>`;
+  }
+  function assessment(c, r, n) {
+    const order = n.options.map((o,i) => ({o,i}));
+    const rotate = [...n.id].reduce((a,b)=>a+b.charCodeAt(0),0)%order.length;
+    const options = [...order.slice(rotate),...order.slice(0,rotate)];
+    return `<h2>What is the next useful step?</h2><p>Choose the action, then practise the words.</p>${options.map(({o,i}) => `<button class="option ${r.choice===i?(i===n.answer?'correct':'incorrect'):''}" data-coach="choose" data-value="${i}" ${r.choice!==null?'disabled':''}>${esc(o)}</button>`).join('')}${r.choice!==null?`<div class="feedback" role="status"><strong>${r.choice===n.answer?'That addresses the priority.':'Pause and reconsider the priority.'}</strong><p>${esc(n.why)}</p></div><div class="actions">${r.choice===n.answer?action('Now practise the words →','attempt'):action('Choose again','decision-retry','','secondary')}</div>`:''}${n.branch?`<details><summary>${esc(n.branch.label)}</summary><p class="patient-quote">${esc(n.branch.patient)}</p>${action('Use this patient answer →','branch',n.branch.next,'secondary')}</details>`:''}`;
+  }
+  function attempt(c,r,n) {
+    return `<h2>Your turn to speak</h2>${levelButtons()}${support(n,state.coach.level)}${state.coach.level>0?action('Show me the full example','help','','secondary small'):''}<label for="coach-attempt">Optional: write your response to keep it for review</label><textarea id="coach-attempt" data-coach-field="draft" maxlength="6000" placeholder="Use fictional details. Say it aloud first if you can.">${esc(r.draft)}</textarea><label class="check"><input id="coach-spoken" data-coach-field="spoken" type="checkbox" ${r.spoken?'checked':''}><span>I have practised my response aloud.</span></label><div class="actions">${action('I’ve tried — show feedback →','compare')}${action('Listen to the patient','speak','patient','secondary')}</div><p class="tiny">There is no microphone recording or automatic speech grading. A written attempt or your confirmation of spoken practice lets you continue.</p>`;
+  }
+  function feedback(c,r,n) {
+    return `<h2>Compare, then try one improvement</h2><p class="tiny">Worked feedback and your own review; wording does not need to match exactly.</p><blockquote class="model">${esc(n.model)}</blockquote><p><strong>Shorter version:</strong> ${esc(n.simple)}</p><p><strong>The clinical decision:</strong> ${esc(n.why)}</p><p><strong>Communication and structure:</strong> ${esc(n.purpose)} ${esc(n.tip)}</p><h3>Patient’s next response</h3><blockquote class="patient-quote">${esc(n.reply)}</blockquote><h3>Essential actions to check</h3><p>Tick only what you actually included. An unticked item remains a gap to practise.</p>${n.essential.map((v,i)=>`<label class="check"><input type="checkbox" data-coach-check="${i}" ${r.checks.includes(i)?'checked':''}><span>${esc(v)}</span></label>`).join('')}<h3>One possible improvement</h3>${list(n.improve)}<div class="actions">${action('Repeat this exchange','retry','','secondary')}${action('Try again without prompts','retry-independent','','secondary')}${action(state.coach.saved.includes(n.phrase)?'★ In my sentences':'☆ Keep this sentence','save',n.phrase,'secondary')}</div><h3>How did this attempt feel?</h3><p class="tiny">The record also includes help used, decision retries and checklist gaps. Seeing a model during an attempt keeps that attempt supported.</p><div class="coach-ratings">${action('I needed the example','finish','again')}${action('I recalled it with a cue','finish','cue')}${action('I recalled it independently','finish','independent')}</div><p class="tiny">Saving a review moves to the next exchange. You can revisit any exchange afterwards.</p>`;
+  }
+  function timerRemaining(t, now=Date.now()) {return t.running?Math.max(0,Math.ceil((t.deadline-now)/1000)):t.remaining;}
+  function timerPanel(r) {return `<details class="coach-timer"><summary>Optional timing · 3-minute reading / 12-minute consultation</summary><p>Start untimed when learning. Timers never hide your work or advance the consultation. Current format checked against <a href="${data.exam.url}" target="_blank" rel="noopener noreferrer">RCGP information</a>.</p><div id="coach-clock" class="timer" role="timer" aria-label="Time remaining">${formatTime(timerRemaining(r.timer))}</div><p>${r.timer.kind==='reading'?'Reading time':'Consultation time'}</p><div class="actions">${action(r.timer.running?'Pause':'Start','timer-toggle','','secondary small')}${action('Reset reading: 3 min','timer-reading','','secondary small')}${action('Reset consultation: 12 min','timer-consultation','','secondary small')}</div></details>`;}
+  function session(c) {
+    const r=runFor(c), n=nodeById(c,r.node);
+    const phase = r.phase;
+    return navigation('') + `<a class="back" href="#structure">← All guided consultations</a>` + head(esc(c.category)+' · '+esc(c.patient),esc(c.title),esc(c.brief)) + map(n.stage) + `<div class="coach-layout"><article class="panel coach-exchange"><div class="quick-title"><span class="tag">${esc(data.stages.find(s=>s.id===n.stage).title)} · ${n.id==='urgent'?'Emergency branch':esc(n.id)}</span><span class="tiny">${Object.keys(r.results).length} exchanges reviewed</span></div>${phase==='done'?completion(c,r):`<h2 class="coach-patient-label">The patient says</h2><blockquote class="patient-quote">${esc(n.patient)}</blockquote>${phase==='decide'?assessment(c,r,n):phase==='attempt'?attempt(c,r,n):feedback(c,r,n)}`}</article><aside class="panel coach-sidebar"><h2>Practise a small part</h2><p>Jump to an exchange to replay it. Your previous reviews are kept.</p>${c.nodes.map(x=>`<button class="coach-jump ${x.id===r.node?'active':''}" data-coach="jump" data-value="${x.id}" ${x.id===r.node&&phase!=='done'?'aria-current="step"':''}>${esc(phraseById(x.phrase).title)}${x.id==='urgent'?' · urgent branch':''}<span>${r.results[x.id]?esc(r.results[x.id].rating==='independent'?'Recalled independently':r.results[x.id].rating==='cue'?'Practised with a cue':'Practised with support'):'Ready to practise'}</span></button>`).join('')}${timerPanel(r)}${links(c)}</aside></div>`;
+  }
+  function completion(c,r) {
+    const results=Object.values(r.results), independent=results.filter(x=>x.rating==='independent').length;
+    return `<h2>This consultation path is complete.</h2><p>You self-reviewed ${results.length} exchanges; ${independent} were recorded as independent recall. The emergency branch intentionally ends with escalation rather than routine management.</p><div class="callout"><strong>Choose one useful next step</strong>Repeat an exchange with less help, retrieve a sentence after a delay, or use the same skill with a different patient.</div><div class="actions">${action('Practise this case again','restart','','secondary')}${link('Recall a sentence','#structure/review')}${link('Trainer review sheet','#structure/trainer','secondary')}</div><p>Keep or export your work from <a href="#progress">My progress</a>. Practice records are self-reported and are not a clinical grade.</p>`;
+  }
+  function cardDue(now=Date.now()) {return data.phrases.filter(p=>state.coach.cards[p.id]?.due<=now).sort((a,b)=>state.coach.cards[a.id].due-state.coach.cards[b.id].due);}
+  function scheduleCard(old, rating, caseId, now=Date.now()) {
+    old=old||{};
+    const interval=rating==='again'?0:rating==='cue'?1:Math.min(30,Math.max(3,(old.interval||1)*2));
+    return {due:now+(rating==='again'?10*60000:interval*day),interval,reviews:(old.reviews||0)+1,at:now,rating,cases:[...new Set([...(old.cases||[]),...(caseId?[caseId]:[])])]};
+  }
+  function rateAttempt(r,n,rating) {
+    if(r.checks.length<n.essential.length || r.mistake) return 'again';
+    if(rating==='independent'&&r.used<3) return r.used===0?'again':'cue';
+    if(rating==='cue'&&r.used===0) return 'again';
+    return rating;
+  }
+  let recall=null;
+  function review() {
+    const p=phraseById(recall?.id);
+    return navigation('review') + head('RETRIEVE BEFORE READING','Bring the sentence back.','Say a response to the situation, then reveal an example. Keep the meaning and adapt the words.') + `<section class="panel content-narrow">${p?`<span class="tag">${esc(p.stage)}</span><h2>${esc(p.title)}</h2><p class="coach-cue">${esc(p.cue)}</p>${recall.revealed?`<blockquote class="model">${esc(p.model)}</blockquote><p><strong>Shorter:</strong> ${esc(p.simple)}</p><p>${esc(p.purpose)} ${esc(p.tip)}</p><p>How did you do before opening the example?</p><div class="coach-ratings">${action('Needed the example','recall-rate','again')}${action('Recalled with a cue','recall-rate','cue')}${action('Recalled independently','recall-rate','independent')}</div>`:`<p>Try aloud before revealing. You can also write a private learning attempt in a case exercise.</p>${action('I’ve tried — reveal example','recall-reveal')}`}`:`<h2>${cardDue().length?'Your due sentences are ready.':'Choose a short recall session.'}</h2><p>${cardDue().length} due now. New or not-yet-due sentences can also be practised. Needing an example brings a card back in about 10 minutes; cue-supported recall returns tomorrow; independent recall starts at 3 days and gradually extends to 30.</p>${action('Retrieve one sentence →','recall-start')}`}</section>`;
+  }
+  function sentences() {
+    return navigation('phrases') + head('YOUR DEPENDABLE SENTENCES','A small collection you can say naturally.','Save sentences that help you. Practise from a situation, then use the skill in a consultation.') + `<div class="grid two">${data.phrases.map(p=>`<article class="card"><span class="tag">${esc(p.stage)}</span><h2>${esc(p.title)}</h2><p>${esc(p.cue)}</p><blockquote class="model">${esc(p.model)}</blockquote><p><strong>Shorter:</strong> ${esc(p.simple)}</p><p>${esc(p.tip)}</p><div class="actions">${action(state.coach.saved.includes(p.id)?'★ Saved':'☆ Save','save',p.id,'secondary')}${action('Recall this sentence','recall',p.id,'secondary')}${link('Use it with a patient',href(data.cases.find(c=>c.nodes.some(n=>n.phrase===p.id)).id),'secondary')}</div></article>`).join('')}</div>`;
+  }
+  function daily() {
+    const next=data.cases.find(c=>!state.coach.runs[c.id]?.complete)||data.cases[0];
+    return navigation('daily') + head('A GUIDED 15–20 MINUTE SESSION','Tell me what to practise today.','Work through these four activities at your pace. Your consultation position and reviews are saved.') + `<div class="content-narrow"><section class="panel"><span class="tag">1 · RETRIEVE · ABOUT 3 MINUTES</span><h2>Recall a few familiar sentences</h2><p>${cardDue().length} sentences due now. Try up to three situations aloud before revealing the examples.</p>${link('Begin recall →','#structure/review')}</section><section class="panel"><span class="tag">2 · LEARN AND REHEARSE · ABOUT 6 MINUTES</span><h2>${esc(next.title)}</h2><p>Start or resume the case. Work through two or three exchanges. Use “Teach me” when you need exact wording.</p>${link('Guide me through the case →',href(next.id))}</section><section class="panel"><span class="tag">3 · REPEAT AND TRANSFER · ABOUT 6 MINUTES</span><h2>Change one thing, then try again</h2><p>Replay the hardest exchange with fewer prompts. Then practise the same purpose with a different patient.</p>${link('Choose a different consultation','#structure','secondary')}</section><section class="panel"><span class="tag">4 · REFLECT · ABOUT 2 MINUTES</span><h2>One improvement to carry forward</h2><label for="coach-reflection">What will you do differently next time?</label><textarea id="coach-reflection" data-coach-field="reflection" maxlength="3000" placeholder="For example: ask what makes the referral difficult, then address that barrier.">${esc(state.coach.reflection)}</textarea><p class="tiny">Saved as you type in this browser. Export a studio backup to move it to another device.</p>${link('See my sentences','#structure/phrases','secondary')}</section></div>`;
+  }
+  function trainer() {
+    return navigation('trainer') + head('OBSERVED PRACTICE','A conversation with your trainer.','Use one specific example and one next practice task. This sheet is an educational guide, not an official marking scheme.') + `<section class="panel coach-print"><h2>Consultation review sheet</h2><p>Case / date: ____________________ &nbsp; Observer: ____________________</p>${[['Data gathering and diagnosis',['Identified the agenda and relevant context.','Asked focused questions, followed up important answers and assessed urgency.','Explained the working assessment and remaining uncertainty.']],['Clinical management and medical complexity',['Recommended appropriate next steps and discussed relevant options.','Addressed barriers, competing priorities and treatment burden.','Made safety advice, follow-up and responsibility specific.']],['Relating to others',['Listened and responded to this patient’s concerns and emotions.','Used clear language, manageable chunks and checked understanding.','Involved the patient while keeping necessary clinical recommendations clear.']]].map(([title,items])=>`<h3>${title}</h3>${list(items)}<p>Observed example / gap: __________________________________________________</p>`).join('')}<h3>Next practice task</h3><p>Keep: __________________________________________________________________</p><p>Change: _________________________________________________________________</p><p>Repeat with a different patient / review date: __________________________________</p><div class="actions">${action('Print this sheet','print','','secondary')}</div><p>Use current <a href="https://www.rcgp.org.uk/mrcgp-exams/simulated-consultation-assessment" target="_blank" rel="noopener noreferrer">RCGP SCA information</a> alongside observed practice.</p></section>`;
+  }
+  function page(parts) {
+    ensure();
+    if(parts[0]==='case') return caseById(parts[1])?session(caseById(parts[1])):head('CASE NOT FOUND','Choose a guided consultation.','This case is not available.',link('Open the coach','#structure'));
+    if(parts[0]==='daily') return daily();
+    if(parts[0]==='phrases') return sentences();
+    if(parts[0]==='review') return review();
+    if(parts[0]==='trainer') return trainer();
+    return overview();
+  }
+  function active() {const parts=location.hash.slice(1).split('/');const c=parts[0]==='structure'&&parts[1]==='case'?caseById(parts[2]):null;return c?{c,r:runFor(c),n:nodeById(c,runFor(c).node)}:null;}
+  function repaint() {const y=window.scrollY;render();window.scrollTo(0,y);}
+  function gotoExchange(c,r,id,independent=false) {const next=fresh(c,id,r);if(independent){state.coach.level=3;next.used=3;}state.coach.runs[c.id]=next;store();repaint();$('#coach-attempt')?.focus();}
+  function speak(words) {
+    if(!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance==='undefined') {toast('Audio is unavailable. Use the written exchange.');return;}
+    speechSynthesis.cancel();
+    const utterance=new SpeechSynthesisUtterance(words); utterance.lang='en-GB';utterance.rate=.9;
+    const voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB');if(voice)utterance.voice=voice;
+    utterance.onerror=()=>toast('Audio could not play. The written exchange is available.');speechSynthesis.speak(utterance);
+  }
+  function handle(type,value) {
+    ensure(); const a=active(); const {c,r,n}=a||{};
+    if(type==='level') {state.coach.level=Math.floor(num(Number(value),0,3));if(r&&r.phase==='attempt'){r.used=Math.min(r.used,state.coach.level);r.updated=Date.now();}store();repaint();return;}
+    if(type==='save'&&phraseById(value)) {state.coach.saved=state.coach.saved.includes(value)?state.coach.saved.filter(x=>x!==value):[...state.coach.saved,value];store();repaint();return;}
+    if(type==='recall'&&phraseById(value)) {recall={id:value,revealed:false};location.hash='structure/review';if(currentView==='structure')repaint();return;}
+    if(type==='recall-start') {const candidates=cardDue(); const p=candidates[0]||data.phrases.find(p=>!state.coach.cards[p.id])||data.phrases.slice().sort((a,b)=>state.coach.cards[a.id].at-state.coach.cards[b.id].at)[0];recall={id:p.id,revealed:false};repaint();return;}
+    if(type==='recall-reveal'&&recall) {recall.revealed=true;repaint();return;}
+    if(type==='recall-rate'&&recall?.revealed&&['again','cue','independent'].includes(value)) {state.coach.cards[recall.id]=scheduleCard(state.coach.cards[recall.id],value,null);store();recall=null;repaint();toast('Recall saved. Choose another situation when ready.');return;}
+    if(type==='print') {window.print();return;}
+    if(type==='stop') {if('speechSynthesis'in window)speechSynthesis.cancel();return;}
+    if(!a)return;
+    if(type==='choose'&&r.phase==='decide'&&r.choice===null) {const choice=Number(value);if(!Number.isInteger(choice)||choice<0||choice>=n.options.length)return;r.choice=choice;if(choice!==n.answer)r.mistake=true;}
+    else if(type==='decision-retry'&&r.phase==='decide'){r.choice=null;}
+    else if(type==='attempt'&&r.phase==='decide'&&r.choice===n.answer){r.phase='attempt';r.used=state.coach.level;}
+    else if(type==='help'&&r.phase==='attempt'){state.coach.level=0;r.used=0;}
+    else if(type==='compare'&&r.phase==='attempt'){if(!r.draft.trim()&&!r.spoken){toast('Try aloud and tick the confirmation, or write your response first.');return;}r.phase='feedback';}
+    else if(type==='finish'&&r.phase==='feedback'&&['again','cue','independent'].includes(value)) {
+      const rating=rateAttempt(r,n,value);const now=Date.now();
+      r.results[n.id]={at:now,rating,support:r.used,checks:[...r.checks],attempt:r.draft,mistake:r.mistake};
+      state.coach.cards[n.phrase]=scheduleCard(state.coach.cards[n.phrase],rating,c.id,now);
+      if(n.next){state.coach.runs[c.id]=fresh(c,n.next,r);}else{r.complete=true;r.phase='done';r.timer.remaining=timerRemaining(r.timer);r.timer.running=false;}
+      if(rating!==value)toast('Saved with the help used or gaps recorded. Replay it to practise independently.');
+    }
+    else if(type==='retry'||type==='retry-independent'){const next=fresh(c,n.id,r);next.phase='attempt';if(type==='retry-independent'){state.coach.level=3;next.used=3;}state.coach.runs[c.id]=next;}
+    else if(type==='jump'&&nodeById(c,value)){gotoExchange(c,r,value);return;}
+    else if(type==='restart'){gotoExchange(c,r,c.nodes[0].id);return;}
+    else if(type==='branch'&&n.branch?.next===value){gotoExchange(c,r,value);return;}
+    else if(type==='speak'){if(value==='model'){r.used=0;store();}speak(value==='patient'?n.patient:n.model);return;}
+    else if(type==='timer-toggle'){const t=r.timer;if(t.running){t.remaining=timerRemaining(t);t.running=false;}else{if(timerRemaining(t)<=0)t.remaining=data.exam[t.kind];t.deadline=Date.now()+t.remaining*1000;t.running=true;}}
+    else if(type==='timer-reading'||type==='timer-consultation'){const kind=type==='timer-reading'?'reading':'consultation';r.timer={kind,remaining:data.exam[kind],running:false,deadline:0};}
+    else return;
+    const current=state.coach.runs[c.id];current.updated=Date.now();store();repaint();
+  }
+  document.addEventListener('click',e=>{const button=e.target.closest('[data-coach]');if(button)handle(button.dataset.coach,button.dataset.value);});
+  document.addEventListener('input',e=>{
+    const field=e.target.dataset.coachField;if(!field)return;
+    ensure();if(field==='reflection'){state.coach.reflection=e.target.value.slice(0,3000);store();return;}
+    const a=active();if(!a)return;
+    if(field==='draft')a.r.draft=e.target.value.slice(0,6000);
+    if(field==='spoken')a.r.spoken=e.target.checked;
+    a.r.updated=Date.now();store();
+  });
+  document.addEventListener('change',e=>{
+    if(e.target.dataset.coachCheck===undefined)return;const a=active();if(!a||a.r.phase!=='feedback')return;
+    const index=Number(e.target.dataset.coachCheck);if(!Number.isInteger(index)||index<0||index>=a.n.essential.length)return;
+    a.r.checks=e.target.checked?[...new Set([...a.r.checks,index])]:a.r.checks.filter(x=>x!==index);a.r.updated=Date.now();store();
+  });
+  setInterval(()=>{const a=active(), el=$('#coach-clock');if(a&&el)el.textContent=formatTime(timerRemaining(a.r.timer));},1000);
+  return {defaults,clean,merge,page,banner,handle,scheduleCard,rateAttempt,timerRemaining,levels};
+})();

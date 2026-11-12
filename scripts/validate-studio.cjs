@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');process.chdir(path.resolve(__dirname,'..')); 
 const nodes=new Map();const get=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){}},addEventListener(){},focus(){},scrollIntoView(){},setAttribute(){},click(){},showModal(){this.open=true},close(){this.open=false}});return nodes.get(k)};let saved='';
 const context={document:{querySelector:get,querySelectorAll:()=>[],addEventListener(){},createElement:()=>get('created')},localStorage:{getItem:()=>null,setItem(k,v){saved=v}},location:{hash:'#home'},window:{addEventListener(){},scrollTo(){}},setInterval(){},setTimeout(){},clearTimeout(){},Intl,Date,crypto:require('crypto').webcrypto,Blob,URL,console,assert};vm.createContext(context);
-vm.runInContext(fs.readFileSync('content.js','utf8')+'\n'+fs.readFileSync('app.js','utf8')+`
+vm.runInContext(fs.readFileSync('content.js','utf8')+'\n'+fs.readFileSync('coach-data.js','utf8')+'\n'+fs.readFileSync('coach.js','utf8')+'\n'+fs.readFileSync('app.js','utf8')+`
 assert.strictEqual(esc('<script>'), '&lt;script&gt;');
 assert.strictEqual(formatTime(720),'12:00');
 state=defaults();startReview();assert.strictEqual(reviewQueue.length,5);
