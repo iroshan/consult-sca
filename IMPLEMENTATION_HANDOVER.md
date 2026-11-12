@@ -43,3 +43,11 @@ Checkpoint 1 is `b7c6ed8` (one complete consultation and engine). The subsequent
 Future work can add further cases/permutations and more nuanced decision alternatives, refine the lesson pacing from learner/trainer feedback, and expand condition-specific treatment discussions after current official guidance checks. Before any new edits, inspect git status and fetch the remote to preserve concurrent user changes. Keep recommendations and exam-format facts date-stamped and retain clear self-review limits.
 
 No background continuation is assumed; the owner will request the next session manually. No private source documents, credentials or patient data are included.
+
+## Follow-up checkpoint: personal planning and reflection
+
+Added `coach-learning.js` and a `/#structure/learning` route (Plan & reflect), linked from the daily session and coach navigation. It provides an optional exam date, personal weekly goal and study intentions, twelve RCGP preparation-area priorities, an evidence-led learning/mock-review log across three domains, a sentence to rehearse, repeat dates and completion tracking. Records distinguish self, peer and trainer feedback. No examiner score or readiness prediction is generated. A transcript alone cannot establish non-verbal behaviour.
+
+The learning state is sanitised and merged inside the existing coach/studio backup. Deleted record IDs prevent old backups reviving removed notes; up to 100 recent records are retained. All review/reference links published in the product are official. The reference workbook was inspected read-only; no private records, example entries, branding or raw workbook content were copied into the repository.
+
+Validation: `scripts/validate-learning.cjs` checks UK dates/DST, sanitisation, evidence records, repeat tasks, deletion merge and old/new backup compatibility. `scripts/browser-learning.cjs` exercises actual plan/coverage inputs, domain feedback, daily focus, JSON download/import, deletion persistence, escaping and mobile layout. Both pass; the existing six-case Chromium regression also passes with the new module loaded.

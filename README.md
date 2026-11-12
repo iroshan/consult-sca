@@ -6,6 +6,7 @@ A portable static website for UK GP consultation learning. The application entry
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 46 core cases and 138 management permutations in mental health, paediatrics, and older-person/palliative care.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.
+- Personal weekly plan, twelve preparation-area priorities, evidence-led feedback records and dated repeat tasks at `/#structure/learning`.
 - Browser-local notes, self-review, recall schedules and JSON backup/import.
 
 ## Run locally
@@ -14,7 +15,7 @@ Serve the repository root with any static web server. For example, from this rep
 
 Run checks with `node scripts/validate.cjs`. This includes coach branching, independence tracking, scheduling, sanitisation and backup compatibility.
 
-For browser regression checks, with the official Playwright package and Chromium installed, serve this directory locally, then run `SCA_BASE_URL=http://127.0.0.1:8000 node scripts/browser-coach.cjs`. `CHROMIUM_PATH` can select an installed Chromium executable. The browser script uses an isolated profile, exercises all six consultations and real backup import/export, and writes screenshots to the system temporary directory.
+For browser regression checks, with the official Playwright package and Chromium installed, serve this directory locally, then run `SCA_BASE_URL=http://127.0.0.1:8000 node scripts/browser-coach.cjs`. `CHROMIUM_PATH` can select an installed Chromium executable. Run `node scripts/browser-learning.cjs` against the same server to check the planning and reflection workflow. The browser scripts use an isolated profile, exercises all six consultations and real backup import/export, and writes screenshots to the system temporary directory.
 
 ## GitHub Pages
 

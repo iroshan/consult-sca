@@ -11,3 +11,5 @@ cp.execFileSync(process.execPath,['scripts/validate-studio.cjs'],{stdio:'inherit
 vm.runInContext(`(async()=>{await importData({target:{files:[{size:100,text:async()=>JSON.stringify({version:1,saved:['pd-fever','op-delirium'],read:[],notes:{'discussion-pd-fever':'Paediatric sample','practice-op-delirium-1':'Older-person sample'}})}]}});assert.strictEqual(data.notes['discussion-pd-fever'],'Paediatric sample');assert.strictEqual(data.notes['practice-op-delirium-1'],'Older-person sample');assert(data.saved.includes('pd-fever'));console.log('PASS: new specialty notes and saved cases survive backup import.');})();`,ctx);
 
 cp.execFileSync(process.execPath,['scripts/validate-coach.cjs'],{stdio:'inherit'});
+
+cp.execFileSync(process.execPath,['scripts/validate-learning.cjs'],{stdio:'inherit'});

@@ -3,7 +3,7 @@ process.chdir(path.resolve(__dirname,'..'));
 const nodes=new Map();const node=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){}},addEventListener(){},focus(){},scrollIntoView(){},setAttribute(){},click(){},showModal(){},close(){}});return nodes.get(k)};
 let saved='';const ctx={console,assert,document:{querySelector:node,querySelectorAll:()=>[],addEventListener(){},createElement:()=>node('a')},window:{addEventListener(){},scrollTo(){},print(){}},location:{hash:'#structure'},localStorage:{getItem:()=>null,setItem(k,v){saved=v}},setInterval(){},setTimeout(){},clearTimeout(){},Date,Intl,crypto:require('crypto').webcrypto,URL,Blob};
 vm.createContext(ctx);
-vm.runInContext(['content.js','coach-data.js','coach.js','app.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n'),ctx);
+vm.runInContext(['content.js','coach-data.js','coach-learning.js','coach.js','app.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n'),ctx);
 vm.runInContext(`
 const coach=window.StructureCoach, cd=window.SCA_COACH;
 for(const c of cd.cases){
