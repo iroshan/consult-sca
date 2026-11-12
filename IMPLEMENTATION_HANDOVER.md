@@ -137,3 +137,13 @@ The lessons reuse the four saved support levels. Reducing help hides prior revea
 Validation: the full validator covers all six stage routes/levels, content and target integrity, prompt reduction and answer reveal/hide. `scripts/browser-coach-stages.cjs` passes all six lessons, 19 sequences, four levels, changed-answer retry, correct text/en-GB playback dispatch using a speech stub, unavailable-audio fallback, targeted case handoff, saved help preference and 390px layouts. This does not claim an audible voice was tested on every device. The new two-case content checkpoint e153dab deployed successfully in Actions run 43329745387.
 
 Next manageable unit: expand the Atlas with musculoskeletal cases after direct checks of current NICE/NHS guidance; regenerate the learning picker and validate new case routes, backup and mobile views.
+
+## Follow-up checkpoint: musculoskeletal Atlas area
+
+Added low back pain/sciatica, recurrent gout and knee osteoarthritis, with assessment, management/reasoning, five discussion exchanges, three changed circumstances, safety/review and recall in each. Atlas totals: 60 cases / 180 variations across eight areas. The generated learning-log picker includes all 60 cases.
+
+Current NG59, NG219 and NG226 recommendations were read directly over verified HTTPS, with NHS back-pain/gout/OA/septic-arthritis information. Important current detail: NG59 removed the older standalone psychological-therapy/combined-programme recommendations in July 2026 and amended the manual-therapy wording; the new case uses the current exercise-inclusive recommendation rather than reproduce removed text. The cases distinguish back pain from sciatica, avoid unsupported medicine escalation, recognise neurological compression and septic-joint urgency, explain gout’s treat-to-target monitoring and major-CVD ULT choice, and use OA function/quality of life rather than automatic BMI/age referral exclusions. No universal renal-risk drug regimen is supplied.
+
+Validation: the full validator passes 360 Atlas sections, new area routes and imported notes/bookmarks. `browser-musculoskeletal.cjs` passes all six tabs of three cases, bookmarks after reload and mobile discussion layouts. `browser-learning-atlas.cjs` passes the updated 60-case picker and cross-application reflection/backup workflow. Official link-check results and deployment are recorded with the next publication check.
+
+Next: make Atlas discussion models easier to rehearse aloud before revealing, add shorter alternatives to new examples and browser listening with text fallback, preserving existing notes and backups.

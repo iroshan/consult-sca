@@ -6924,6 +6924,24 @@ window.SCA_COACH = {
       "title": "Dyspepsia: explain testing, a treatment trial and changed symptoms",
       "areaId": "gastrointestinal",
       "areaTitle": "Gastrointestinal"
+    },
+    {
+      "id": "atlas:msk-back-pain",
+      "title": "Low back pain: assess risk and build an active plan",
+      "areaId": "musculoskeletal",
+      "areaTitle": "Musculoskeletal"
+    },
+    {
+      "id": "atlas:msk-gout",
+      "title": "Gout: treat the flare and explain long-term prevention",
+      "areaId": "musculoskeletal",
+      "areaTitle": "Musculoskeletal"
+    },
+    {
+      "id": "atlas:msk-knee-oa",
+      "title": "Knee osteoarthritis: movement, pain support and referral",
+      "areaId": "musculoskeletal",
+      "areaTitle": "Musculoskeletal"
     }
   ],
   "stageLessons": [
