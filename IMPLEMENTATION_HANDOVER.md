@@ -147,3 +147,13 @@ Current NG59, NG219 and NG226 recommendations were read directly over verified H
 Validation: the full validator passes 360 Atlas sections, new area routes and imported notes/bookmarks. `browser-musculoskeletal.cjs` passes all six tabs of three cases, bookmarks after reload and mobile discussion layouts. `browser-learning-atlas.cjs` passes the updated 60-case picker and cross-application reflection/backup workflow. Official link-check results and deployment are recorded with the next publication check.
 
 Next: make Atlas discussion models easier to rehearse aloud before revealing, add shorter alternatives to new examples and browser listening with text fallback, preserving existing notes and backups.
+
+## Follow-up checkpoint: Atlas spoken discussion rehearsal
+
+Every case’s Discussion tab now has native keyboard-accessible per-reply reveal/hide, a hide/show-all control, explicit speak–compare–retry instructions, slower/normal browser listening and written fallback. Added thirty authored shorter alternatives across the GI/MSK cases, preserving the fuller explanation and why it helps. Existing personal discussion notes remain in the same fields/storage/backup. Hiding text is not recorded as independence or assessed performance.
+
+Audio cancels when hiding replies or changing route/support level, to avoid a previous model continuing during unaided practice. The older language module now handles unavailable speech properties defensively. Stage support/reveal buttons regain focus after rerendering, improving keyboard continuity.
+
+Validation: full content/routes/progress validation and the stage browser regression pass. `browser-atlas-discussion.cjs` passes native reveal/retry with and without shorter wording, exact text/en-GB/speed dispatch via a speech stub, unavailable-audio fallback in both Atlas discussion and language pages, note persistence, actual Atlas JSON export/import and mobile layouts. It does not verify audible output on all devices. All eight MSK official URLs returned HTTP 200. Content checkpoint 58d7365 deployed successfully in Actions run 43331188102.
+
+Next manageable content unit: deepen selected original mental-health case discussions with natural and shorter replies to common patient questions after current official guidance checks. Continue preserving IDs and notes.

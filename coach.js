@@ -198,6 +198,7 @@ window.StructureCoach = (() => {
   }
   function active() {const parts=location.hash.slice(1).split('/');const c=parts[0]==='structure'&&parts[1]==='case'?caseById(parts[2]):null;return c?{c,r:runFor(c),n:nodeById(c,runFor(c).node)}:null;}
   function repaint(focus=false) {const y=window.scrollY;render();if(focus){const panel=$('.coach-exchange')||$('#main');panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});panel.scrollIntoView({block:'start'});}else window.scrollTo(0,y);}
+  function focusAction(type,value){document.querySelector(`[data-coach="${type}"][data-value="${value}"]`)?.focus({preventScroll:true});}
   function gotoExchange(c,r,id,independent=false) {const next=fresh(c,id,r);if(independent){state.coach.level=3;next.used=3;}state.coach.runs[c.id]=next;store();repaint(true);}
   function speak(words) {
     if(!window.speechSynthesis || typeof SpeechSynthesisUtterance==='undefined') {toast('Audio is unavailable. Use the written exchange.');return;}
@@ -208,9 +209,9 @@ window.StructureCoach = (() => {
   }
   function handle(type,value) {
     ensure(); const a=active(); const {c,r,n}=a||{};
-    if(['stage-reveal','stage-hide'].includes(type)){const [id,index]=value.split(':');const lesson=data.stageLessons.find(s=>s.id===id);if(!lesson||!/^\d+$/.test(index)||!lesson.answers[Number(index)])return;const key=id+':'+Number(index);if(type==='stage-reveal')stageReveals.add(key);else stageReveals.delete(key);repaint();return;}
+    if(['stage-reveal','stage-hide'].includes(type)){const [id,index]=value.split(':');const lesson=data.stageLessons.find(s=>s.id===id);if(!lesson||!/^\d+$/.test(index)||!lesson.answers[Number(index)])return;const key=id+':'+Number(index);if(type==='stage-reveal')stageReveals.add(key);else stageReveals.delete(key);repaint();focusAction(type==='stage-reveal'?'stage-hide':'stage-reveal',key);return;}
     if(type==='stage-speak'){const [id,kind,index]=value.split(':');const lesson=data.stageLessons.find(s=>s.id===id);if(!lesson||!/^\d+$/.test(index))return;const item=(kind==='move'?lesson.moves:kind==='answer'?lesson.answers:[])[Number(index)];if(item)speak(kind==='move'?item.model:item.response);return;}
-    if(type==='level') {stageReveals.clear();state.coach.level=Math.floor(num(Number(value),0,3));if(r&&r.phase==='attempt'){r.used=Math.min(r.used,state.coach.level);r.updated=Date.now();}store();repaint();return;}
+    if(type==='level') {window.speechSynthesis?.cancel();stageReveals.clear();state.coach.level=Math.floor(num(Number(value),0,3));if(r&&r.phase==='attempt'){r.used=Math.min(r.used,state.coach.level);r.updated=Date.now();}store();repaint();focusAction('level',String(state.coach.level));return;}
     if(type==='save-example'&&exampleByKey(value)){state.coach.examples=state.coach.examples.includes(value)?state.coach.examples.filter(x=>x!==value):[...state.coach.examples,value];store();repaint();return;}
     if(type==='recall-example'&&exampleByKey(value)){const example=exampleByKey(value);recall={id:example.n.phrase,exampleKey:value,revealed:false};location.hash='structure/review';repaint();return;}
     if(type==='save'&&phraseById(value)) {state.coach.saved=state.coach.saved.includes(value)?state.coach.saved.filter(x=>x!==value):[...state.coach.saved,value];store();repaint();return;}
@@ -267,6 +268,7 @@ window.StructureCoach = (() => {
     const index=Number(e.target.dataset.coachCheck);if(!Number.isInteger(index)||index<0||index>=a.n.essential.length)return;
     a.r.checks=e.target.checked?[...new Set([...a.r.checks,index])]:a.r.checks.filter(x=>x!==index);a.r.updated=Date.now();store();
   });
+  window.addEventListener('hashchange',()=>window.speechSynthesis?.cancel());
   setInterval(()=>{const a=active(), el=$('#coach-clock');if(a&&el)el.textContent=formatTime(timerRemaining(a.r.timer));},1000);
   return {defaults,clean,merge,page,banner,handle,contextPath,scheduleCard,rateAttempt,timerRemaining,recommendation,sentenceParts,levels};
 })();
