@@ -6925,5 +6925,351 @@ window.SCA_COACH = {
       "areaId": "gastrointestinal",
       "areaTitle": "Gastrointestinal"
     }
+  ],
+  "stageLessons": [
+    {
+      "id": "open",
+      "aim": "Help the person feel heard, establish a safe setting and agree what needs attention first.",
+      "anchor": "Connect → check → agree",
+      "moves": [
+        {
+          "title": "Make contact accurately",
+          "patient": "Hello. Is that the doctor?",
+          "model": "Hello, I’m Dr Patel, one of the GPs. Could I check your name and date of birth?",
+          "simple": "Hello, I’m Dr Patel. Could you confirm your details?",
+          "starter": "Hello, I’m… Could I check…",
+          "why": "Use your actual name and role. Pause for the identity check before sharing personal information."
+        },
+        {
+          "title": "Check the setting",
+          "patient": "I’m at work at the moment.",
+          "model": "Is it safe and private for you to talk about your health now?",
+          "simple": "Can you talk privately now?",
+          "starter": "Is it safe and private…",
+          "why": "A person can answer the phone while being unable to speak freely. Let their answer change the arrangement."
+        },
+        {
+          "title": "Find the agenda before choosing a priority",
+          "patient": "I’ve had headaches, and there is something else as well.",
+          "model": "Before we decide where to start, is there anything else you were hoping we could discuss today?",
+          "simple": "Is there anything else you need help with today?",
+          "starter": "Before we decide… is there anything else…",
+          "why": "Hear the concerns, assess urgency and agree the priority. This does not promise to complete every issue."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "I’m on a bus. People can hear me.",
+          "task": "Check immediate safety and urgency, then agree a suitable private arrangement.",
+          "response": "Thanks for telling me. Before we arrange a private time, is there anything needing urgent help now? If it is safe to wait, let’s agree when and how we can speak privately."
+        },
+        {
+          "patient": "There are three things, but the chest pain is happening now.",
+          "task": "Triage the potentially urgent problem before routine agenda negotiation.",
+          "response": "The chest pain needs us to check urgency first. I’ll focus on that now, then we can agree what to do about the other concerns."
+        }
+      ],
+      "transition": "Let’s start with the concern that needs attention first. Could you tell me what has been happening?",
+      "avoid": "Do not rush into a checklist, promise unlimited time, or defer an issue before checking its urgency.",
+      "practice": [
+        [
+          "headache",
+          "hello"
+        ],
+        [
+          "interpreter",
+          "agenda"
+        ]
+      ],
+      "language": "“Could I check…?” is a natural polite request. Use a warm introduction, then clear questions. In an emergency, keep the action direct rather than adding unnecessary softeners."
+    },
+    {
+      "id": "understand",
+      "aim": "Understand the story, the effect on life and the concern behind the request. Use the answer rather than merely collecting it.",
+      "anchor": "Story → impact → meaning",
+      "moves": [
+        {
+          "title": "Let the person tell the story",
+          "patient": "I don’t really know where to begin.",
+          "model": "Take your time. Could you tell me what has been happening, starting from when you first noticed the problem?",
+          "simple": "Could you tell me what happened from the beginning?",
+          "starter": "Take your time… Could you tell me…",
+          "why": "Begin broadly, then clarify what matters. Interrupt when safety requires immediate action."
+        },
+        {
+          "title": "Explore an actual effect on life",
+          "patient": "It is getting in the way of everything.",
+          "model": "What has become hardest to do because of this?",
+          "simple": "What is this stopping you from doing?",
+          "starter": "What has become hardest…",
+          "why": "Follow the person’s example: sleep, work, caring, mobility or another meaningful activity. Use it as a treatment or review goal."
+        },
+        {
+          "title": "Find the feared consequence",
+          "patient": "I’m worried it might be something serious.",
+          "model": "Could you tell me what you are most worried it could mean?",
+          "simple": "What worries you most about it?",
+          "starter": "Could you tell me what…",
+          "why": "Do not guess the fear or use a stock reassurance. The answer tells you what your explanation needs to address."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "I’m scared it is cancer because my sister had it.",
+          "task": "Acknowledge the experience, clarify the particular fear, then use appropriate assessment to guide the explanation.",
+          "response": "Seeing your sister go through that makes this especially worrying. What about your symptoms has made you think of the same problem?"
+        },
+        {
+          "patient": "I can’t sleep, and I’m struggling to look after my child.",
+          "task": "Explore the practical effect and support; use that function goal in the plan.",
+          "response": "That sounds difficult to manage. What support do you have at home? Let’s make sleep and being able to care safely part of what we review."
+        }
+      ],
+      "transition": "Thank you. I’d like to clarify a few points that will help me decide what needs checking next.",
+      "avoid": "Do not ask “ideas, concerns and expectations” as three disconnected checklist questions or ignore the answer once you have heard it.",
+      "practice": [
+        [
+          "anxiety",
+          "impact"
+        ],
+        [
+          "bowel-bleeding",
+          "impact"
+        ]
+      ],
+      "language": "“Talk me through…” means describe what happened step by step. “What worries you most?” is natural UK wording. “Help me understand…” can feel less accusing than a bare “Why?”."
+    },
+    {
+      "id": "focus",
+      "aim": "Choose questions and examination or investigation that can change the differential, urgency or next action.",
+      "anchor": "Signpost → clarify risk → summarise",
+      "moves": [
+        {
+          "title": "Explain the change to focused questions",
+          "patient": "I’ve told you most of what has happened.",
+          "model": "Thank you. I’d like to ask a few more focused questions to check what might be causing this and whether anything needs urgent attention.",
+          "simple": "I’ll ask a few questions to help decide what we need to do next.",
+          "starter": "Thank you… I’d like to ask…",
+          "why": "The signpost explains the purpose. It does not replace the actual questions."
+        },
+        {
+          "title": "Ask one specific question and wait",
+          "patient": "I’m not sure which part you want me to answer.",
+          "model": "Let me ask one thing at a time. What happened first?",
+          "simple": "I’ll ask one question at a time. What happened first?",
+          "starter": "Let me ask one thing…",
+          "why": "Break long lists into individual questions. Clarify unclear answers and act immediately when the answer changes urgency."
+        },
+        {
+          "title": "Summarise and invite correction",
+          "patient": "Is there anything else you need to know?",
+          "model": "Let me check I have understood. The main problem is what you have described, and the part affecting you most is what we have just discussed. What have I missed or misunderstood?",
+          "simple": "Let me check the main points with you. Have I missed anything important?",
+          "starter": "Let me check… What have I missed…",
+          "why": "In the actual consultation, replace the general wording with a brief, concrete summary of this person’s facts and priority."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "Actually, the pain became severe in seconds.",
+          "task": "Reassess urgency immediately; do not complete a routine checklist before appropriate escalation.",
+          "response": "That changes the urgency. I need to check this immediately and arrange the right help rather than continue with a routine plan."
+        },
+        {
+          "patient": "No, it started before the medicine, not afterwards.",
+          "task": "Correct the chronology and reconsider any explanation that depended on it.",
+          "response": "Thank you for correcting me. It started before the medicine. I’ll take that into account when we consider the possible cause."
+        }
+      ],
+      "transition": "From the assessment so far, I can explain what seems likely, what remains uncertain and the next step I recommend.",
+      "avoid": "Do not count questions as evidence of a complete assessment. Explain the relevant findings and make the actual clinical decision.",
+      "practice": [
+        [
+          "headache",
+          "focus"
+        ],
+        [
+          "dyspepsia",
+          "focus"
+        ]
+      ],
+      "language": "“I’d like to clarify…” gives a reason for focused questions. Use plain, specific questions afterwards. Explain and obtain appropriate consent for examination or procedures rather than assume the signpost is consent."
+    },
+    {
+      "id": "explain",
+      "aim": "Give an assessment-led explanation in small parts, at the right level of certainty, and check how it lands.",
+      "anchor": "Headline → reason → pause",
+      "moves": [
+        {
+          "title": "Ask where to begin",
+          "patient": "Could you explain what the result means?",
+          "model": "Of course. Before I explain, what have you understood about the result so far?",
+          "simple": "What have you understood about the result?",
+          "starter": "Of course… what have you understood…",
+          "why": "This reveals a misconception or a knowledge gap so you can tailor the explanation. Do not make the person prove knowledge before receiving help."
+        },
+        {
+          "title": "Keep certainty accurate",
+          "patient": "Does that mean you know exactly what is wrong?",
+          "model": "There are some things the assessment tells us, and some things it does not settle yet. I’ll explain both and what we need to do next.",
+          "simple": "I’ll explain what we know, what is still uncertain and the next step.",
+          "starter": "What we know… What is still uncertain…",
+          "why": "Then give the actual working diagnosis or result interpretation and supporting findings. This introduction is not the whole explanation."
+        },
+        {
+          "title": "Pause after one useful chunk",
+          "patient": "That is a lot to take in.",
+          "model": "Let me pause there. Which part would you like me to go over first?",
+          "simple": "Which part would help to go through again?",
+          "starter": "Let me pause… Which part…",
+          "why": "Respond to the answer before adding more information. Use a different explanation rather than simply repeat the same jargon."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "You said “negative”, so I thought nothing could be wrong.",
+          "task": "Clarify the particular test’s limits and link continuing clinical concern to the next action.",
+          "response": "I can see why that sounded reassuring. The test answers one part of the question; it does not replace reviewing symptoms that continue. Let’s go through what this result does and does not tell us."
+        },
+        {
+          "patient": "Are you saying it is all in my head?",
+          "task": "Validate the experience, clarify your meaning and avoid a false mind/body split.",
+          "response": "No. I am not saying the symptoms are imagined. Let me explain more clearly what I mean and how the plan aims to help."
+        }
+      ],
+      "transition": "Given that assessment, I’d like to discuss what I recommend and why, then hear what you think.",
+      "avoid": "Do not say “it is just…” to dismiss a problem, promise certainty that the evidence does not support, or give a long explanation without a pause.",
+      "practice": [
+        [
+          "bowel-bleeding",
+          "explain"
+        ],
+        [
+          "result",
+          "uncertainty"
+        ]
+      ],
+      "language": "“Suggests”, “may” and “most likely” express different levels of certainty from “proves” or “definitely”. Choose the wording that matches the evidence, then say what the remaining uncertainty means for action."
+    },
+    {
+      "id": "plan",
+      "aim": "Turn the assessment into a clear, clinically appropriate recommendation and arrangements the person can use.",
+      "anchor": "Recommend → explain → listen → arrange",
+      "moves": [
+        {
+          "title": "Make the recommendation clear",
+          "patient": "What do you think I should do?",
+          "model": "I’ll explain the next step I recommend and why it matters, then we can discuss how it fits with your circumstances.",
+          "simple": "Let’s discuss the next step, why it helps and how we can make it work for you.",
+          "starter": "I recommend… because…",
+          "why": "In the case practice, name the actual action and the patient-specific reason. Do not leave “we could do lots of things” as the whole plan."
+        },
+        {
+          "title": "Invite a response without abandoning the recommendation",
+          "patient": "Do I have a choice?",
+          "model": "I’ll explain the reasonable options, including their benefits and possible downsides. Then we can decide together which appropriate plan fits best.",
+          "simple": "Let’s go through the suitable options and what matters to you.",
+          "starter": "The suitable options are… What matters most…",
+          "why": "Shared decisions use clinically reasonable options. Explain urgency and consequences; do not imply an unsafe delay is equally appropriate."
+        },
+        {
+          "title": "Find the real obstacle",
+          "patient": "I don’t think I can manage that plan.",
+          "model": "What would make it difficult for you? Let’s work through that before we settle the arrangements.",
+          "simple": "Which part would be hardest? Let’s see what would help.",
+          "starter": "What would make… Let’s work through…",
+          "why": "The barrier may be cost, access, beliefs, side effects, language, caring or something else. Ask rather than assume."
+        },
+        {
+          "title": "Name action, owner and review",
+          "patient": "Who will arrange it?",
+          "model": "Let’s be clear about who will do each part, when it should happen and how we will check the outcome. I’ll confirm the arrangements we can actually make.",
+          "simple": "Let’s agree who does what and when we will review it.",
+          "starter": "I will… You will… We will review…",
+          "why": "Replace every general phrase with the real test, prescription, referral, contact method and review date. Do not promise availability that has not been checked."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "I want antibiotics because they helped last time.",
+          "task": "Explore the reason, explain the present clinical recommendation and offer an appropriate positive plan.",
+          "response": "Could you tell me what improved last time and what you are hoping the antibiotics will do now? I’ll explain whether they are likely to help with this assessment and what I recommend instead if they are not."
+        },
+        {
+          "patient": "I can’t get time off work for the appointment.",
+          "task": "Keep necessary assessment clear while exploring feasible access and support.",
+          "response": "What times could you manage? Let’s check what is available and what support might help. If the offered appointment is not manageable, contact us so we can help keep the assessment on track."
+        }
+      ],
+      "transition": "We have agreed the main plan. Before we finish, let’s cover what to watch for, who reviews it and what to do if the arrangements do not happen.",
+      "avoid": "Do not present a list without a recommendation, use “it is up to you” as a substitute for shared decisions, or end with an unowned referral or result.",
+      "practice": [
+        [
+          "dyspepsia",
+          "recommend"
+        ],
+        [
+          "bowel-bleeding",
+          "barrier"
+        ]
+      ],
+      "language": "“I recommend…” is a clear professional recommendation. Follow it with the reason and “What are your thoughts?” rather than hiding the recommendation inside several hesitant “maybe” phrases."
+    },
+    {
+      "id": "close",
+      "aim": "Make the plan usable after the call: specific warning signs, timing, ownership, contingency and understanding.",
+      "anchor": "Warning signs → review → teach-back",
+      "moves": [
+        {
+          "title": "Make earlier-help advice specific",
+          "patient": "What if things get worse?",
+          "model": "I’ll explain the particular changes to watch for, how urgently to act and who to contact. You do not need to wait for the planned review if one of those changes happens.",
+          "simple": "Let’s go through what would need help sooner and who to contact.",
+          "starter": "If you develop… please contact… If… call…",
+          "why": "In the case, name the relevant warning symptoms and match routine, urgent or emergency help to the actual severity. “If worse” alone is insufficient."
+        },
+        {
+          "title": "Confirm review and a missed-contact plan",
+          "patient": "Will someone tell me the result?",
+          "model": "We’ll agree who checks the result, how you will hear from us and the date to expect contact. If you have not heard by then, please contact us as a backup; we remain responsible for checking it.",
+          "simple": "We will check and contact you by the agreed date. Call us if you have not heard; we still need to follow it up.",
+          "starter": "We will check… You should hear… If you have not…",
+          "why": "Use a real date or clinically appropriate interval and an actual responsible team. A patient reminder does not transfer clinician responsibility."
+        },
+        {
+          "title": "Use teach-back kindly",
+          "patient": "I think I understand.",
+          "model": "Just so I can check I have explained it clearly, could you talk me through what you will do next and when you would seek help sooner?",
+          "simple": "Could you tell me the plan back, so I can check my explanation was clear?",
+          "starter": "Just so I can check… could you talk me through…",
+          "why": "Listen to the response, correct gaps and confirm practical arrangements. Make it about the clarity of your explanation, not testing the person."
+        }
+      ],
+      "answers": [
+        {
+          "patient": "I’ll just wait for the routine appointment even if the warning symptom happens.",
+          "task": "Correct the timing and route immediately; confirm understanding again.",
+          "response": "Please do not wait if that warning symptom happens. That needs the earlier help we discussed. Let’s go over who to contact and how urgently, then check the plan together."
+        },
+        {
+          "patient": "I can’t remember everything you said.",
+          "task": "Reduce the information, repeat the essential actions and offer an appropriate accessible summary.",
+          "response": "Let’s go back to the main actions one at a time. We can also agree a written or accessible summary. Which part would help to go through first?"
+        }
+      ],
+      "transition": "We have agreed the next action, the review and when to seek help sooner. What is the last question you would like us to clarify?",
+      "avoid": "Do not rely on “any questions?” or “are you happy?” as evidence of understanding. Do not give a safety net instead of arranging necessary assessment.",
+      "practice": [
+        [
+          "dyspepsia",
+          "check"
+        ],
+        [
+          "asthma",
+          "safety"
+        ]
+      ],
+      "language": "“So I can check I explained it clearly…” makes teach-back about your explanation. “The practice will review…” names ownership; add the real person/team, timing and contact route."
+    }
   ]
 };
