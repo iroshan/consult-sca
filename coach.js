@@ -166,7 +166,7 @@ window.StructureCoach = (() => {
     ensure();
     if(parts[0]==='worked'&&caseById(parts[1]))return worked(caseById(parts[1]));
     if(parts[0]==='case') return caseById(parts[1])?session(caseById(parts[1])):head('CASE NOT FOUND','Choose a guided consultation.','This case is not available.',link('Open the coach','#structure'));
-    if(parts[0]==='learning')return navigation('learning')+window.CoachLearning.page();
+    if(parts[0]==='learning')return navigation('learning')+window.CoachLearning.page(parts[1]);
     if(parts[0]==='daily') return daily();
     if(parts[0]==='phrases') return sentences();
     if(parts[0]==='review') return review();

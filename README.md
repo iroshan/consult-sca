@@ -6,7 +6,7 @@ A portable static website for UK GP consultation learning. The application entry
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 57 core cases and 171 management permutations in mental health, paediatrics, older-person/palliative care, cardiovascular, respiratory, endocrine/metabolic and gastrointestinal medicine.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.
-- Personal weekly plan, twelve preparation-area priorities, evidence-led feedback records and dated repeat tasks at `/#structure/learning`.
+- Personal weekly plan, twelve preparation-area priorities, evidence-led feedback records linked to all guided and Atlas cases, fictional context and dated repeat tasks at `/#structure/learning`.
 - Browser-local notes, self-review, recall schedules and JSON backup/import.
 
 ## Run locally

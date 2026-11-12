@@ -1,0 +1,42 @@
+const {chromium}=require('playwright'),assert=require('assert/strict'),fs=require('fs');
+(async()=>{
+  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
+  try {
+    const base=process.env.SCA_BASE_URL||'http://127.0.0.1:8011',page=await browser.newPage(),errors=[];
+    page.on('pageerror',error=>errors.push(error.message));
+    await page.goto(base+'/#structure/learning');
+    assert.equal(await page.locator('#learning-caseId option[value^="atlas:"]').count(),57);
+    await page.locator('#learning-learned').fill('I treated a low FIT as a complete explanation.');
+    await page.locator('#learning-action').fill('Explain the limits and agree the actual next assessment.');
+    await page.locator('#learning-caseSummary').fill('<b>Fictional case: continuing bleeding after a low FIT.</b>');
+    await page.goto(base+'/clinical/#case/gi-rectal-bleeding');
+    await page.locator('a[href="../#structure/learning/atlas:gi-rectal-bleeding"]').click();
+    await page.locator('[data-learning="use-case"]').click();
+    assert.equal(await page.locator('#learning-caseId').inputValue(),'atlas:gi-rectal-bleeding');
+    assert.equal(await page.locator('#learning-learned').inputValue(),'I treated a low FIT as a complete explanation.');
+    await page.locator('#learning-reviewDate').fill(await page.evaluate(()=>window.CoachLearning.today()));
+    await page.locator('[data-learning="save-record"]').click();
+    await page.locator('.coach-learning-record summary').click();
+    assert.equal(await page.locator('.coach-learning-record a[href="clinical/#case/gi-rectal-bleeding"]').count(),1);
+    assert.equal(await page.locator('.coach-learning-record b').count(),0,'Fictional context must remain text');
+    await page.goto(base+'/#structure/daily');
+    assert.match(await page.locator('.coach-due-task').innerText(),/Explain the limits/);
+    await page.locator('.coach-due-task a').click();
+    await page.locator('h1').filter({hasText:'Rectal bleeding'}).waitFor();
+    await page.goto(base+'/#progress');
+    const pending=page.waitForEvent('download');await page.locator('#export-progress').click();
+    const download=await pending,backup=JSON.parse(fs.readFileSync(await download.path(),'utf8'));
+    assert.equal(backup.coach.learning.records[0].caseId,'atlas:gi-rectal-bleeding');
+    const other=await browser.newPage();await other.goto(base+'/#progress');
+    await other.locator('#import-file').setInputFiles({name:'atlas-reflection.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(backup))});
+    await other.waitForFunction(()=>JSON.parse(localStorage.getItem('consult-studio-v1'))?.coach?.learning?.records?.length===1);
+    await other.goto(base+'/#structure/learning');await other.locator('.coach-learning-record summary').click();
+    assert.match(await other.locator('.coach-learning-record').innerText(),/Fictional case: continuing bleeding/);
+    assert.equal(await other.locator('.coach-learning-record a[href="clinical/#case/gi-rectal-bleeding"]').count(),1);
+    await other.setViewportSize({width:390,height:844});
+    assert.equal(await other.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    await other.screenshot({path:'/tmp/sca-atlas-reflection-mobile.png',fullPage:true});
+    assert.deepEqual(errors,[]);
+    console.log('PASS: Chromium — all Atlas options, cross-application case handoff, preserved draft, contextual reflection, due-task link, real backup round trip and mobile layout.');
+  } finally {await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

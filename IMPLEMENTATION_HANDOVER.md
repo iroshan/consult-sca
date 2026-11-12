@@ -105,3 +105,13 @@ Selected facts were checked against current NICE CG61, NG20, NG12, HTG690, CG184
 Validation: the full validator passes all 342 Atlas case sections, GI routes and imported notes/bookmarks. `scripts/browser-gastrointestinal.cjs` passed six tabs of all three cases, bookmark reload persistence and 390px discussion layouts. The correct NHS indigestion page and official HTG320 recommendations returned HTTP 200; the web research service returned access 403 for HTG320, so its recommendations were read through the normal verified HTTPS client. The preceding endocrine deployment (033d853) completed successfully in Actions run 43326551722. Check the matching newer run and live assets after this commit.
 
 Next manageable unit: link all published Atlas cases to the personal feedback/repeat log, preserving existing guided-case records and old backups, then add focused management speaking practice if feasible.
+
+## Follow-up checkpoint: Atlas-linked feedback and repeat tasks
+
+The personal reflection form now selects all 57 Atlas cases as well as the 15 guided consultations, grouped by area. Each Atlas case links to a case-selection handoff that retains existing draft text. Saved records include optional fictional context and return to the correct application; guided-case IDs and old backups remain compatible. The daily session shows the first due action, saved sentence and case link. The Atlas homepage now derives its specialty count rather than showing the obsolete three-area description.
+
+`coach-data.js` carries only a small generated title/route index for the picker. After catalogue additions, run `node scripts/sync-learning-cases.cjs --write`; the normal validator rejects index drift. No private source text or learning records are embedded.
+
+Validation: the full validator passes. Learning-specific checks cover every published case target, unknown-ID rejection, context limits/escaping, retained draft text, linked records and old/new backup compatibility. Both `browser-learning.cjs` and `browser-learning-atlas.cjs` pass; the latter follows the actual Atlas handoff, due-task return link, real JSON download/import and mobile record layout. GI checkpoint 915df0d deployed successfully in Actions run 43328313477.
+
+Next: add further complete guided cases for management/test discussions, with exact UK sentences and clinically meaningful alternative responses; run the full guided-case browser regression for the expanded course.

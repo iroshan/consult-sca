@@ -5758,5 +5758,349 @@ window.SCA_COACH = {
     "reading": 180,
     "consultation": 720,
     "url": "https://www.rcgp.org.uk/mrcgp-exams/simulated-consultation-assessment/introduction"
-  }
+  },
+  "atlasCases": [
+    {
+      "id": "atlas:mh-depression",
+      "title": "Depression: first presentation",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-minority-stress",
+      "title": "Depression with rejection and minority stress",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-sleep",
+      "title": "Low mood and a sleeping-tablet request",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-palliative",
+      "title": "Depression and distress in advanced illness",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-adjustment",
+      "title": "Low mood after relationship breakdown",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-antenatal",
+      "title": "Depression during pregnancy",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-postnatal",
+      "title": "Postnatal depression and isolation",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-postpartum-psychosis",
+      "title": "Postpartum psychosis: recognising an emergency",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-gad",
+      "title": "Generalised anxiety: persistent worry",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-panic",
+      "title": "Panic attacks with physical symptoms",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-young-person",
+      "title": "Young person with anxiety, low mood and school avoidance",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-psychosis",
+      "title": "First-episode psychosis and a request for sleep medication",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-relapse",
+      "title": "Schizophrenia: stopping medication because of adverse effects",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-mania",
+      "title": "Possible mania behind reduced sleep",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-ptsd",
+      "title": "PTSD after trauma",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-bullying",
+      "title": "Bullying, disability and deteriorating mental health",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-dependence",
+      "title": "Long-term benzodiazepine use and an early refill",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-opioid",
+      "title": "Codeine use, persistent pain and dependence",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-gambling",
+      "title": "Gambling-related harms and hidden suicidal risk",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-eating",
+      "title": "Adolescent eating disorder and physical risk",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:mh-alcohol",
+      "title": "Alcohol dependence, withdrawal and change",
+      "areaId": "mental-health",
+      "areaTitle": "Mental health"
+    },
+    {
+      "id": "atlas:pd-fever",
+      "title": "Fever in a young child: assess before reassuring",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-gastroenteritis",
+      "title": "Diarrhoea and vomiting: dehydration and home care",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-constipation",
+      "title": "Constipation, overflow soiling and family strain",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-newborn-weight",
+      "title": "Newborn weight loss and feeding concerns",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-reflux",
+      "title": "Infant reflux: reassurance, feeding and red flags",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-colic",
+      "title": "Crying infant and an exhausted parent",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-autism",
+      "title": "Developmental differences and possible autism",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-adhd",
+      "title": "Attention and activity differences: possible ADHD",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-preschool-wheeze",
+      "title": "Preschool wheeze and suspected asthma",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-uti",
+      "title": "Childhood UTI and recurrent infection",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-bedwetting",
+      "title": "Bedwetting, embarrassment and a school trip",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-eczema",
+      "title": "Childhood eczema and fear of topical steroids",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-not-brought",
+      "title": "Child not brought: access barriers and safeguarding",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-neonatal-eye",
+      "title": "A red sticky eye in a newborn",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:pd-head-lice",
+      "title": "Head lice, recurrent treatment and school anxiety",
+      "areaId": "paediatrics",
+      "areaTitle": "Paediatrics"
+    },
+    {
+      "id": "atlas:op-delirium",
+      "title": "Sudden confusion: delirium until assessed",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-memory",
+      "title": "Progressive memory difficulties and possible dementia",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-dementia-distress",
+      "title": "Distress and aggression in dementia",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-falls",
+      "title": "Falls, dizziness and a recent medicine change",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-opioid-constipation",
+      "title": "Opioid-related constipation in a frail adult",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-palliative-pain",
+      "title": "Palliative pain and an opioid patch problem",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-palliative-nausea",
+      "title": "Nausea and vomiting after an opioid change",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-breathlessness",
+      "title": "Breathlessness in advanced illness: physical causes and anxiety",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-mnd",
+      "title": "MND, swallowing difficulties and carer exhaustion",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:op-advance-care",
+      "title": "Advance care, CPR and treatment preferences",
+      "areaId": "older-palliative",
+      "areaTitle": "Older-person & palliative care"
+    },
+    {
+      "id": "atlas:cv-hypertension",
+      "title": "Raised blood pressure: confirmation, risk and a shared plan",
+      "areaId": "cardiovascular",
+      "areaTitle": "Cardiovascular"
+    },
+    {
+      "id": "atlas:cv-atrial-fibrillation",
+      "title": "New atrial fibrillation: symptoms, stroke prevention and bleeding concerns",
+      "areaId": "cardiovascular",
+      "areaTitle": "Cardiovascular"
+    },
+    {
+      "id": "atlas:cv-chest-pain",
+      "title": "Chest pain by telephone: recognise possible ACS and arrange help",
+      "areaId": "cardiovascular",
+      "areaTitle": "Cardiovascular"
+    },
+    {
+      "id": "atlas:rs-adult-asthma",
+      "title": "Adult asthma: increasing reliever use and night symptoms",
+      "areaId": "respiratory",
+      "areaTitle": "Respiratory"
+    },
+    {
+      "id": "atlas:rs-copd",
+      "title": "COPD: breathlessness, inhaler review and a request for oxygen",
+      "areaId": "respiratory",
+      "areaTitle": "Respiratory"
+    },
+    {
+      "id": "atlas:em-type2-diabetes",
+      "title": "New type 2 diabetes: explain the diagnosis and current treatment choices",
+      "areaId": "endocrine-metabolic",
+      "areaTitle": "Endocrine & metabolic"
+    },
+    {
+      "id": "atlas:em-hypothyroidism",
+      "title": "Underactive thyroid: treatment, taking the tablet and follow-up",
+      "areaId": "endocrine-metabolic",
+      "areaTitle": "Endocrine & metabolic"
+    },
+    {
+      "id": "atlas:em-new-type1",
+      "title": "Thirst, weight loss and vomiting: possible type 1 diabetes or DKA",
+      "areaId": "endocrine-metabolic",
+      "areaTitle": "Endocrine & metabolic"
+    },
+    {
+      "id": "atlas:gi-ibs",
+      "title": "IBS-pattern symptoms: a positive explanation and an individual plan",
+      "areaId": "gastrointestinal",
+      "areaTitle": "Gastrointestinal"
+    },
+    {
+      "id": "atlas:gi-rectal-bleeding",
+      "title": "Rectal bleeding and bowel change: explain FIT and close the referral loop",
+      "areaId": "gastrointestinal",
+      "areaTitle": "Gastrointestinal"
+    },
+    {
+      "id": "atlas:gi-dyspepsia",
+      "title": "Dyspepsia: explain testing, a treatment trial and changed symptoms",
+      "areaId": "gastrointestinal",
+      "areaTitle": "Gastrointestinal"
+    }
+  ]
 };

@@ -13,6 +13,7 @@ vm.runInContext(`(async()=>{await importData({target:{files:[{size:100,text:asyn
 cp.execFileSync(process.execPath,['scripts/validate-coach.cjs'],{stdio:'inherit'});
 
 cp.execFileSync(process.execPath,['scripts/validate-learning.cjs'],{stdio:'inherit'});
+cp.execFileSync(process.execPath,['scripts/sync-learning-cases.cjs'],{stdio:'inherit'});
 
 vm.runInContext(`(async()=>{await importData({target:{files:[{size:100,text:async()=>JSON.stringify({version:1,saved:['cv-hypertension','cv-chest-pain'],read:[],notes:{'discussion-cv-atrial-fibrillation':'A cardiovascular explanation'}})}]}});assert(data.saved.includes('cv-chest-pain'));assert.strictEqual(data.notes['discussion-cv-atrial-fibrillation'],'A cardiovascular explanation');location.hash='#area/cardiovascular';render();assert(document.querySelector('#atlas-main').innerHTML.includes('Cardiovascular'));console.log('PASS: cardiovascular routes and imported notes/saved cases.');})();`,ctx);
 
