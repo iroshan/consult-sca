@@ -2,7 +2,7 @@
 
 A portable static website for UK GP consultation learning. The application entry points are `index.html` and `clinical/index.html`; no Sites platform, server-side service or build installation is required to run them.
 
-- Guided Structure Coach: 15 consultations, 184 exchanges, 16 core/recovery sentence patterns, saved case wording and personal versions, sentence-by-sentence rehearsal, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
+- Guided Structure Coach: 17 consultations, 211 exchanges, 16 core/recovery sentence patterns, saved case wording and personal versions, sentence-by-sentence rehearsal, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 57 core cases and 171 management permutations in mental health, paediatrics, older-person/palliative care, cardiovascular, respiratory, endocrine/metabolic and gastrointestinal medicine.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.
@@ -15,7 +15,7 @@ Serve the repository root with any static web server. For example, from this rep
 
 Run checks with `node scripts/validate.cjs`. This includes coach branching, independence tracking, scheduling, sanitisation and backup compatibility.
 
-For browser regression checks, with the official Playwright package and Chromium installed, serve this directory locally, then run `SCA_BASE_URL=http://127.0.0.1:8000 node scripts/browser-coach.cjs`. `CHROMIUM_PATH` can select an installed Chromium executable. Run `node scripts/browser-learning.cjs` against the same server to check the planning and reflection workflow. The browser scripts use an isolated profile, exercise all fifteen guided consultations and real backup import/export, and writes screenshots to the system temporary directory.
+For browser regression checks, with the official Playwright package and Chromium installed, serve this directory locally, then run `SCA_BASE_URL=http://127.0.0.1:8000 node scripts/browser-coach.cjs`. `CHROMIUM_PATH` can select an installed Chromium executable. Run `node scripts/browser-coach-branches.cjs` to check all five emergency branches and the two-exchange management-choice branch. Run `node scripts/browser-learning.cjs` against the same server to check the planning and reflection workflow. The browser scripts use an isolated profile, exercise all seventeen guided consultations and real backup import/export, and writes screenshots to the system temporary directory.
 
 ## GitHub Pages
 

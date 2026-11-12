@@ -5752,6 +5752,829 @@ window.SCA_COACH = {
         }
       ],
       "speaker": "Pharmacist"
+    },
+    {
+      "id": "bowel-bleeding",
+      "title": "A low FIT, continuing bleeding and a clear next step",
+      "category": "Persistent symptoms · Results and referral",
+      "patient": "Alex Morgan, 56 · Telephone follow-up",
+      "brief": "A stable patient has ongoing rectal bleeding and a changed bowel habit despite a symptomatic FIT below the referral threshold. A recent in-person assessment found no clear explanation. Recheck the current picture, explain the limits of the test, and agree further assessment. Supplied findings are fictional; perform the full assessment in practice.",
+      "goal": "Explain why a reassuring-looking test does not close a continuing clinical concern, then make referral and follow-up ownership explicit.",
+      "atlas": "gi-rectal-bleeding",
+      "studio": null,
+      "links": [
+        {
+          "label": "NICE NG12: symptomatic FIT and persistent concern",
+          "url": "https://www.nice.org.uk/guidance/ng12"
+        },
+        {
+          "label": "NICE HTG690: FIT in primary care",
+          "url": "https://www.nice.org.uk/guidance/htg690"
+        },
+        {
+          "label": "NHS: bleeding from the bottom",
+          "url": "https://www.nhs.uk/symptoms/bleeding-from-the-bottom-rectal-bleeding/"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "hello",
+          "phrase": "hello",
+          "stage": "open",
+          "patient": "Hello. I was told my stool test was normal.",
+          "task": "Confirm identity and privacy, then acknowledge the result question.",
+          "model": "Hello, I’m Dr Patel, one of the GPs. Could I confirm your name and date of birth? Is it private and convenient to talk about your symptoms and the result?",
+          "simple": "Hello, I’m Dr Patel. Could I check your details? Can you talk privately about the result?",
+          "starter": "Hello, I’m… Could I confirm… Is it private…",
+          "purpose": "Introduce yourself accurately, confirm identity and establish whether sensitive discussion is safe.",
+          "tip": "Pause for the identity and privacy answers. Use your actual role and check location/contact details when needed.",
+          "reply": "Alex confirms identity, privacy, their location and a callback number for this telephone review.",
+          "options": [
+            "Confirm identity and privacy, then acknowledge the result question.",
+            "Assume the person answering the phone is the patient and announce the result.",
+            "Say the test is normal before reviewing the symptoms."
+          ],
+          "answer": 0,
+          "why": "Identity, privacy and the reason for the call come before discussing a sensitive result.",
+          "essential": [
+            "Confirmed identity and an appropriate setting",
+            "Acknowledged that the call will review symptoms as well as the test"
+          ],
+          "improve": [
+            "Pause for the identity and privacy answers. Use your actual role and check location/contact details when needed."
+          ],
+          "next": "agenda"
+        },
+        {
+          "id": "agenda",
+          "phrase": "agenda",
+          "stage": "open",
+          "patient": "If the test is normal, I mainly want to know whether I can forget about the bleeding.",
+          "task": "Establish what the patient wants answered and check for other concerns.",
+          "model": "Let’s go through what the result means and what is happening with the bleeding now. Before we start, is there anything else you wanted us to cover?",
+          "simple": "We’ll discuss the result and the bleeding. Is there anything else you need help with?",
+          "starter": "Let’s go through… Before we start…",
+          "purpose": "Find important concerns early, then agree a safe priority.",
+          "tip": "An early agenda is flexible. A new severe symptom would change the priority immediately.",
+          "reply": "The bleeding and bowel change are the only concerns today; Alex wants a clear explanation of the next step.",
+          "options": [
+            "Establish what the patient wants answered and check for other concerns.",
+            "Agree that no further action is needed because the result is below threshold.",
+            "Book another test without asking what the patient needs to understand."
+          ],
+          "answer": 0,
+          "why": "Find the question behind the call while keeping continuing symptoms in the agenda.",
+          "essential": [
+            "Included continuing symptoms in the agenda",
+            "Invited any other concern before agreeing the priority"
+          ],
+          "improve": [
+            "An early agenda is flexible. A new severe symptom would change the priority immediately."
+          ],
+          "next": "story"
+        },
+        {
+          "id": "story",
+          "phrase": "story",
+          "stage": "understand",
+          "patient": "There is still blood when I open my bowels. My bowels have been different for about eight weeks.",
+          "task": "Clarify the ongoing pattern, duration and change since the last assessment.",
+          "model": "Could you talk me through the bleeding and what has changed in your bowel habit? What, if anything, is different since you were examined?",
+          "simple": "What bleeding are you seeing? How have your bowels changed since the examination?",
+          "starter": "Could you talk me through… What is different since…",
+          "purpose": "Let the patient describe the problem before narrowing the questions.",
+          "tip": "Ask one question at a time. Clarify amount, colour, frequency and associated symptoms rather than relying on the word “bleeding”.",
+          "reply": "Alex describes intermittent small amounts of blood and a persistent change in stool frequency. The pattern has not resolved since the recent in-person assessment.",
+          "options": [
+            "Clarify the ongoing pattern, duration and change since the last assessment.",
+            "Attribute bleeding to haemorrhoids without reviewing the actual findings.",
+            "Treat the negative screening test from last year as the answer to these new symptoms."
+          ],
+          "answer": 0,
+          "why": "Persistent unexplained bleeding and bowel change need symptom-led assessment even after a low FIT.",
+          "essential": [
+            "Clarified what is continuing and for how long",
+            "Checked change since the previous assessment"
+          ],
+          "improve": [
+            "Ask one question at a time. Clarify amount, colour, frequency and associated symptoms rather than relying on the word “bleeding”."
+          ],
+          "next": "impact"
+        },
+        {
+          "id": "impact",
+          "phrase": "impact",
+          "stage": "understand",
+          "patient": "I’m frightened it could be cancer, but I don’t want to waste anyone’s time.",
+          "task": "Explore the fear and the effect on daily life without false reassurance.",
+          "model": "You’re not wasting our time. Continuing symptoms deserve review. What is worrying you most about the possibility of further tests?",
+          "simple": "It is right to discuss this. What worries you most about the tests or what they might find?",
+          "starter": "You’re not… What worries you most about…",
+          "purpose": "Understand function and the patient’s concern, then use the answers in your plan.",
+          "tip": "Offer reassurance about being taken seriously, while keeping diagnostic uncertainty honest.",
+          "reply": "Alex fears a serious diagnosis and worries that taking time off for an investigation will put their job at risk.",
+          "options": [
+            "Explore the fear and the effect on daily life without false reassurance.",
+            "Promise that cancer is impossible because FIT is low.",
+            "Only describe investigation procedures and ignore the patient’s fear."
+          ],
+          "answer": 0,
+          "why": "Understanding the feared consequence helps you explain the recommendation and address a real access barrier.",
+          "essential": [
+            "Validated the reason for seeking help",
+            "Explored the specific concern rather than guessing it"
+          ],
+          "improve": [
+            "Offer reassurance about being taken seriously, while keeping diagnostic uncertainty honest."
+          ],
+          "next": "focus"
+        },
+        {
+          "id": "focus",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "The amount of blood is small, but it keeps happening.",
+          "task": "Check current severity, warning features, previous findings and the relevant clinical context.",
+          "model": "Before we decide the next step, I need to check whether anything needs urgent help. Is there heavy or continuous bleeding? Have you felt faint or collapsed? I’ll also check pain, weight change and the findings and medicines recorded at your recent assessment.",
+          "simple": "Is there heavy bleeding, faintness or collapse? I also need to review the other symptoms, medicines and recent examination.",
+          "starter": "Before we decide… Is there… Have you… I’ll also check…",
+          "purpose": "Choose questions that distinguish causes and change urgency or management.",
+          "tip": "These are selected questions, not a complete bleeding assessment. Ask separately and arrange examination again if the current findings require it.",
+          "reply": "For the ordinary path, Alex is stable with no heavy bleeding, collapse or severe pain. The clinician reviews relevant history and medicines and the recent examination: no clear anorectal cause or mass was found. Continuing bleeding and changed bowel habit remain unexplained.",
+          "options": [
+            "Check current severity, warning features, previous findings and the relevant clinical context.",
+            "Use the FIT alone to decide urgency without asking about current bleeding or illness.",
+            "Assume anticoagulants or a past history of piles explain every episode."
+          ],
+          "answer": 0,
+          "why": "Acute instability changes urgency. A stable assessment still needs the wider history, examination and differential.",
+          "essential": [
+            "Checked for acute deterioration and severe bleeding",
+            "Reviewed relevant examination, symptoms and medicines instead of relying on FIT alone"
+          ],
+          "improve": [
+            "These are selected questions, not a complete bleeding assessment. Ask separately and arrange examination again if the current findings require it."
+          ],
+          "next": "summary",
+          "branch": {
+            "label": "Practise a different patient answer: heavy bleeding now",
+            "patient": "Actually the bleeding is now continuous, the toilet water is red, and I feel as though I may faint.",
+            "next": "urgent"
+          }
+        },
+        {
+          "id": "summary",
+          "phrase": "summary",
+          "stage": "focus",
+          "patient": "I’ve had two examinations and the test. Why are we still concerned?",
+          "task": "Summarise the unresolved clinical picture and confirm accuracy.",
+          "model": "You still have bleeding and a change in bowel habit, and the assessment so far has not explained them. The stool result is helpful, but it does not answer every question. Have I understood the pattern correctly?",
+          "simple": "The bleeding and bowel change are continuing without a clear cause. Is that right?",
+          "starter": "You still have… So far… Have I understood…",
+          "purpose": "Check the facts and patient priority before explaining your assessment.",
+          "tip": "Keep the summary short. Do not invent a diagnosis that the examination or test has not established.",
+          "reply": "Yes. Alex confirms the symptoms are continuing and wants to know what the low result does establish.",
+          "options": [
+            "Summarise the unresolved clinical picture and confirm accuracy.",
+            "Say that having had an examination means nothing serious can be present.",
+            "Repeat the whole history without identifying what is still unresolved."
+          ],
+          "answer": 0,
+          "why": "A useful summary identifies the reason further action remains necessary.",
+          "essential": [
+            "Named the continuing unexplained features",
+            "Checked the summary with the patient"
+          ],
+          "improve": [
+            "Keep the summary short. Do not invent a diagnosis that the examination or test has not established."
+          ],
+          "next": "explain"
+        },
+        {
+          "id": "explain",
+          "phrase": "explain",
+          "stage": "explain",
+          "patient": "What does a low FIT actually mean?",
+          "task": "Explain the purpose and limits of symptomatic FIT in plain language.",
+          "model": "FIT measures a small amount of blood in the stool sample. Yours is below the level that usually triggers the urgent referral pathway from the test alone. It does not rule out every important cause, so we must also consider your continuing symptoms.",
+          "simple": "The sample result is low. That helps, but it does not rule out every cause of your continuing bleeding.",
+          "starter": "FIT measures… Yours is below… It does not…",
+          "purpose": "Explain the reasoning at the right level of certainty.",
+          "tip": "Avoid calling the whole assessment “normal”. Explain the result without introducing a false guarantee.",
+          "reply": "I thought “negative” meant there was definitely nothing wrong.",
+          "options": [
+            "Explain the purpose and limits of symptomatic FIT in plain language.",
+            "Say a low result excludes bowel cancer in every patient.",
+            "Say that FIT itself diagnoses the cause of the bleeding."
+          ],
+          "answer": 0,
+          "why": "NG12 uses at least 10 micrograms Hb/g for referral from FIT, while low results require safety netting and action on continuing clinical concern.",
+          "essential": [
+            "Explained what the test measures",
+            "Explained its limits in the context of continuing symptoms"
+          ],
+          "improve": [
+            "Avoid calling the whole assessment “normal”. Explain the result without introducing a false guarantee."
+          ],
+          "next": "uncertainty"
+        },
+        {
+          "id": "uncertainty",
+          "phrase": "uncertainty",
+          "stage": "explain",
+          "patient": "So are you saying you think I have cancer?",
+          "task": "Distinguish clinical concern from a diagnosis and explain how uncertainty will be resolved.",
+          "model": "We have not diagnosed cancer. There are several possible causes. Because the symptoms remain unexplained, further assessment is the safest way to find out what is happening rather than assume the low result settles it.",
+          "simple": "We do not have a cancer diagnosis. We need further assessment to find the cause of the continuing symptoms.",
+          "starter": "We have not… Because… The next assessment will…",
+          "purpose": "Make uncertainty understandable and attach it to a practical next step.",
+          "tip": "Give a small amount of information, pause and let the patient respond before moving to the arrangements.",
+          "reply": "That makes sense. What would you recommend now?",
+          "options": [
+            "Distinguish clinical concern from a diagnosis and explain how uncertainty will be resolved.",
+            "Announce a cancer diagnosis from the history and FIT alone.",
+            "Promise a harmless cause before the further assessment."
+          ],
+          "answer": 0,
+          "why": "Explain why investigation is recommended without treating suspicion as confirmation.",
+          "essential": [
+            "Clearly separated concern from a confirmed diagnosis",
+            "Linked uncertainty to a concrete next step"
+          ],
+          "improve": [
+            "Give a small amount of information, pause and let the patient respond before moving to the arrangements."
+          ],
+          "next": "recommend"
+        },
+        {
+          "id": "recommend",
+          "phrase": "recommend",
+          "stage": "plan",
+          "patient": "Do we just repeat the stool test and wait?",
+          "task": "Recommend appropriate further assessment without letting a low FIT delay action on strong concern.",
+          "model": "I recommend further assessment through the appropriate bowel referral pathway because the bleeding and bowel change are still unexplained. I will check the current local arrangements and make the referral. How does that sound to you?",
+          "simple": "I recommend further assessment because the symptoms are continuing. I will arrange the appropriate referral.",
+          "starter": "I recommend… because… I will… How does that sound…",
+          "purpose": "Offer a clinically appropriate recommendation and invite the patient’s view.",
+          "tip": "Only promise a specific procedure or appointment time once confirmed. Explain the referral purpose and urgency that actually apply.",
+          "reply": "Alex agrees with further assessment but worries about taking time away from work.",
+          "options": [
+            "Recommend appropriate further assessment without letting a low FIT delay action on strong concern.",
+            "Repeat FIT indefinitely instead of acting on persistent clinical concern.",
+            "Close the episode and tell the patient to request another appointment only if the FIT later becomes high."
+          ],
+          "answer": 0,
+          "why": "Current NG12 says referral should not be delayed when strong concern persists despite a low or unreturned FIT. Select urgency and route from the actual findings and local pathway.",
+          "essential": [
+            "Recommended an actual next assessment based on the clinical concern",
+            "Explained the reason and invited the patient’s response"
+          ],
+          "improve": [
+            "Only promise a specific procedure or appointment time once confirmed. Explain the referral purpose and urgency that actually apply."
+          ],
+          "next": "barrier"
+        },
+        {
+          "id": "barrier",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "My manager is difficult about time off. I might not be able to go.",
+          "task": "Explore the access barrier and make the referral usable while retaining clinical ownership.",
+          "model": "Which part of attending would be hardest? Let’s discuss the practical support and appointment arrangements available. I still recommend the assessment; if the offered appointment is not manageable, please contact us so we can help rather than leave the symptoms unchecked.",
+          "simple": "What would make attending difficult? Let’s find practical help so the assessment can happen.",
+          "starter": "Which part… Let’s discuss… If the appointment…",
+          "purpose": "Find the actual obstacle and agree arrangements the patient can use.",
+          "tip": "Use actual local availability. An administrative check date is separate from the required clinical urgency.",
+          "reply": "Alex can attend with notice. The clinician explains the actual referral process and available support. In this fictional scenario, the practice agrees to check referral receipt and contact Alex within two working days; this is a local arrangement, not a national target.",
+          "options": [
+            "Explore the access barrier and make the referral usable while retaining clinical ownership.",
+            "Remove the referral because work makes attendance inconvenient.",
+            "Promise a weekend appointment without checking whether one exists."
+          ],
+          "answer": 0,
+          "why": "Address the specific obstacle without quietly weakening a clinically necessary recommendation.",
+          "essential": [
+            "Explored the real practical obstacle",
+            "Agreed feasible arrangements and named referral follow-up ownership"
+          ],
+          "improve": [
+            "Use actual local availability. An administrative check date is separate from the required clinical urgency."
+          ],
+          "next": "safety"
+        },
+        {
+          "id": "safety",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "What should I do if it gets worse before I am seen?",
+          "task": "Give specific earlier-help advice and a clear emergency route.",
+          "model": "If you have heavy bleeding, feel faint or collapse, or develop severe pain or serious illness, get urgent help straight away; collapse or severe ongoing bleeding needs 999. Contact the practice promptly if symptoms change or continue to worsen. Do not wait for the referral appointment in those situations.",
+          "simple": "Heavy ongoing bleeding or collapse needs emergency help. Contact us promptly for a concerning change; don’t wait for the appointment.",
+          "starter": "If… get… Do not wait for…",
+          "purpose": "Give relevant warning signs, a contact route, urgency and a review plan.",
+          "tip": "Check the patient knows how to access help. Tailor the advice to the whole assessment and local services.",
+          "reply": "Alex knows to seek help sooner for deterioration rather than wait for an investigation.",
+          "options": [
+            "Give specific earlier-help advice and a clear emergency route.",
+            "Give only “come back if worse” without a route or urgency.",
+            "Tell the patient to wait for the referral regardless of deterioration."
+          ],
+          "answer": 0,
+          "why": "A pending referral is not a plan for managing acute bleeding or illness.",
+          "essential": [
+            "Named relevant deterioration signs",
+            "Matched emergency and earlier-review routes to the actual severity"
+          ],
+          "improve": [
+            "Check the patient knows how to access help. Tailor the advice to the whole assessment and local services."
+          ],
+          "next": "check"
+        },
+        {
+          "id": "check",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "Who checks that the referral goes through?",
+          "task": "Confirm ownership, the agreed contact plan and understanding.",
+          "model": "I will send the referral, and the practice will check it has been received and contact you as agreed. If you have not heard by our agreed date, please contact us as a backup; we remain responsible for following it up. Could you talk me through the plan so I can check I have explained it clearly?",
+          "simple": "The practice will track the referral and contact you. If you have not heard by the agreed date, call us. Could you tell me the plan back?",
+          "starter": "I will… The practice will… If you have not heard… Could you…",
+          "purpose": "Check understanding, correct gaps and name who will arrange and review each action.",
+          "tip": "Make teach-back a check on your explanation, not a test of the patient. Correct misunderstandings before closing.",
+          "reply": "I understand why more assessment is needed. The practice will track the referral and contact me, and I will seek help sooner if the bleeding becomes heavy or I feel seriously unwell.",
+          "options": [
+            "Confirm ownership, the agreed contact plan and understanding.",
+            "Hand all responsibility to the patient to chase an untracked referral.",
+            "Ask “OK?” and end without checking understanding or a missed-contact plan."
+          ],
+          "answer": 0,
+          "why": "A patient backup complements clinician ownership; it does not transfer responsibility for the referral.",
+          "essential": [
+            "Confirmed who sends, tracks and communicates the referral",
+            "Used teach-back and a missed-contact contingency"
+          ],
+          "improve": [
+            "Make teach-back a check on your explanation, not a test of the patient. Correct misunderstandings before closing."
+          ],
+          "next": null
+        },
+        {
+          "id": "urgent",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "There is a lot of blood now and I feel faint. I’m at home on my own.",
+          "task": "Arrange emergency assessment now and confirm practical contact details.",
+          "model": "This amount of bleeding with faintness needs emergency help now. I will arrange an ambulance. Please confirm your exact address and callback number. Do not drive yourself; sit or lie down somewhere safe while help is arranged.",
+          "simple": "Heavy bleeding and faintness need an ambulance now. Let’s confirm where you are and arrange help.",
+          "starter": "This needs… I will… Please confirm…",
+          "purpose": "Choose questions that distinguish causes and change urgency or management.",
+          "tip": "Maintain contact and support as appropriate while emergency help is arranged. Do not leave the person with only a routine referral.",
+          "reply": "The emergency team accepts the handover in this fictional scenario. The clinician follows the local emergency process and documents the transfer.",
+          "options": [
+            "Arrange emergency assessment now and confirm practical contact details.",
+            "Finish a routine FIT explanation before arranging help.",
+            "Ask the patient to drive to a routine appointment tomorrow."
+          ],
+          "answer": 0,
+          "why": "Severe ongoing bleeding with possible circulatory compromise takes priority over routine referral or test discussion.",
+          "essential": [
+            "Recognised the emergency and arranged immediate help",
+            "Confirmed location, callback and safe transfer without self-driving"
+          ],
+          "improve": [
+            "Maintain contact and support as appropriate while emergency help is arranged. Do not leave the person with only a routine referral."
+          ],
+          "next": null,
+          "title": "Heavy bleeding: stop routine discussion"
+        }
+      ]
+    },
+    {
+      "id": "dyspepsia",
+      "title": "Dyspepsia: explain a test, medicine pause and review",
+      "category": "Symptoms · Testing and shared decisions",
+      "patient": "Jamie Ellis, 36 · Telephone after assessment",
+      "brief": "A stable adult has recurrent dyspepsia without alarm features after an appropriate assessment. They take an over-the-counter PPI and ask for antibiotics or an endoscopy. Explain proportionate options, safe H pylori test preparation and review. An alternative patient answer explores choosing an empirical trial instead of testing now.",
+      "goal": "Connect assessment, a clear recommendation, test preparation, patient preference and definite follow-up.",
+      "atlas": "gi-dyspepsia",
+      "studio": null,
+      "links": [
+        {
+          "label": "NICE CG184: dyspepsia and H pylori",
+          "url": "https://www.nice.org.uk/guidance/cg184"
+        },
+        {
+          "label": "NICE NG12: concerning upper-GI symptoms",
+          "url": "https://www.nice.org.uk/guidance/ng12"
+        },
+        {
+          "label": "NHS: indigestion",
+          "url": "https://www.nhs.uk/conditions/indigestion/"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "hello",
+          "phrase": "hello",
+          "stage": "open",
+          "patient": "Hello. I want to sort out this indigestion.",
+          "task": "Introduce yourself and confirm identity and privacy before the discussion.",
+          "model": "Hello, I’m Dr Patel, one of the GPs. Could I check your name and date of birth? Is it private and convenient for you to talk now?",
+          "simple": "Hello, I’m Dr Patel. Could I confirm your details? Can you talk privately?",
+          "starter": "Hello, I’m… Could I check… Is it…",
+          "purpose": "Introduce yourself accurately, confirm identity and establish whether sensitive discussion is safe.",
+          "tip": "Pause for each answer and establish the contact/location details needed for the situation.",
+          "reply": "Jamie confirms identity and a private setting for the discussion.",
+          "options": [
+            "Introduce yourself and confirm identity and privacy before the discussion.",
+            "Discuss a test result without checking who is on the phone.",
+            "Assume a telephone call is private because the patient answered."
+          ],
+          "answer": 0,
+          "why": "A safe start establishes who is present and whether sensitive details can be discussed.",
+          "essential": [
+            "Confirmed identity",
+            "Checked privacy and readiness to talk"
+          ],
+          "improve": [
+            "Pause for each answer and establish the contact/location details needed for the situation."
+          ],
+          "next": "agenda"
+        },
+        {
+          "id": "agenda",
+          "phrase": "agenda",
+          "stage": "open",
+          "patient": "Can I have antibiotics, or should I have a camera test?",
+          "task": "Clarify the two requests and invite any other concern before agreeing a priority.",
+          "model": "We can discuss whether either is likely to help and what needs checking first. Is there anything else you wanted help with today?",
+          "simple": "Let’s discuss the tests and treatment. Is there anything else you need help with?",
+          "starter": "We can discuss… Is there anything else…",
+          "purpose": "Find important concerns early, then agree a safe priority.",
+          "tip": "Ask what the patient expects the test or medicine to do before assuming the reason for the request.",
+          "reply": "Jamie wants symptom relief and an explanation of why the current plan is reasonable. There is no other concern today.",
+          "options": [
+            "Clarify the two requests and invite any other concern before agreeing a priority.",
+            "Promise antibiotics before establishing an indication.",
+            "Book an endoscopy solely because the patient asks for it."
+          ],
+          "answer": 0,
+          "why": "An early request identifies the agenda, but the recommendation still depends on assessment.",
+          "essential": [
+            "Acknowledged both requests",
+            "Agreed the priority without promising a test or treatment"
+          ],
+          "improve": [
+            "Ask what the patient expects the test or medicine to do before assuming the reason for the request."
+          ],
+          "next": "story"
+        },
+        {
+          "id": "story",
+          "phrase": "story",
+          "stage": "understand",
+          "patient": "I get burning and discomfort after meals. I buy acid tablets and it comes back when I stop.",
+          "task": "Clarify the symptom pattern, previous treatment and what has changed.",
+          "model": "Could you talk me through the discomfort and when it happens? Then I’d like to check the name of the acid medicine, how you take it and what difference it makes.",
+          "simple": "When does the discomfort happen? What medicine have you tried and how has it helped?",
+          "starter": "Could you talk me through… Then I’d like to check…",
+          "purpose": "Let the patient describe the problem before narrowing the questions.",
+          "tip": "Ask about one part at a time. Confirm the product rather than assume all “stomach tablets” are the same.",
+          "reply": "Jamie describes recurrent upper abdominal burning and reflux symptoms. The actual product is an over-the-counter PPI used intermittently. The clinician clarifies dose, duration, response and previous tests.",
+          "options": [
+            "Clarify the symptom pattern, previous treatment and what has changed.",
+            "Assume every chest or upper abdominal discomfort is acid reflux.",
+            "Escalate the PPI without checking the actual medicine or use."
+          ],
+          "answer": 0,
+          "why": "Symptom pattern and actual medicine use guide the differential and a useful next step.",
+          "essential": [
+            "Clarified the symptoms and course",
+            "Checked the actual treatment, use and response"
+          ],
+          "improve": [
+            "Ask about one part at a time. Confirm the product rather than assume all “stomach tablets” are the same."
+          ],
+          "next": "impact"
+        },
+        {
+          "id": "impact",
+          "phrase": "impact",
+          "stage": "understand",
+          "patient": "My dad had an ulcer. I keep thinking I might have one as well.",
+          "task": "Explore the meaning of the family experience and the impact of symptoms.",
+          "model": "Seeing your dad go through that has made this worrying. What is your main concern about your symptoms? How are they affecting eating or sleep?",
+          "simple": "What worries you most? How is this affecting your day-to-day life?",
+          "starter": "That has made… What is your main concern…",
+          "purpose": "Understand function and the patient’s concern, then use the answers in your plan.",
+          "tip": "Pause after the concern question and respond before asking about impact.",
+          "reply": "Jamie fears an ulcer or serious disease and wants to stop symptoms disturbing sleep.",
+          "options": [
+            "Explore the meaning of the family experience and the impact of symptoms.",
+            "Guarantee there is no ulcer before the assessment and testing.",
+            "Give dietary advice without acknowledging the worry."
+          ],
+          "answer": 0,
+          "why": "The explanation should answer the patient’s actual concern and the plan should have a meaningful symptom goal.",
+          "essential": [
+            "Explored the specific fear",
+            "Clarified an effect on daily life to use in the plan"
+          ],
+          "improve": [
+            "Pause after the concern question and respond before asking about impact."
+          ],
+          "next": "focus"
+        },
+        {
+          "id": "focus",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "It has not suddenly changed, but I’m not sure what symptoms matter.",
+          "task": "Check alarm features, serious alternative causes and medicines before choosing a routine plan.",
+          "model": "I need to check for symptoms that would change the urgency. Have you had difficulty swallowing, vomiting blood, black stools, or unintentional weight loss? I’ll also ask about vomiting, severe or chest-related pain and review your medicines and previous stomach problems.",
+          "simple": "Have you had swallowing difficulty, bleeding, weight loss or severe pain? We also need to check your medicines and previous stomach problems.",
+          "starter": "I need to check… Have you had… I’ll also review…",
+          "purpose": "Choose questions that distinguish causes and change urgency or management.",
+          "tip": "The displayed questions are selected examples. Ask them separately and complete the appropriate assessment and examination; possible cardiac pain needs its own pathway.",
+          "reply": "The full fictional assessment finds no alarm feature or acute illness and no indication for an urgent pathway. Medicines, prior antibiotics, allergy and previous H pylori/ulcer history are reviewed; there is no gastroprotection reason requiring continued PPI in this ordinary scenario.",
+          "options": [
+            "Check alarm features, serious alternative causes and medicines before choosing a routine plan.",
+            "Start a routine treatment trial despite dysphagia or suspected GI bleeding.",
+            "Tell every patient to stop acid protection without checking its indication."
+          ],
+          "answer": 0,
+          "why": "Uncomplicated dyspepsia can use an initial test/treatment strategy; acute or cancer-pathway findings require a different plan.",
+          "essential": [
+            "Checked findings that change urgency or referral",
+            "Reviewed medicine/protection needs and relevant history"
+          ],
+          "improve": [
+            "The displayed questions are selected examples. Ask them separately and complete the appropriate assessment and examination; possible cardiac pain needs its own pathway."
+          ],
+          "next": "summary"
+        },
+        {
+          "id": "summary",
+          "phrase": "summary",
+          "stage": "focus",
+          "patient": "So what have we found so far?",
+          "task": "Summarise why a routine initial strategy is appropriate in this specific scenario.",
+          "model": "You have recurrent indigestion and reflux symptoms, with some benefit from the PPI. The assessment today has not found warning features. Your main goals are symptom relief and knowing we have a sensible plan to check the cause. Is that right?",
+          "simple": "The symptoms recur, and today’s assessment has not found warning signs. You want relief and a clear plan. Have I got that right?",
+          "starter": "You have… Today’s assessment… Your main goals…",
+          "purpose": "Check the facts and patient priority before explaining your assessment.",
+          "tip": "Keep the summary short and correct it if the patient adds a warning symptom.",
+          "reply": "Yes. Jamie wants to know what the infection test can tell them.",
+          "options": [
+            "Summarise why a routine initial strategy is appropriate in this specific scenario.",
+            "Say there can never be a serious cause because the patient is 36.",
+            "Claim a definite ulcer diagnosis from symptoms alone."
+          ],
+          "answer": 0,
+          "why": "A summary links the findings and the patient’s concern while keeping the limits of the assessment visible.",
+          "essential": [
+            "Summarised actual findings and the main goal",
+            "Avoided a definite diagnosis or lifetime reassurance"
+          ],
+          "improve": [
+            "Keep the summary short and correct it if the patient adds a warning symptom."
+          ],
+          "next": "explain"
+        },
+        {
+          "id": "explain",
+          "phrase": "explain",
+          "stage": "explain",
+          "patient": "What is H pylori? Is it cancer?",
+          "task": "Explain the test purpose in ordinary language.",
+          "model": "H pylori is a bacterium that can contribute to some stomach problems, including ulcers. A breath or stool test can check for it. The test is not a cancer test, and a positive result does not mean you have cancer.",
+          "simple": "It is a bacterium linked to some stomach problems. The test looks for it; it does not diagnose cancer.",
+          "starter": "H pylori is… The test can… It does not mean…",
+          "purpose": "Explain the reasoning at the right level of certainty.",
+          "tip": "Give this explanation in short chunks. Ask what the patient understood before adding more detail.",
+          "reply": "That helps. Why can’t I just take antibiotics now?",
+          "options": [
+            "Explain the test purpose in ordinary language.",
+            "Describe H pylori as the cause of every indigestion symptom.",
+            "Call a positive infection test a cancer diagnosis."
+          ],
+          "answer": 0,
+          "why": "Explain what the test can and cannot establish before discussing treatment.",
+          "essential": [
+            "Explained the bacterium and the purpose of testing",
+            "Distinguished infection testing from a cancer diagnosis"
+          ],
+          "improve": [
+            "Give this explanation in short chunks. Ask what the patient understood before adding more detail."
+          ],
+          "next": "uncertainty"
+        },
+        {
+          "id": "uncertainty",
+          "phrase": "uncertainty",
+          "stage": "explain",
+          "patient": "Wouldn’t antibiotics now be safer than waiting?",
+          "task": "Explain why antibiotics need an appropriate indication and regimen without dismissing the request.",
+          "model": "Antibiotics can help when there is a suitable reason to treat H pylori, but they can also cause side effects. We should choose the test and treatment plan from your assessment, and use the right regimen if treatment is indicated. Would it help to go through the options?",
+          "simple": "Antibiotics are useful for the right reason. Let’s agree the test or treatment plan first, rather than give a course that may not help.",
+          "starter": "Antibiotics can help when… We should… Would it help…",
+          "purpose": "Make uncertainty understandable and attach it to a practical next step.",
+          "tip": "Explain your recommendation before asking for a preference. No universal eradication regimen is supplied in this exercise.",
+          "reply": "Yes. Jamie wants to know whether testing or a planned symptom-treatment trial makes more sense.",
+          "options": [
+            "Explain why antibiotics need an appropriate indication and regimen without dismissing the request.",
+            "Prescribe an arbitrary antibiotic course without considering allergy, exposure or indication.",
+            "Refuse the request without explaining the reason or the next step."
+          ],
+          "answer": 0,
+          "why": "CG184 supports test-and-treat and an appropriate empirical PPI strategy; regimen choice requires relevant prescribing checks.",
+          "essential": [
+            "Explained the reason for avoiding unsupported antibiotics",
+            "Offered a constructive assessment-led next step"
+          ],
+          "improve": [
+            "Explain your recommendation before asking for a preference. No universal eradication regimen is supplied in this exercise."
+          ],
+          "next": "recommend"
+        },
+        {
+          "id": "recommend",
+          "phrase": "recommend",
+          "stage": "plan",
+          "patient": "What do you recommend for me?",
+          "task": "Discuss proportionate options and agree the initial sequence with the patient.",
+          "model": "Based on the assessment, we can discuss testing for H pylori and an appropriate planned course of acid treatment. I suggest arranging the test first if we can prepare for it safely, then reviewing the result and your symptoms. An empirical PPI trial is another appropriate option in this uncomplicated situation. What are your thoughts?",
+          "simple": "We can test for H pylori or agree a planned acid-treatment trial. I suggest testing first if preparation is safe. What would work for you?",
+          "starter": "Based on… I suggest… Another option is… What are your thoughts…",
+          "purpose": "Offer a clinically appropriate recommendation and invite the patient’s view.",
+          "tip": "Do not use an empirical trial to delay indicated investigation or referral. The ordinary scenario has no alarm features.",
+          "reply": "Jamie prefers a test first, provided symptoms can be managed during preparation.",
+          "options": [
+            "Discuss proportionate options and agree the initial sequence with the patient.",
+            "Say everyone with dyspepsia needs immediate endoscopy.",
+            "Present a test as compulsory when an appropriate alternative exists."
+          ],
+          "answer": 0,
+          "why": "Choose a proportionate strategy from CG184, previous treatment and clinical context; patient preference informs the feasible sequence.",
+          "essential": [
+            "Made a clear assessment-led recommendation with an appropriate alternative",
+            "Invited and used the patient’s preference"
+          ],
+          "improve": [
+            "Do not use an empirical trial to delay indicated investigation or referral. The ordinary scenario has no alarm features."
+          ],
+          "next": "barrier",
+          "branch": {
+            "label": "Practise a different patient answer: I do not want a test now",
+            "patient": "I understand the options, but I don’t want a breath or stool test at the moment. Could we try a planned course of medicine instead?",
+            "next": "trial-choice"
+          }
+        },
+        {
+          "id": "barrier",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I’m worried the burning will be unbearable if I stop the PPI for the test.",
+          "task": "Make the medicine preparation safe and manageable before booking the sample.",
+          "model": "The PPI can affect the accuracy of a breath or stool test, so the usual preparation includes a two-week gap without it when that is safe. We’ve checked why you take it; let’s also check the actual test instructions, recent antibiotics and suitable symptom support. If the pause is not manageable, contact us so we can review the plan.",
+          "simple": "The PPI usually needs a two-week pause for this test, if safe. Let’s check the instructions and agree symptom support and a contact plan.",
+          "starter": "The PPI can… The preparation includes… Let’s check…",
+          "purpose": "Find the actual obstacle and agree arrangements the patient can use.",
+          "tip": "Offer only symptom-support options appropriate for the actual test and the patient. Do not invent a laboratory turnaround time.",
+          "reply": "The clinician checks the laboratory preparation, confirms a safe stop/start and symptom-support plan, books the test and records who reviews it. A result-review contact date is agreed using the local turnaround time.",
+          "options": [
+            "Make the medicine preparation safe and manageable before booking the sample.",
+            "Tell the patient to stop any clinically needed gastroprotection without checking risks.",
+            "Take the sample during PPI use without considering the effect on accuracy."
+          ],
+          "answer": 0,
+          "why": "CG184 recommends a two-week PPI washout before breath/stool testing; preparation also needs the actual test requirements and clinical safety checks.",
+          "essential": [
+            "Explained the reason and usual two-week PPI preparation",
+            "Checked safety, actual instructions, practical support and results ownership"
+          ],
+          "improve": [
+            "Offer only symptom-support options appropriate for the actual test and the patient. Do not invent a laboratory turnaround time."
+          ],
+          "next": "safety"
+        },
+        {
+          "id": "safety",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "If I get different symptoms while waiting, should I just take more tablets?",
+          "task": "Explain what changes the plan and give a practical urgent-help route.",
+          "model": "Do not just increase the tablets if new warning symptoms appear. Vomiting blood, collapse or serious acute illness needs urgent or emergency help. New difficulty swallowing, unintentional weight loss or persistent vomiting needs prompt assessment. Contact us if symptoms are not controlled or preparation is difficult rather than struggling through the plan alone.",
+          "simple": "Bleeding or serious illness needs urgent help. New swallowing difficulty, weight loss or persistent vomiting needs prompt assessment. Contact us for a preparation problem.",
+          "starter": "Do not just… If… please…",
+          "purpose": "Give relevant warning signs, a contact route, urgency and a review plan.",
+          "tip": "Match 999, urgent assessment and routine contact to the actual symptom severity. Safety advice does not replace arranging indicated care.",
+          "reply": "Jamie understands to seek earlier assessment for warning symptoms and contact the practice if test preparation cannot be managed.",
+          "options": [
+            "Explain what changes the plan and give a practical urgent-help route.",
+            "Tell the patient to finish the routine trial before reporting bleeding or dysphagia.",
+            "Give only “call if worse” without explaining what matters."
+          ],
+          "answer": 0,
+          "why": "New warning features can move the patient from routine dyspepsia care to an acute or suspected-cancer pathway.",
+          "essential": [
+            "Named important symptoms that change urgency",
+            "Provided an earlier-help route for deterioration or preparation problems"
+          ],
+          "improve": [
+            "Match 999, urgent assessment and routine contact to the actual symptom severity. Safety advice does not replace arranging indicated care."
+          ],
+          "next": "check"
+        },
+        {
+          "id": "check",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "What happens after I send the sample?",
+          "task": "Check understanding and close the result and symptom-review loop.",
+          "model": "The practice will review the result and contact you by the date we agreed. We will discuss whether treatment is needed and review the symptoms even if the result is negative. If you have not heard, contact us as a backup; we still need to check the result. Could you talk me through the test preparation and what happens next?",
+          "simple": "We will review and contact you, then decide the next step. If you have not heard by the agreed date, call us. Could you tell me the plan back?",
+          "starter": "The practice will… If you have not heard… Could you…",
+          "purpose": "Check understanding, correct gaps and name who will arrange and review each action.",
+          "tip": "Make the date and contact method real. Clarify uncertainty before closing rather than asking only “does that make sense?”.",
+          "reply": "Jamie explains the preparation, sample date, review contact and warning symptoms in their own words; the clinician corrects any gaps.",
+          "options": [
+            "Check understanding and close the result and symptom-review loop.",
+            "Assume a negative H pylori result means persistent symptoms never need review.",
+            "Leave the patient to interpret an online result without a follow-up arrangement."
+          ],
+          "answer": 0,
+          "why": "Results ownership and symptom review remain necessary whatever the infection-test result.",
+          "essential": [
+            "Confirmed review ownership and the missed-contact contingency",
+            "Checked preparation and next steps using teach-back"
+          ],
+          "improve": [
+            "Make the date and contact method real. Clarify uncertainty before closing rather than asking only “does that make sense?”."
+          ],
+          "next": null
+        },
+        {
+          "id": "trial-choice",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I don’t want testing now. I would prefer a planned medicine trial.",
+          "task": "Explore the preference, explain an appropriate alternative and make a shared plan.",
+          "model": "Could you tell me what puts you off testing? In this uncomplicated situation, an appropriate full-dose PPI trial for four weeks is an option. We would check the actual medicine and dose, review the response, and reconsider testing or further assessment if symptoms persist or change. How does that fit with what you were hoping for?",
+          "simple": "What puts you off testing? We can consider an appropriate four-week PPI trial with a definite review, then reconsider the next step.",
+          "starter": "Could you tell me… An option is… We would review…",
+          "purpose": "Find the actual obstacle and agree arrangements the patient can use.",
+          "tip": "Do not imply all PPIs or doses are interchangeable. This alternative applies to the assessed uncomplicated scenario.",
+          "reply": "Jamie has understood the alternatives and prefers the empirical trial. The clinician checks suitability and the actual prescription and arranges a four-week review; no test is booked in this path.",
+          "options": [
+            "Explore the preference, explain an appropriate alternative and make a shared plan.",
+            "Describe a reasonable choice as non-compliance and stop helping.",
+            "Promise indefinite repeat PPI prescriptions without reassessment."
+          ],
+          "answer": 0,
+          "why": "CG184 includes an empirical full-dose four-week PPI strategy for uncomplicated dyspepsia. A considered preference should lead to an appropriate plan rather than coercion.",
+          "essential": [
+            "Explored the reason and confirmed an informed preference",
+            "Agreed a suitable trial and definite review with the actual prescribing checks"
+          ],
+          "improve": [
+            "Do not imply all PPIs or doses are interchangeable. This alternative applies to the assessed uncomplicated scenario."
+          ],
+          "next": "trial-close",
+          "title": "Alternative: choosing an empirical trial",
+          "alternative": true
+        },
+        {
+          "id": "trial-close",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "So I’ll try the planned course and we will review it, rather than do the test now?",
+          "task": "Confirm the alternative plan, earlier-help advice and ownership using teach-back.",
+          "model": "Yes. We will review the response after the planned four-week course and decide what is needed next. Do not wait for that review if you develop bleeding, swallowing difficulty, concerning weight loss or serious illness; seek the appropriate urgent help. Could you tell me how you will take the actual prescription and when you would contact us sooner?",
+          "simple": "We will review the planned four-week trial. Seek help sooner for warning symptoms. Could you talk me through the medicine and review plan?",
+          "starter": "We will review… Do not wait if… Could you tell me…",
+          "purpose": "Check understanding, correct gaps and name who will arrange and review each action.",
+          "tip": "Match urgent and emergency help to severity. A change suggesting an acute or cancer pathway changes the plan immediately.",
+          "reply": "Jamie explains the actual prescription, four-week review and earlier-help triggers. The clinician confirms the review booking and contact route.",
+          "options": [
+            "Confirm the alternative plan, earlier-help advice and ownership using teach-back.",
+            "Claim that agreeing a treatment trial rules out an important cause forever.",
+            "Close without checking medicine use, warning symptoms or a review date."
+          ],
+          "answer": 0,
+          "why": "An empirical trial needs assessment of response, a clear review and a contingency; it is not an indefinite diagnosis or automatic repeat prescription.",
+          "essential": [
+            "Confirmed the actual treatment and review ownership",
+            "Named warning symptoms and checked understanding of earlier help"
+          ],
+          "improve": [
+            "Match urgent and emergency help to severity. A change suggesting an acute or cancer pathway changes the plan immediately."
+          ],
+          "next": null,
+          "title": "Alternative: review and close the treatment trial",
+          "alternative": true
+        }
+      ]
     }
   ],
   "exam": {
