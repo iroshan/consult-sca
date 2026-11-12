@@ -71,3 +71,11 @@ The professional case uses the colleague’s role and custom exchange titles rat
 Added optional sentence-by-sentence rehearsal with listen buttons and pause cues. Saving from case feedback now keeps that case’s actual wording, rather than only the generic core pattern. Personal versions autosave, are escaped on display, merge by timestamp, survive the existing JSON backup and can be compared with the model during a case-specific recall drill. Core patterns retain their separate saved filter.
 
 Validation for the fifteen-case checkpoint: all fifteen ordinary consultation paths passed Chromium UI checks, including the professional role label, sentence-by-sentence rehearsal, case-specific sentence saving, personal wording, case-specific recall and real backup import/export. All four emergency paths and linked Atlas/studio IDs pass deterministic checks. The official BNF and some GMC pages return bot/access 403 to a direct HTTP checker; they remain official references, and relevant GMC content was checked through the research tool. Other new official clinical links returned 200.
+
+## Follow-up checkpoint: cardiovascular Atlas area
+
+Added a fourth Atlas area with three complete cases: raised blood pressure, confirmed atrial fibrillation, and current/recent chest pain of possible cardiac origin. Each has assessment, priorities, a worked management plan, five patient-facing discussion examples, three changed circumstances, pitfalls, safety/follow-up and a recall prompt. Atlas totals are now 49 cases / 147 variations. The coach’s preparation view links relevant areas to this new material.
+
+Current UK NICE recommendations were checked for out-of-office BP confirmation, severe-BP pathways, AF stroke/bleeding assessment and anticoagulation, and possible-ACS referral/initial care. No universal BP target, DOAC dose or unsupported rapid outpatient BP-lowering plan was added. Seven new official guideline/patient links returned HTTP 200.
+
+Validation: the normal validator renders all 294 Atlas case sections and verifies the new area’s routes and imported notes/bookmarks. `scripts/browser-cardiovascular.cjs` passed all six tabs for each new case, bookmark persistence after reload and mobile discussion layouts. Other completed checkpoints remain intact.

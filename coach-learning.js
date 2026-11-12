@@ -4,13 +4,13 @@ window.CoachLearning = (() => {
   const groups = [
     ['children','Children and young people','Consultations with people under 19.',['eczema','fever','constipation'],'paediatrics'],
     ['reproductive','Gender, reproductive and sexual health','Include sexual health, reproductive concerns and inclusive care.',['menopause'],null],
-    ['longterm','Long-term conditions and disability','Include cancer, multiple conditions and treatment burden.',['asthma','falls'],null],
+    ['longterm','Long-term conditions and disability','Include cancer, multiple conditions and treatment burden.',['asthma','falls'],'cardiovascular'],
     ['older','Older adults, frailty and end-of-life care','Consider function, support, preferences and continuity.',['falls','memory','advance'],'older-palliative'],
     ['mental','Mental health and dependence','Include distress, substance use and dependence-forming medicines.',['distress','anxiety','withdrawal'],'mental-health'],
-    ['urgent','Urgent and unscheduled care','Recognise changed urgency and arrange actual escalation.',['headache','asthma','fever'],null],
+    ['urgent','Urgent and unscheduled care','Recognise changed urgency and arrange actual escalation.',['headache','asthma','fever'],'cardiovascular'],
     ['vulnerability','Disadvantage and vulnerability','Include access, communication, safeguarding and capacity.',['falls','memory','interpreter'],null],
     ['diversity','Culture, ethnicity and inclusive care','Explore the individual’s needs and beliefs without assumptions.',['interpreter'],null],
-    ['undifferentiated','New, undifferentiated presentations','Reason through uncertainty and choose proportionate next steps.',['headache'],null],
+    ['undifferentiated','New, undifferentiated presentations','Reason through uncertainty and choose proportionate next steps.',['headache'],'cardiovascular'],
     ['prescribing','Prescribing and medicine use','Discuss suitability, actual use, harms and monitoring.',['asthma','eczema','falls','withdrawal'],null],
     ['results','Investigations and results','Explain what is known, confirmation and results ownership.',['result','interpreter'],null],
     ['professional','Professional conversations and dilemmas','Practise explaining decisions, duty and working with colleagues.',['handover'],null]
