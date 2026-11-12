@@ -157,3 +157,13 @@ Audio cancels when hiding replies or changing route/support level, to avoid a pr
 Validation: full content/routes/progress validation and the stage browser regression pass. `browser-atlas-discussion.cjs` passes native reveal/retry with and without shorter wording, exact text/en-GB/speed dispatch via a speech stub, unavailable-audio fallback in both Atlas discussion and language pages, note persistence, actual Atlas JSON export/import and mobile layouts. It does not verify audible output on all devices. All eight MSK official URLs returned HTTP 200. Content checkpoint 58d7365 deployed successfully in Actions run 43331188102.
 
 Next manageable content unit: deepen selected original mental-health case discussions with natural and shorter replies to common patient questions after current official guidance checks. Continue preserving IDs and notes.
+
+## Follow-up checkpoint: deeper mental-health discussion examples
+
+Expanded depression, GAD, panic, insomnia/low mood and benzodiazepine-dependence discussions from one to five exchanges each. Twenty additional fuller responses and twenty-five new shorter versions bring the Atlas to 55 shorter alternatives across eleven cases. They address treatment preference, onset/review, direct suicide questions, diazepam requests, real physical symptoms, avoidance, machinery/alcohol safety, physical dependence without stigma, verification and individual withdrawal review. IDs, saved notes and backup structures are preserved.
+
+Current NG222, CG113 and NG215 recommendations and NHS insomnia information were read over verified HTTPS. Depression’s usual initial antidepressant review (within 2 weeks; within 1 week for age 18–25 or particular suicide concern) is explicitly distinguished from GAD’s under-30 SSRI/SNRI review within 1 week plus weekly suicidal-thinking/self-harm monitoring for the first month. The GAD follow-up text also includes its regular treatment review schedule. No universal taper, medicine supply promise or fixed prescribing regimen was added. Immediate danger remains a separate urgent/emergency pathway, with explicit 999 examples where appropriate.
+
+Validation: full content/routes/persistence checks pass. The discussion Chromium regression now exercises all eleven expanded cases plus speech/text fallback, hiding/revealing, saved personal wording, actual Atlas backup round-trip and mobile layouts. The prior rehearsal checkpoint 439918b deployed successfully in Actions run 43331783336.
+
+Next manageable unit: improve recording of help used when an unfinished independent attempt is interrupted by opening the same case’s full worked model or saved exact sentence; then perform final deployment and live-asset verification.
