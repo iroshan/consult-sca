@@ -4,8 +4,8 @@
 
 The coach extends the existing static Practice Studio and is linked prominently from its home page and navigation. Start at `/#structure/daily`; overview is `/#structure`.
 
-- Six guided consultations: new headache/serious-illness concern, high HbA1c screening result, asthma control, emotional distress after separation, a parent's concern about eczema treatment, and dizziness/falls with medicine burden and access barriers.
-- 74 authored exchanges: 12 per ordinary path plus emergency branches for sudden extremely painful headache and immediate suicide risk.
+- Initial six guided consultations: new headache/serious-illness concern, high HbA1c screening result, asthma control, emotional distress after separation, a parent's concern about eczema treatment, and dizziness/falls with medicine burden and access barriers.
+- Initial 74 authored exchanges: 12 per ordinary path plus emergency branches for sudden extremely painful headache and immediate suicide risk.
 - 16 reusable sentence patterns: 12 core sequences and four recovery sequences, each with natural wording, a shorter alternative, purpose and delivery guidance.
 - Six-stage map: Open → Understand → Focus → Explain → Plan → Close. Stage order remains flexible; time-critical findings change the plan.
 - Four support levels. “Let me try” hides decision choices as well as wording prompts; help can be requested. Support use, a decision retry or a self-reported essential gap affects the saved recall record.
@@ -51,3 +51,10 @@ Added `coach-learning.js` and a `/#structure/learning` route (Plan & reflect), l
 The learning state is sanitised and merged inside the existing coach/studio backup. Deleted record IDs prevent old backups reviving removed notes; up to 100 recent records are retained. All review/reference links published in the product are official. The reference workbook was inspected read-only; no private records, example entries, branding or raw workbook content were copied into the repository.
 
 Validation: `scripts/validate-learning.cjs` checks UK dates/DST, sanitisation, evidence records, repeat tasks, deletion merge and old/new backup compatibility. `scripts/browser-learning.cjs` exercises actual plan/coverage inputs, domain feedback, daily focus, JSON download/import, deletion persistence, escaping and mobile layout. Both pass; the existing six-case Chromium regression also passes with the new module loaded.
+
+
+## Follow-up checkpoint: twelve guided cases
+
+Added six complete guided consultations (anxiety, a long-term benzodiazepine running out, fever in a three-year-old, constipation with overflow/impaction, gradual memory changes and a DNACPR/advance-care discussion). The coach now has twelve consultations and 148 exchanges, including four emergency branches. All new cases link to the appropriate existing Atlas case and official guidance. More specific next-action alternatives address common errors. The urgent replay context excludes the ordinary-path answer at the branch point.
+
+All twelve ordinary paths passed the Chromium UI regression. Deterministic tests now verify every emergency path and that related Atlas/studio targets exist. Planning/reflection browser tests were repeated with the expanded catalogue. A retired NHS diazepam subpage was replaced with the current medicine page; the official GMC CPR page was accessible through the research tool but returned a bot/access 403 to the direct link checker. Other new links returned 200. No universal medicine regimens, CPR survival percentages or readiness grades were added.

@@ -10,7 +10,7 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
   page.on('pageerror',e=>errors.push(e.message));
   const go=async route=>{await page.goto(base+'/'+route);await page.locator('#main h1').waitFor();};
   const click=async(type,value)=>{const selector=`[data-coach="${type}"]${value===undefined?'':`[data-value="${value}"]`}`;await page.locator(selector).first().click();};
-  await go('#structure');assert.equal(await page.locator('a[href^="#structure/worked/"]').count(),6);
+  await go('#structure');assert.equal(await page.locator('a[href^="#structure/worked/"]').count(),12);
   await page.screenshot({path:path.join(os.tmpdir(),'sca-coach-overview.png'),fullPage:true});
   await go('#structure/case/headache');await click('choose','0');await click('attempt');
   await page.locator('#coach-attempt').fill('Hello, I am Dr Patel. Could I check your details and whether it is private to talk?');
@@ -64,6 +64,6 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
   }
   await page.screenshot({path:path.join(os.tmpdir(),'sca-coach-mobile.png'),fullPage:true});
   assert.deepEqual(errors,[]);
-  console.log('PASS: Chromium — six complete case paths, emergency branch, four-level support tracking, spoken/typed practice, reload persistence, cross-case transfer, saved sentences, recall, real JSON export/import, escaping and mobile layouts.');
+  console.log('PASS: Chromium — twelve complete case paths, emergency branch, four-level support tracking, spoken/typed practice, reload persistence, cross-case transfer, saved sentences, recall, real JSON export/import, escaping and mobile layouts.');
  } finally {await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
