@@ -976,7 +976,7 @@ window.SCA_COACH = {
       "patient": "Omar Khan, 29 · Video",
       "brief": "Omar has confirmed asthma and requests another blue reliever inhaler. Increased use and night symptoms require assessment of current severity and control. This lesson teaches the discussion and review process, not a complete prescribing regimen.",
       "goal": "Practise the structure, explain the next step and respond to this patient’s particular concern.",
-      "atlas": null,
+      "atlas": "rs-adult-asthma",
       "studio": "c5",
       "links": [
         {

@@ -79,3 +79,11 @@ Added a fourth Atlas area with three complete cases: raised blood pressure, conf
 Current UK NICE recommendations were checked for out-of-office BP confirmation, severe-BP pathways, AF stroke/bleeding assessment and anticoagulation, and possible-ACS referral/initial care. No universal BP target, DOAC dose or unsupported rapid outpatient BP-lowering plan was added. Seven new official guideline/patient links returned HTTP 200.
 
 Validation: the normal validator renders all 294 Atlas case sections and verifies the new area’s routes and imported notes/bookmarks. `scripts/browser-cardiovascular.cjs` passed all six tabs for each new case, bookmark persistence after reload and mobile discussion layouts. Other completed checkpoints remain intact.
+
+## Follow-up checkpoint: respiratory Atlas area
+
+Added adult asthma and COPD management/discussion cases with three variations each. Atlas totals are now 51 cases / 153 variations across five areas. The guided asthma case links directly to the new adult asthma management case.
+
+The new material distinguishes chronic review from acute severity, age-/device-specific asthma pathways, AIR/MART versus SABA-only asthma care, technique and treatment barriers, COPD rehabilitation and oxygen assessment, and exacerbation/rescue-pack decisions. Selected recommendations were checked against NG245, NG115 and NG114 and NHS information. The COPD oral steroid example is explicitly for appropriate exacerbations, not routine stable care; other prescribing decisions remain patient-/product-specific.
+
+All 306 Atlas sections and respiratory route/backup checks pass. `scripts/browser-respiratory.cjs` passed all six tabs of both cases, bookmark reload persistence and mobile discussion layouts. All five respiratory official links returned HTTP 200. A mobile screenshot was inspected for readable patient-facing explanations.
