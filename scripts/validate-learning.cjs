@@ -3,7 +3,7 @@ const nodes=new Map();const node=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',
 const ctx={assert,console,document:{querySelector:node,querySelectorAll:()=>[],addEventListener(){},createElement:()=>node('a')},window:{addEventListener(){},scrollTo(){}},location:{hash:'#structure/learning'},localStorage:{getItem:()=>null,setItem(){}},setInterval(){},setTimeout(){},clearTimeout(){},Date,Intl,crypto:require('crypto').webcrypto,Blob,URL};vm.createContext(ctx);
 vm.runInContext(['content.js','coach-data.js','coach-learning.js','coach.js','app.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n'),ctx);
 vm.runInContext(`(async()=>{
- const learning=window.CoachLearning;assert.strictEqual(learning.groups.length,12);assert.strictEqual(learning.domains.length,3);
+ const learning=window.CoachLearning;assert.strictEqual(learning.groups.length,12);for(const group of learning.groups)assert(group[3].some(id=>window.SCA_COACH.cases.some(c=>c.id===id)),'Every blueprint area should have at least one relevant guided case linked');assert.strictEqual(learning.domains.length,3);
  assert.strictEqual(learning.validDate('2026-02-31'),'');assert.strictEqual(learning.validDate('2028-02-29'),'2028-02-29');assert.strictEqual(learning.today(new Date('2026-03-29T23:30:00Z')),'2026-03-30');
  learning.handle('save-record');assert.strictEqual(state.coach.learning.records.length,0);
  state.coach.learning.plan.goal='<img src=x onerror=alert(1)>';state.coach.learning.plan.updated=100;

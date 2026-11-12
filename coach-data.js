@@ -4651,6 +4651,1105 @@ window.SCA_COACH = {
           "next": null
         }
       ]
+    },
+    {
+      "id": "menopause",
+      "title": "Hot flushes, changing periods and uncertainty about HRT",
+      "category": "Reproductive health",
+      "patient": "Claire West, 49 · Telephone",
+      "brief": "Claire has hot flushes, night sweats and changing periods, with effects on work and sleep. Explore the whole picture, abnormal bleeding and other causes; explain appropriate clinical identification of perimenopause and discuss individual treatment choices, contraception and review. This is not a complete HRT prescribing protocol.",
+      "goal": "Practise clear assessment, a proportionate explanation and a workable shared plan; repeat the hardest exchange with less help.",
+      "atlas": null,
+      "studio": null,
+      "links": [
+        {
+          "label": "NICE: menopause identification and management",
+          "url": "https://www.nice.org.uk/guidance/ng23"
+        },
+        {
+          "label": "NHS: menopause and perimenopause",
+          "url": "https://www.nhs.uk/conditions/menopause-and-perimenopause/"
+        },
+        {
+          "label": "NHS: HRT",
+          "url": "https://www.nhs.uk/medicines/hormone-replacement-therapy-hrt/"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "hello",
+          "phrase": "hello",
+          "stage": "open",
+          "patient": "I can’t sleep, I’m getting hot all the time and my periods have changed.",
+          "task": "Establish who you are speaking with and a safe setting.",
+          "model": "Hello, I’m Dr Patel, one of the GPs. Could I check your name and date of birth? Is it safe and private for us to speak?",
+          "simple": "Hello, I’m Dr Patel. Could you confirm your details? Can you speak privately?",
+          "starter": "Hello, I’m… Could I check… Is it…",
+          "purpose": "Introduce yourself accurately, confirm identity and establish whether sensitive discussion is safe.",
+          "tip": "Pause for each answer. Establish location and a callback route when the clinical situation requires it.",
+          "reply": "The patient confirms their identity and privacy in this fictional consultation.",
+          "options": [
+            "Establish who you are speaking with and a safe setting.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Identity, privacy and the patient’s preferences shape safe communication.",
+          "essential": [
+            "Introduced the role and checked identity",
+            "Established privacy and who is involved"
+          ],
+          "improve": [
+            "Pause for each answer. Establish location and a callback route when the clinical situation requires it."
+          ],
+          "next": "agenda"
+        },
+        {
+          "id": "agenda",
+          "phrase": "agenda",
+          "stage": "open",
+          "patient": "I want to know if it is menopause and whether HRT is safe for me.",
+          "task": "Find the full agenda and agree a safe priority.",
+          "model": "Before we decide where to start, is there anything else you were hoping we could discuss? Then we can agree what needs attention first.",
+          "simple": "Is there anything else you wanted help with? Let’s agree where to start.",
+          "starter": "Before we decide… is there anything else…",
+          "purpose": "Find important concerns early, then agree a safe priority.",
+          "tip": "An invitation is not a promise to finish every issue. Triage urgent concerns before deferring anything.",
+          "reply": "The patient confirms the agenda described in the brief.",
+          "options": [
+            "Find the full agenda and agree a safe priority.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Check the urgency of the concerns before deciding what can wait.",
+          "essential": [
+            "Invited other concerns",
+            "Agreed the priority without overlooking urgent symptoms"
+          ],
+          "improve": [
+            "An invitation is not a promise to finish every issue. Triage urgent concerns before deferring anything."
+          ],
+          "next": "story"
+        },
+        {
+          "id": "story",
+          "phrase": "story",
+          "stage": "understand",
+          "patient": "The night sweats are affecting my work.",
+          "task": "Establish the symptom and menstrual pattern before explaining the cause.",
+          "model": "Could you talk me through the symptoms and how your periods have changed?",
+          "simple": "What symptoms have you noticed, and what changes have there been in your periods?",
+          "starter": "Could you talk me through…",
+          "purpose": "Let the patient describe the problem before narrowing the questions.",
+          "tip": "Ask one question and allow an answer. Interrupt when an urgent finding requires immediate action.",
+          "reply": "Claire describes hot flushes, night sweats and irregular periods over several months.",
+          "options": [
+            "Establish the symptom and menstrual pattern before explaining the cause.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not assume every new symptom or bleeding pattern is menopausal; use the full clinical context.",
+          "essential": [
+            "Explored symptoms and their course",
+            "Clarified the menstrual and bleeding pattern"
+          ],
+          "improve": [
+            "Ask one question and allow an answer. Interrupt when an urgent finding requires immediate action."
+          ],
+          "next": "impact"
+        },
+        {
+          "id": "impact",
+          "phrase": "impact",
+          "stage": "understand",
+          "patient": "I feel as though I’m no longer myself.",
+          "task": "Explore the effect and agree the patient’s treatment priorities.",
+          "model": "That sounds difficult, especially with disrupted sleep and work. Which symptoms are affecting your life most, and what would you most like help with first?",
+          "simple": "What is affecting you most, and what would you like to improve first?",
+          "starter": "How is this affecting… What is worrying…",
+          "purpose": "Understand function and the patient’s concern, then use the answers in your plan.",
+          "tip": "These are separate questions. Pause after the first and respond before asking the second.",
+          "reply": "Claire’s priority is sleep and being able to concentrate in meetings.",
+          "options": [
+            "Explore the effect and agree the patient’s treatment priorities.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Use the patient’s own goals to discuss suitable options and review benefit.",
+          "essential": [
+            "Acknowledged the effect on daily life",
+            "Identified a specific patient-centred goal"
+          ],
+          "improve": [
+            "These are separate questions. Pause after the first and respond before asking the second."
+          ],
+          "next": "focus"
+        },
+        {
+          "id": "focus",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "Can I just have a hormone blood test?",
+          "task": "Assess relevant alternatives and warning features before deciding whether testing is useful.",
+          "model": "I’ll first check the pattern and whether anything needs separate assessment: the bleeding, pregnancy possibility, medicines and contraception, and relevant health history. At your age, typical symptoms can often identify perimenopause clinically, without routine hormone tests.",
+          "simple": "Let’s check the symptoms, bleeding and health history. Typical perimenopause at 45 or over often does not need a hormone test.",
+          "starter": "Thank you… I’d like to ask…",
+          "purpose": "Choose questions that distinguish causes and change urgency or management.",
+          "tip": "A signpost does not replace the actual assessment. Ask the relevant questions clearly, one at a time.",
+          "reply": "The clinician completes the relevant assessment. No concerning bleeding pattern or acute concern is identified in this scenario.",
+          "options": [
+            "Assess relevant alternatives and warning features before deciding whether testing is useful.",
+            "Order a hormone panel automatically for every person over 45 with hot flushes.",
+            "Attribute every new bleeding pattern to menopause without assessment."
+          ],
+          "answer": 0,
+          "why": "NICE supports clinical identification in otherwise healthy people aged 45 or over with typical symptoms; additional symptoms can still require tests for another clinical question.",
+          "essential": [
+            "Assessed the bleeding and relevant alternatives",
+            "Explained the role and limits of routine hormone testing"
+          ],
+          "improve": [
+            "A signpost does not replace the actual assessment. Ask the relevant questions clearly, one at a time."
+          ],
+          "next": "summary"
+        },
+        {
+          "id": "summary",
+          "phrase": "summary",
+          "stage": "focus",
+          "patient": "So what does perimenopause mean?",
+          "task": "Summarise the assessment and explain the distinction in plain language.",
+          "model": "Your symptoms and changing periods fit the transition towards menopause after the assessment we have completed. Perimenopause is that transition. Menopause is identified after twelve months without a period when hormonal contraception is not obscuring the pattern. What would you like me to clarify?",
+          "simple": "Perimenopause is the transition when periods can change and symptoms develop. We interpret it alongside your contraception and health.",
+          "starter": "Let me check… Your main concern…",
+          "purpose": "Check the facts and patient priority before explaining your assessment.",
+          "tip": "A summary should be short and accurate. Correct it if the patient adds or changes information.",
+          "reply": "Claire asks whether she can still become pregnant.",
+          "options": [
+            "Summarise the assessment and explain the distinction in plain language.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not treat irregular periods or HRT use as proof that contraception is unnecessary.",
+          "essential": [
+            "Linked the explanation to the actual assessment",
+            "Explained the menstrual transition without assuming fertility has ended"
+          ],
+          "improve": [
+            "A summary should be short and accurate. Correct it if the patient adds or changes information."
+          ],
+          "next": "explain"
+        },
+        {
+          "id": "explain",
+          "phrase": "explain",
+          "stage": "explain",
+          "patient": "Does HRT stop pregnancy as well?",
+          "task": "Explain the different purposes of symptom treatment and contraception.",
+          "model": "HRT treats menopausal symptoms; it is not contraception. We should agree contraception appropriate to your situation separately and explain how it fits with any treatment we choose.",
+          "simple": "HRT is not contraception. We need a separate suitable contraception plan.",
+          "starter": "From what you’ve told me… because…",
+          "purpose": "Explain the reasoning at the right level of certainty.",
+          "tip": "Avoid promising a diagnosis from an incomplete remote assessment. Explain what further assessment is needed.",
+          "reply": "Claire says that was not clear from information she had read.",
+          "options": [
+            "Explain the different purposes of symptom treatment and contraception.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Avoid using HRT as a substitute for contraceptive counselling or giving a universal stopping date without considering age and method.",
+          "essential": [
+            "Stated clearly that HRT is not contraception",
+            "Included an individual contraception discussion"
+          ],
+          "improve": [
+            "Avoid promising a diagnosis from an incomplete remote assessment. Explain what further assessment is needed."
+          ],
+          "next": "uncertainty"
+        },
+        {
+          "id": "uncertainty",
+          "phrase": "uncertainty",
+          "stage": "explain",
+          "patient": "I hear different things about the risks. How do I decide?",
+          "task": "Support a personalised benefits-and-harms discussion.",
+          "model": "We can go through the benefits and risks that are relevant to your health and preferences. The type and route of HRT matter, as does whether you have a uterus. I can explain the options in small steps and give you an official decision aid to consider.",
+          "simple": "Let’s discuss the benefits and risks for you, including the type and route, one step at a time.",
+          "starter": "What we know… What we still need… The next step…",
+          "purpose": "Make uncertainty understandable and attach it to a practical next step.",
+          "tip": "Pause after a small amount of information. Respond to the patient’s question before adding more.",
+          "reply": "Claire wants clear information about symptom benefit and her own medical history.",
+          "options": [
+            "Support a personalised benefits-and-harms discussion.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not give a blanket guarantee that HRT is safe for everyone or quote an unverified individual risk.",
+          "essential": [
+            "Acknowledged that risk is individual",
+            "Offered clear discussion of relevant options and reliable information"
+          ],
+          "improve": [
+            "Pause after a small amount of information. Respond to the patient’s question before adding more."
+          ],
+          "next": "recommend"
+        },
+        {
+          "id": "recommend",
+          "phrase": "recommend",
+          "stage": "plan",
+          "patient": "What would you recommend for the sleep and hot flushes?",
+          "task": "Discuss appropriate choices and complete the prescribing assessment.",
+          "model": "We can consider HRT if suitable and discuss other options, including menopause-specific cognitive behavioural therapy. Before prescribing, we need the full suitability check and an appropriate regimen. If you have a uterus, systemic oestrogen usually needs endometrial protection with a progestogen.",
+          "simple": "Let’s discuss suitable HRT and non-hormonal options, after checking your history and the right regimen.",
+          "starter": "I recommend… because… What are your thoughts…",
+          "purpose": "Offer a clinically appropriate recommendation and invite the patient’s view.",
+          "tip": "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices.",
+          "reply": "Claire would like to consider treatment after reviewing the individual benefits and risks.",
+          "options": [
+            "Discuss appropriate choices and complete the prescribing assessment.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Regimen, route, contraindications and monitoring must be checked using current guidance; this conversation does not establish a prescription.",
+          "essential": [
+            "Discussed suitable hormonal and non-hormonal options",
+            "Recognised the need for regimen and suitability checks"
+          ],
+          "improve": [
+            "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices."
+          ],
+          "next": "barrier"
+        },
+        {
+          "id": "barrier",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I don’t want to make a rushed decision today.",
+          "task": "Respect deliberation and agree practical interim support and follow-up.",
+          "model": "That’s reasonable. We can give you the information, address your main questions and agree a follow-up to make the decision. Is there an immediate problem with sleep or work that we should support while you consider the options?",
+          "simple": "Take time to consider it. Let’s arrange follow-up and support the problems affecting you now.",
+          "starter": "What might make… Let’s work through…",
+          "purpose": "Find the actual obstacle and agree arrangements the patient can use.",
+          "tip": "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers.",
+          "reply": "Claire wants a planned discussion rather than being told to return whenever she decides.",
+          "options": [
+            "Respect deliberation and agree practical interim support and follow-up.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Shared decision-making includes time to consider appropriate options without leaving the person unsupported.",
+          "essential": [
+            "Respected the patient’s pace",
+            "Agreed a definite next discussion and interim needs"
+          ],
+          "improve": [
+            "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers."
+          ],
+          "next": "safety"
+        },
+        {
+          "id": "safety",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "What changes should I contact you about sooner?",
+          "task": "Give a clear earlier-help plan and avoid blanket reassurance about bleeding.",
+          "model": "Contact us promptly about new, unexpected, heavy or persistent bleeding or other concerning symptoms. If we start HRT, we’ll explain what bleeding can occur with that regimen and exactly when it needs assessment using current guidance. Severe symptoms or acute illness need urgent help.",
+          "simple": "Let us know about concerning bleeding or new symptoms. Any HRT plan will include specific earlier-help advice.",
+          "starter": "If… please… If things have not… by…",
+          "purpose": "Give relevant warning signs, a contact route, urgency and a review plan.",
+          "tip": "Choose advice for this patient and condition. “Come back if worse” alone leaves the action unclear.",
+          "reply": "Claire understands not to assume every new bleeding change is simply menopause or a harmless HRT effect.",
+          "options": [
+            "Give a clear earlier-help plan and avoid blanket reassurance about bleeding.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Bleeding advice depends on the pattern, treatment and risk; check the current menopause and suspected-cancer recommendations.",
+          "essential": [
+            "Explained the need to assess concerning bleeding",
+            "Kept any treatment safety advice regimen-specific and current"
+          ],
+          "improve": [
+            "Choose advice for this patient and condition. “Come back if worse” alone leaves the action unclear."
+          ],
+          "next": "check"
+        },
+        {
+          "id": "check",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "When would you review me if I start treatment?",
+          "task": "Confirm understanding and a clear review plan.",
+          "model": "We usually review around three months after starting treatment, then at least annually, with earlier review for problems or changes. We’ll check the symptoms that matter to you, any side effects and the ongoing plan. Could you tell me the next steps in your own words?",
+          "simple": "We’ll review at about three months after starting, then at least yearly, and sooner if needed. Could you talk me through the plan?",
+          "starter": "Just so I can check… could you tell me… I will…",
+          "purpose": "Check understanding, correct gaps and name who will arrange and review each action.",
+          "tip": "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing.",
+          "reply": "Claire repeats the treatment-decision appointment, contraception discussion and review arrangements.",
+          "options": [
+            "Confirm understanding and a clear review plan.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Review actual benefit, harms, suitability and preferences rather than automatically continuing a prescription.",
+          "essential": [
+            "Confirmed a planned review and earlier-help route",
+            "Checked understanding of treatment and contraception next steps"
+          ],
+          "improve": [
+            "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
+          ],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "interpreter",
+      "title": "Explaining a result with a professional interpreter",
+      "category": "Communication and inclusive care",
+      "patient": "Ana Costa, 54 · Telephone with interpreter",
+      "brief": "Ana prefers Portuguese for a detailed medical discussion. A screening HbA1c is 52 mmol/mol and earlier messages were not understood. Establish language and privacy preferences, use appropriate professional interpretation, assess symptoms and agree confirmation with an accessible contact plan.",
+      "goal": "Practise clear assessment, a proportionate explanation and a workable shared plan; repeat the hardest exchange with less help.",
+      "atlas": null,
+      "studio": "c15",
+      "links": [
+        {
+          "label": "GMC: communication and individual needs",
+          "url": "https://www.gmc-uk.org/professional-standards/the-professional-standards/good-medical-practice/domain-2-patients-partnership-and-communication"
+        },
+        {
+          "label": "NICE: possible diabetes and confirmation",
+          "url": "https://www.nice.org.uk/guidance/ph38"
+        },
+        {
+          "label": "NHS: diabetic ketoacidosis",
+          "url": "https://www.nhs.uk/conditions/diabetic-ketoacidosis/"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "hello",
+          "phrase": "hello",
+          "stage": "open",
+          "patient": "My daughter can tell you what is wrong. I didn’t understand the text.",
+          "task": "Establish who you are speaking with and a safe setting.",
+          "model": "Hello Ana, I’m Dr Patel. Could I confirm your details and which language you prefer for this discussion? We can arrange a professional interpreter. Is it safe to talk privately, and would you like your daughter involved?",
+          "simple": "Could I check your details and preferred language? Let’s arrange an interpreter and check who you want involved.",
+          "starter": "Hello, I’m… Could I check… Is it…",
+          "purpose": "Introduce yourself accurately, confirm identity and establish whether sensitive discussion is safe.",
+          "tip": "Pause for each answer. Establish location and a callback route when the clinical situation requires it.",
+          "reply": "The appropriate professional interpreter joins. Ana confirms privacy and agrees how her daughter may be involved.",
+          "options": [
+            "Establish who you are speaking with and a safe setting.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Identity, privacy and the patient’s preferences shape safe communication.",
+          "essential": [
+            "Introduced the role and checked identity",
+            "Established privacy and who is involved"
+          ],
+          "improve": [
+            "Pause for each answer. Establish location and a callback route when the clinical situation requires it."
+          ],
+          "next": "agenda"
+        },
+        {
+          "id": "agenda",
+          "phrase": "agenda",
+          "stage": "open",
+          "patient": "I need the result explained, but medical English is difficult for me.",
+          "task": "Find the full agenda and agree a safe priority.",
+          "model": "Before we decide where to start, is there anything else you were hoping we could discuss? Then we can agree what needs attention first.",
+          "simple": "Is there anything else you wanted help with? Let’s agree where to start.",
+          "starter": "Before we decide… is there anything else…",
+          "purpose": "Find important concerns early, then agree a safe priority.",
+          "tip": "An invitation is not a promise to finish every issue. Triage urgent concerns before deferring anything.",
+          "reply": "The patient confirms the agenda described in the brief.",
+          "options": [
+            "Find the full agenda and agree a safe priority.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Check the urgency of the concerns before deciding what can wait.",
+          "essential": [
+            "Invited other concerns",
+            "Agreed the priority without overlooking urgent symptoms"
+          ],
+          "improve": [
+            "An invitation is not a promise to finish every issue. Triage urgent concerns before deferring anything."
+          ],
+          "next": "story"
+        },
+        {
+          "id": "story",
+          "phrase": "story",
+          "stage": "understand",
+          "patient": "I thought the message was just another reminder.",
+          "task": "Explore the patient’s understanding directly using accessible communication.",
+          "model": "Through the interpreter, could you tell me what you understood from the message and whether you have noticed any changes in your health?",
+          "simple": "What did the message mean to you? Have you felt any different?",
+          "starter": "Could you talk me through…",
+          "purpose": "Let the patient describe the problem before narrowing the questions.",
+          "tip": "Ask one question and allow an answer. Interrupt when an urgent finding requires immediate action.",
+          "reply": "Ana says she feels well and did not realise another test might be needed.",
+          "options": [
+            "Explore the patient’s understanding directly using accessible communication.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "A missed response can reflect communication failure rather than an informed refusal.",
+          "essential": [
+            "Asked Ana directly about her understanding",
+            "Checked symptoms rather than relying only on a relative’s summary"
+          ],
+          "improve": [
+            "Ask one question and allow an answer. Interrupt when an urgent finding requires immediate action."
+          ],
+          "next": "impact"
+        },
+        {
+          "id": "impact",
+          "phrase": "impact",
+          "stage": "understand",
+          "patient": "I felt embarrassed to say I could not understand.",
+          "task": "Identify individual communication preferences without assumptions.",
+          "model": "Thank you for telling me. It is our job to explain this clearly. What language and format work best for medical information, and who would you like involved?",
+          "simple": "We should make the explanation clear for you. What language and format would help?",
+          "starter": "How is this affecting… What is worrying…",
+          "purpose": "Understand function and the patient’s concern, then use the answers in your plan.",
+          "tip": "These are separate questions. Pause after the first and respond before asking the second.",
+          "reply": "Ana prefers Portuguese, short spoken explanations and written instructions she can understand; she wants her daughter involved with her agreement.",
+          "options": [
+            "Identify individual communication preferences without assumptions.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Language needs do not establish literacy, capacity, culture or treatment preference. Ask the person.",
+          "essential": [
+            "Acknowledged the communication difficulty without blame",
+            "Asked about preferred language, format and involvement"
+          ],
+          "improve": [
+            "These are separate questions. Pause after the first and respond before asking the second."
+          ],
+          "next": "focus"
+        },
+        {
+          "id": "focus",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "Can my daughter just answer the questions?",
+          "task": "Use the patient’s own account and assess clinical urgency accurately.",
+          "model": "Your daughter can support you if you wish, and I would also like to hear your own answers through the professional interpreter. Let’s check symptoms such as thirst, frequent urination, weight loss or feeling unwell, one question at a time.",
+          "simple": "Your daughter can help with your permission. I’ll ask you directly through the interpreter, one question at a time.",
+          "starter": "Thank you… I’d like to ask…",
+          "purpose": "Choose questions that distinguish causes and change urgency or management.",
+          "tip": "A signpost does not replace the actual assessment. Ask the relevant questions clearly, one at a time.",
+          "reply": "No acute symptoms are identified. The clinician checks the full context and whether HbA1c is appropriate for confirming this screening result.",
+          "options": [
+            "Use the patient’s own account and assess clinical urgency accurately.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not infer that another person can make decisions for a patient because an interpreter is needed.",
+          "essential": [
+            "Used professional interpretation and direct patient questions",
+            "Assessed symptoms and the result context"
+          ],
+          "improve": [
+            "A signpost does not replace the actual assessment. Ask the relevant questions clearly, one at a time."
+          ],
+          "next": "summary"
+        },
+        {
+          "id": "summary",
+          "phrase": "summary",
+          "stage": "focus",
+          "patient": "I still don’t know what the number means.",
+          "task": "Explain one small chunk and check understanding before continuing.",
+          "model": "The result is higher than expected. Because you have no symptoms, we need another blood test to confirm whether you have diabetes. I’ll pause there so we can check that part before adding more information.",
+          "simple": "The result is high. We need another test to confirm it because you have no symptoms.",
+          "starter": "Let me check… Your main concern…",
+          "purpose": "Check the facts and patient priority before explaining your assessment.",
+          "tip": "A summary should be short and accurate. Correct it if the patient adds or changes information.",
+          "reply": "Through the interpreter, Ana asks whether she has already been diagnosed.",
+          "options": [
+            "Explain one small chunk and check understanding before continuing.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not confuse an abnormal screening result with a confirmed diagnosis in this scenario.",
+          "essential": [
+            "Explained the result in a short clear chunk",
+            "Distinguished confirmation from an established diagnosis"
+          ],
+          "improve": [
+            "A summary should be short and accurate. Correct it if the patient adds or changes information."
+          ],
+          "next": "explain"
+        },
+        {
+          "id": "explain",
+          "phrase": "explain",
+          "stage": "explain",
+          "patient": "So you don’t know for certain yet?",
+          "task": "Explain uncertainty and invite a specific question without blaming the patient.",
+          "model": "That’s right. We need to confirm the result, and then explain what it means for you. You have not done anything wrong by needing an explanation in another language. What would you like me to go over?",
+          "simple": "We need to confirm it first. What would you like me to explain again?",
+          "starter": "From what you’ve told me… because…",
+          "purpose": "Explain the reasoning at the right level of certainty.",
+          "tip": "Avoid promising a diagnosis from an incomplete remote assessment. Explain what further assessment is needed.",
+          "reply": "Ana wants to know when the test will happen and who will call her.",
+          "options": [
+            "Explain uncertainty and invite a specific question without blaming the patient.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Keep the explanation directed to the patient rather than talking about her to the interpreter.",
+          "essential": [
+            "Explained uncertainty and the next step",
+            "Invited Ana’s own questions"
+          ],
+          "improve": [
+            "Avoid promising a diagnosis from an incomplete remote assessment. Explain what further assessment is needed."
+          ],
+          "next": "uncertainty"
+        },
+        {
+          "id": "uncertainty",
+          "phrase": "uncertainty",
+          "stage": "explain",
+          "patient": "Will the next phone call be in English again?",
+          "task": "Agree accessible and confidential future communication.",
+          "model": "Let’s record the language and communication support you need, and agree how we will arrange it for the next discussion. We’ll also check a safe number, whether messages can be left and what written information you can use.",
+          "simple": "Let’s arrange language support for the next contact and agree a safe number and clear written information.",
+          "starter": "What we know… What we still need… The next step…",
+          "purpose": "Make uncertainty understandable and attach it to a practical next step.",
+          "tip": "Pause after a small amount of information. Respond to the patient’s question before adding more.",
+          "reply": "Ana agrees the safe contact arrangements and asks not to use her daughter’s phone without permission.",
+          "options": [
+            "Agree accessible and confidential future communication.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "A preferred contact method and interpretation arrangement must be confirmed in the actual service.",
+          "essential": [
+            "Recorded communication needs and consent",
+            "Agreed a safe contact and message plan"
+          ],
+          "improve": [
+            "Pause after a small amount of information. Respond to the patient’s question before adding more."
+          ],
+          "next": "recommend"
+        },
+        {
+          "id": "recommend",
+          "phrase": "recommend",
+          "stage": "plan",
+          "patient": "What exactly needs booking now?",
+          "task": "Make the clinical and communication plan feasible together.",
+          "model": "I recommend the confirmation blood test through the appropriate local pathway, with a named clinician reviewing it and a planned interpreted discussion of the result. Let’s check the appointment time and travel arrangements before we finish.",
+          "simple": "Let’s book the test and an interpreted result discussion, and name who will review it.",
+          "starter": "I recommend… because… What are your thoughts…",
+          "purpose": "Offer a clinically appropriate recommendation and invite the patient’s view.",
+          "tip": "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices.",
+          "reply": "Ana needs an appointment she can reach by bus after her morning caring duties.",
+          "options": [
+            "Make the clinical and communication plan feasible together.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "A test request, an interpreter request and a follow-up conversation are separate actions that need coordination.",
+          "essential": [
+            "Arranged confirmation and result ownership",
+            "Included interpretation and accessible appointment arrangements"
+          ],
+          "improve": [
+            "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices."
+          ],
+          "next": "barrier"
+        },
+        {
+          "id": "barrier",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I missed the earlier appointment because I could not get there.",
+          "task": "Address the access barrier and close the practical loop.",
+          "model": "Thank you for explaining. What times and transport are possible for you? We’ll check an available appointment and make sure the instructions explain where to go and who to contact if it falls through.",
+          "simple": "What time and transport would work? Let’s confirm a realistic appointment and clear instructions.",
+          "starter": "What might make… Let’s work through…",
+          "purpose": "Find the actual obstacle and agree arrangements the patient can use.",
+          "tip": "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers.",
+          "reply": "An appropriate appointment and interpreted follow-up are confirmed in this scenario.",
+          "options": [
+            "Address the access barrier and close the practical loop.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Avoid labelling the patient as not interested without establishing what happened.",
+          "essential": [
+            "Explored the actual reason for missed attendance",
+            "Confirmed accessible instructions and a backup contact"
+          ],
+          "improve": [
+            "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers."
+          ],
+          "next": "safety"
+        },
+        {
+          "id": "safety",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "If I feel unwell, can I wait for the interpreter appointment?",
+          "task": "Give clinically appropriate safety advice in an accessible form.",
+          "model": "Do not wait if you become unwell. New marked thirst, frequent urination or weight loss needs prompt advice. If you have vomiting or abdominal pain with deep breathing, sleepiness or confusion, call 999 or go to A&E immediately; do not drive yourself. We will explain the urgent and emergency routes through the interpreter and check you can use them.",
+          "simple": "Don’t wait for the appointment if you become unwell. We’ll explain the urgent and emergency routes clearly through the interpreter.",
+          "starter": "If… please… If things have not… by…",
+          "purpose": "Give relevant warning signs, a contact route, urgency and a review plan.",
+          "tip": "Choose advice for this patient and condition. “Come back if worse” alone leaves the action unclear.",
+          "reply": "Ana can describe the agreed urgent route and the symptoms that mean she should not wait.",
+          "options": [
+            "Give clinically appropriate safety advice in an accessible form.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "An interpreter booking must not delay time-critical assessment. Use actual local language-support and emergency arrangements.",
+          "essential": [
+            "Explained not to delay urgent assessment",
+            "Checked accessible understanding of warning signs and contact routes"
+          ],
+          "improve": [
+            "Choose advice for this patient and condition. “Come back if worse” alone leaves the action unclear."
+          ],
+          "next": "check"
+        },
+        {
+          "id": "check",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "How can you check I have understood without making me feel tested?",
+          "task": "Use respectful teach-back and confirm ownership of the next steps.",
+          "model": "I want to check that I have explained it clearly. Could you tell me, in your own words through the interpreter, what will happen next and when you will get help sooner? If anything is unclear, we’ll go over it again.",
+          "simple": "Could you tell me the plan in your own words? This checks my explanation, not your English.",
+          "starter": "Just so I can check… could you tell me… I will…",
+          "purpose": "Check understanding, correct gaps and name who will arrange and review each action.",
+          "tip": "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing.",
+          "reply": "Ana explains the test, interpreted result discussion and earlier-help plan; the clinician corrects one point and provides accessible written instructions.",
+          "options": [
+            "Use respectful teach-back and confirm ownership of the next steps.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "A yes/no question or a relative’s reassurance may not establish the patient’s own understanding.",
+          "essential": [
+            "Framed teach-back as a check on the explanation",
+            "Confirmed the patient’s own understanding and accessible instructions"
+          ],
+          "improve": [
+            "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
+          ],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "handover",
+      "title": "A pharmacist queries conflicting anticoagulant instructions",
+      "category": "Professional conversation",
+      "patient": "Community pharmacist · Telephone",
+      "brief": "A pharmacist calls about conflicting apixaban instructions on a discharge record and repeat prescription. Verify the professional caller and patient, establish actual use and clinical urgency, resolve the discrepancy with an appropriate prescribing assessment, and make an accepted handover. A medication error is confirmed later in the supplied scenario.",
+      "goal": "Practise clear assessment, a proportionate explanation and a workable shared plan; repeat the hardest exchange with less help.",
+      "atlas": null,
+      "studio": "c10",
+      "links": [
+        {
+          "label": "GMC: candour and openness when things go wrong",
+          "url": "https://www.gmc-uk.org/professional-standards/the-professional-standards/candour---openness-and-honesty-when-things-go-wrong"
+        },
+        {
+          "label": "NHS: anticoagulant adverse effects",
+          "url": "https://www.nhs.uk/medicines/anticoagulants/side-effects/"
+        },
+        {
+          "label": "BNF: prescribing reference",
+          "url": "https://bnf.nice.org.uk/"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "hello",
+          "phrase": "hello",
+          "stage": "open",
+          "patient": "I’m the pharmacist. I’m concerned these anticoagulant instructions do not match.",
+          "task": "Verify the professional caller, patient and secure communication route.",
+          "model": "Hello, I’m Dr Patel. Could I confirm your name, role, pharmacy and callback number? Let’s verify the patient using the appropriate identifiers and a secure clinical communication route.",
+          "simple": "Could I check your role and callback details, then verify which patient and prescription we are discussing?",
+          "starter": "Hello, I’m… Could I check… Is it…",
+          "purpose": "Establish who you are speaking with and a safe setting.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The caller and patient are verified using the appropriate local clinical process.",
+          "options": [
+            "Verify the professional caller, patient and secure communication route.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Identity, privacy and the patient’s preferences shape safe communication.",
+          "essential": [
+            "Verified the professional caller and contact route",
+            "Confirmed the patient and appropriate information-sharing context"
+          ],
+          "improve": [
+            "Pause for each answer. Establish location and a callback route when the clinical situation requires it."
+          ],
+          "next": "agenda",
+          "title": "Verify caller and patient"
+        },
+        {
+          "id": "agenda",
+          "phrase": "agenda",
+          "stage": "open",
+          "patient": "The patient is here, and we need to clarify the prescription before making a safe supply decision.",
+          "task": "Find the full agenda and agree a safe priority.",
+          "model": "Let’s agree the immediate priorities: the patient’s current safety, the exact prescribing discrepancy and who will confirm the plan. Is there any other urgent information I need before we start?",
+          "simple": "Let’s check safety, clarify the discrepancy and agree who will resolve it. Is there other urgent information?",
+          "starter": "Before we decide… is there anything else…",
+          "purpose": "Find the full agenda and agree a safe priority.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist confirms the patient is available for appropriate assessment and that the prescribing discrepancy needs a clinician-owned decision.",
+          "options": [
+            "Find the full agenda and agree a safe priority.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Check the urgency of the concerns before deciding what can wait.",
+          "essential": [
+            "Invited other concerns",
+            "Agreed the priority without overlooking urgent symptoms"
+          ],
+          "improve": [
+            "An invitation is not a promise to finish every issue. Triage urgent concerns before deferring anything."
+          ],
+          "next": "story",
+          "title": "Agree the immediate task"
+        },
+        {
+          "id": "story",
+          "phrase": "story",
+          "stage": "understand",
+          "patient": "The discharge letter and repeat prescription give different instructions.",
+          "task": "Establish the discrepancy and actual exposure from reliable information.",
+          "model": "Could you talk me through the exact discrepancy and which records you have checked? Please include the medicine, strengths, instructions and dates, and what the patient says they have actually taken.",
+          "simple": "What differs between the records, and what has the patient actually taken?",
+          "starter": "Could you talk me through…",
+          "purpose": "Establish the discrepancy and actual exposure from reliable information.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist provides the conflicting documents and actual-use history through the appropriate secure clinical route.",
+          "options": [
+            "Establish the discrepancy and actual exposure from reliable information.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Do not resolve a prescribing query from memory or an incomplete verbal summary alone.",
+          "essential": [
+            "Clarified the exact records and discrepancy",
+            "Established what the patient has actually taken"
+          ],
+          "improve": [
+            "Ask one question and allow an answer. Interrupt when an urgent finding requires immediate action."
+          ],
+          "next": "impact",
+          "title": "Clarify the prescribing discrepancy"
+        },
+        {
+          "id": "impact",
+          "phrase": "impact",
+          "stage": "understand",
+          "patient": "The patient is anxious and worried we are blaming each other.",
+          "task": "Acknowledge the colleague’s concern and the patient’s immediate needs.",
+          "model": "Thank you for raising this. The priority is the patient’s safety and a clear explanation. What is the patient most concerned about, and what do you need from me to make the next step safe?",
+          "simple": "Thank you for flagging it. Let’s focus on safety, the patient’s concern and what you need to act safely.",
+          "starter": "How is this affecting… What is worrying…",
+          "purpose": "Acknowledge the colleague’s concern and the patient’s immediate needs.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The patient wants to know whether harm has occurred and who will tell them what to take next.",
+          "options": [
+            "Acknowledge the colleague’s concern and the patient’s immediate needs.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "A professional conversation should coordinate care without blame or defensiveness.",
+          "essential": [
+            "Responded respectfully to the colleague",
+            "Identified the patient’s concern and the required decision"
+          ],
+          "improve": [
+            "These are separate questions. Pause after the first and respond before asking the second."
+          ],
+          "next": "focus",
+          "title": "Hear the concern and clinical need"
+        },
+        {
+          "id": "focus",
+          "phrase": "focus",
+          "stage": "focus",
+          "patient": "There is some bruising. Can we just use the discharge dose?",
+          "task": "Assess clinical urgency and verify the prescribing context.",
+          "model": "First, can we establish whether there is significant bleeding or another acute concern and arrange clinical assessment if needed? I also need to verify the indication, current prescription, relevant patient factors and the intended specialist plan before choosing the regimen.",
+          "simple": "Let’s check current symptoms and verify the clinical prescription context before deciding which instructions are correct.",
+          "starter": "Thank you… I’d like to ask…",
+          "purpose": "Assess clinical urgency and verify the prescribing context.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "No emergency features are identified after appropriate assessment. The clinician checks the records and relevant prescribing factors and contacts the responsible team where clarification is needed.",
+          "options": [
+            "Assess clinical urgency and verify the prescribing context.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Neither the newer-looking document nor the existing repeat record is automatically correct. The decision needs an appropriate clinical review.",
+          "essential": [
+            "Checked bleeding/acute concerns and actual exposure",
+            "Verified the indication, records and relevant prescribing factors"
+          ],
+          "improve": [
+            "A signpost does not replace the actual assessment. Ask the relevant questions clearly, one at a time."
+          ],
+          "next": "summary",
+          "title": "Assess urgency and verify context"
+        },
+        {
+          "id": "summary",
+          "phrase": "summary",
+          "stage": "focus",
+          "patient": "Who is going to take responsibility for sorting this out?",
+          "task": "Summarise the uncertainty and name ownership of resolution.",
+          "model": "We have conflicting instructions and a patient who needs a verified plan. I will coordinate the clinical review and contact the responsible team as needed. Let’s agree what you will do while I confirm the decision and when I will call you back.",
+          "simple": "I’ll coordinate the clinical review. Let’s agree the interim actions and a definite callback time.",
+          "starter": "Let me check… Your main concern…",
+          "purpose": "Summarise the uncertainty and name ownership of resolution.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist agrees the safe interim process and confirms the callback route.",
+          "options": [
+            "Summarise the uncertainty and name ownership of resolution.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "An unresolved query needs a safe interim process, not an indefinite delay or a blind continuation.",
+          "essential": [
+            "Summarised the unresolved decision",
+            "Named the clinician coordinating it and a definite communication plan"
+          ],
+          "improve": [
+            "A summary should be short and accurate. Correct it if the patient adds or changes information."
+          ],
+          "next": "explain",
+          "title": "Name ownership of resolution"
+        },
+        {
+          "id": "explain",
+          "phrase": "explain",
+          "stage": "explain",
+          "patient": "What will you tell the patient?",
+          "task": "Plan an honest explanation without speculation.",
+          "model": "I will explain that the instructions conflict, what we are checking and what they should do under the verified interim plan. I will be clear about what is known and what is not yet established, and how we will check whether any harm has occurred.",
+          "simple": "I’ll explain the discrepancy honestly, the immediate plan and what we are checking.",
+          "starter": "From what you’ve told me… because…",
+          "purpose": "Plan an honest explanation without speculation.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist asks for the final instructions to be communicated consistently by both services.",
+          "options": [
+            "Plan an honest explanation without speculation.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Explain known facts and uncertainty. Do not reassure that no harm occurred before the relevant assessment.",
+          "essential": [
+            "Planned a factual explanation to the patient",
+            "Included assessment of possible harm and uncertainty"
+          ],
+          "improve": [
+            "Avoid promising a diagnosis from an incomplete remote assessment. Explain what further assessment is needed."
+          ],
+          "next": "uncertainty",
+          "title": "Plan the patient explanation"
+        },
+        {
+          "id": "uncertainty",
+          "phrase": "uncertainty",
+          "stage": "explain",
+          "patient": "The review confirms the repeat record was entered incorrectly.",
+          "task": "Respond openly to the confirmed error and arrange correction and review.",
+          "model": "We should tell the patient what has been confirmed, apologise and explain the steps to put it right and reduce the chance of recurrence. I will follow the appropriate candour and incident process and make sure the clinical follow-up is owned.",
+          "simple": "We need to explain the confirmed error, apologise, put it right and arrange follow-up and review.",
+          "starter": "What we know… What we still need… The next step…",
+          "purpose": "Respond openly to the confirmed error and arrange correction and review.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The patient receives an explanation and apology, with their questions and current clinical needs addressed.",
+          "options": [
+            "Respond openly to the confirmed error and arrange correction and review.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "The professional duty of candour requires openness when care has gone wrong and caused or may cause harm or distress; follow the applicable organisational and statutory processes where relevant.",
+          "essential": [
+            "Included a clear explanation and apology",
+            "Included corrective action and clinician-owned follow-up"
+          ],
+          "improve": [
+            "Pause after a small amount of information. Respond to the patient’s question before adding more."
+          ],
+          "next": "recommend",
+          "title": "Respond to a confirmed error"
+        },
+        {
+          "id": "recommend",
+          "phrase": "recommend",
+          "stage": "plan",
+          "patient": "Can you confirm the final plan so we can act?",
+          "task": "Communicate a verified prescribing decision and update the records.",
+          "model": "After the prescribing assessment, I will issue or arrange the corrected, authorised instructions and ensure the relevant record is updated. Let’s confirm the medicine, exact regimen, start point and monitoring from that verified plan rather than repeat an unverified dose in this discussion.",
+          "simple": "I’ll confirm the authorised regimen and update the record. Let’s check the exact instructions and monitoring together.",
+          "starter": "I recommend… because… What are your thoughts…",
+          "purpose": "Communicate a verified prescribing decision and update the records.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist reads back the actual authorised instructions; the case does not provide a universal anticoagulant dose.",
+          "options": [
+            "Communicate a verified prescribing decision and update the records.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Apixaban suitability and dosing depend on clinical factors and indication; do not use this communication example as a dosing reference.",
+          "essential": [
+            "Used an authorised clinically checked regimen",
+            "Included record correction and monitoring arrangements"
+          ],
+          "improve": [
+            "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices."
+          ],
+          "next": "barrier",
+          "title": "Communicate the verified decision"
+        },
+        {
+          "id": "barrier",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "What if the patient is still unsure when they get home?",
+          "task": "Make the corrected plan usable and reconcile conflicting information.",
+          "model": "Let’s provide the same clear written instructions, check the patient’s understanding and name a contact for questions. We should remove or reconcile conflicting instructions through the proper record process so they are not faced with two different plans.",
+          "simple": "Give one consistent written plan, check understanding and agree a contact for uncertainty.",
+          "starter": "What might make… Let’s work through…",
+          "purpose": "Make the corrected plan usable and reconcile conflicting information.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The patient explains the verified plan in their own words and knows who to contact.",
+          "options": [
+            "Make the corrected plan usable and reconcile conflicting information.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Updating one record without addressing other conflicting instructions can leave the original safety problem in place.",
+          "essential": [
+            "Arranged consistent accessible instructions",
+            "Included teach-back and a named question route"
+          ],
+          "improve": [
+            "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers."
+          ],
+          "next": "safety",
+          "title": "Make the corrected plan usable"
+        },
+        {
+          "id": "safety",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "What symptoms should trigger urgent help?",
+          "task": "Agree an appropriate safety net without an unsupported medicine-change instruction.",
+          "model": "We’ll give medicine-specific advice from the verified plan. Significant or recurrent bleeding needs immediate medical attention; severe bleeding, collapse, new neurological symptoms or severe illness needs emergency assessment. The patient should not simply stop or alter anticoagulation indefinitely without clinical advice.",
+          "simple": "We’ll explain the urgent bleeding warnings and exact contact routes, and how to get advice about the medicine.",
+          "starter": "If… please… If things have not… by…",
+          "purpose": "Agree an appropriate safety net without an unsupported medicine-change instruction.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist confirms that warning advice and urgent routes are included and understood.",
+          "options": [
+            "Agree an appropriate safety net without an unsupported medicine-change instruction.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Balance bleeding risk with the reason for anticoagulation. Urgent clinical decisions must follow actual assessment.",
+          "essential": [
+            "Included clear bleeding/serious-illness escalation",
+            "Avoided a blanket unsupervised long-term stop instruction"
+          ],
+          "improve": [
+            "Choose advice for this patient and condition. “Come back if worse” alone leaves the action unclear."
+          ],
+          "next": "check",
+          "title": "Agree medicine safety advice"
+        },
+        {
+          "id": "check",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "Let me read the plan back to make sure we agree.",
+          "task": "Close the professional loop with read-back and explicit ownership.",
+          "model": "Thank you. Please read back the verified prescription, what has been corrected, what the patient has been told and who will review them by when. I’ll confirm acceptance of the handover and document the discussion and follow-up responsibility.",
+          "simple": "Let’s read back the plan, confirm who does each action and document the accepted handover.",
+          "starter": "Just so I can check… could you tell me… I will…",
+          "purpose": "Close the professional loop with read-back and explicit ownership.",
+          "tip": "Address the colleague clearly, share relevant information through the appropriate clinical route and agree who will do what and when.",
+          "reply": "The pharmacist and clinician identify and correct one discrepancy in the read-back, then confirm the handover and follow-up.",
+          "options": [
+            "Close the professional loop with read-back and explicit ownership.",
+            "Move straight to treatment before resolving the uncertainty described here.",
+            "Continue the original plan without responding to the new information."
+          ],
+          "answer": 0,
+          "why": "Sending a message or leaving a task is not the same as an accepted clinical handover.",
+          "essential": [
+            "Checked the actual read-back and corrected gaps",
+            "Confirmed accepted handover and named follow-up responsibility"
+          ],
+          "improve": [
+            "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
+          ],
+          "next": null,
+          "title": "Close an accepted handover"
+        }
+      ],
+      "speaker": "Pharmacist"
     }
   ],
   "exam": {

@@ -10,9 +10,10 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
   page.on('pageerror',e=>errors.push(e.message));
   const go=async route=>{await page.goto(base+'/'+route);await page.locator('#main h1').waitFor();};
   const click=async(type,value)=>{const selector=`[data-coach="${type}"]${value===undefined?'':`[data-value="${value}"]`}`;await page.locator(selector).first().click();};
-  await go('#structure');assert.equal(await page.locator('a[href^="#structure/worked/"]').count(),12);
+  await go('#structure');assert.equal(await page.locator('a[href^="#structure/worked/"]').count(),15);
   await page.screenshot({path:path.join(os.tmpdir(),'sca-coach-overview.png'),fullPage:true});
   await go('#structure/case/headache');await click('choose','0');await click('attempt');
+  await page.locator('summary').filter({hasText:'Practise one sentence at a time'}).click();assert((await page.locator('.coach-sentence-steps li').count())>=2);
   await page.locator('#coach-attempt').fill('Hello, I am Dr Patel. Could I check your details and whether it is private to talk?');
   await page.reload();assert.match(await page.locator('#coach-attempt').inputValue(),/private/);
   await click('compare');await page.locator('[data-coach-check="0"]').check();await page.locator('[data-coach-check="1"]').check();
@@ -22,7 +23,7 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
   await go('#structure');await click('level','3');await go('#structure/case/headache');await click('jump','hello');assert.equal(await page.locator('[data-coach="choose"]').count(),0);await click('unprompted');
   assert.equal(await page.locator('.coach-exchange blockquote.model').count(),0);
   await page.locator('#coach-spoken').check();await click('compare');
-  await page.locator('[data-coach-check="0"]').check();await page.locator('[data-coach-check="1"]').check();await click('save','hello');await click('finish','independent');
+  await page.locator('[data-coach-check="0"]').check();await page.locator('[data-coach-check="1"]').check();await click('save-example','headache:hello');await click('finish','independent');
   state=await page.evaluate(()=>JSON.parse(localStorage.getItem('consult-studio-v1')));assert.equal(state.coach.runs.headache.results.hello.rating,'independent');
   assert(await page.locator('.coach-exchange').evaluate(e=>e.getBoundingClientRect().top>=-10),'New exchange scrolls into view');
   await click('jump','focus');await page.locator('summary').filter({hasText:'Practise a different patient answer'}).click();await click('branch','urgent');
@@ -41,15 +42,16 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
    }
    assert.match(await page.locator('.coach-exchange').innerText(),/path is complete/,id);
   }
+  await go('#structure/case/handover');await click('jump','hello');assert.equal(await page.locator('.coach-patient-label').textContent(),'The pharmacist says');
   await go('#structure/case/asthma');await click('jump','barrier');if(await page.locator('[data-coach="unprompted"]').count())await click('unprompted');else{await click('choose','0');await click('attempt');}await page.locator('#coach-spoken').check();await click('compare');await click('transfer');
   await page.waitForURL(url=>url.hash.includes('/case/')&&!url.hash.includes('/asthma'));
   state=await page.evaluate(()=>JSON.parse(localStorage.getItem('consult-studio-v1')));const target=page.url().split('/').pop();assert.equal(state.coach.runs[target].node,'barrier');
-  await go('#structure/phrases');await click('saved-filter');assert.match(await page.locator('#main').innerText(),/Start warmly/);assert.equal(await page.locator('.grid .card').count(),1);
+  await go('#structure/phrases');await page.locator('[data-coach-example="headache:hello"]').fill('Hello, I’m the GP. Could I confirm your details and check it is private to speak?');await click('save','hello');await click('recall-example','headache:hello');await click('recall-reveal');assert.match(await page.locator('blockquote.model').innerText(),/Dr Patel/);await click('recall-rate','cue');await go('#structure/phrases');await click('saved-filter');assert.match(await page.locator('#main').innerText(),/Start warmly/);assert.equal(await page.locator('.coach-core-sentences .card').count(),1);
   await go('#structure/review');await click('recall-start');await click('recall-reveal');await click('recall-rate','independent');
   await go('#structure/daily');await page.locator('#coach-reflection').fill('Next time I will explain the reason for my recommendation.');
   const suggested=await page.evaluate(()=>window.StructureCoach.recommendation().c.id);await click('guided-next');await page.waitForURL(url=>url.hash==='#structure/case/'+suggested);
   await go('#progress');const downloadEvent=page.waitForEvent('download');await page.locator('#export-progress').click();const download=await downloadEvent;
-  const downloaded=JSON.parse(fs.readFileSync(await download.path(),'utf8'));assert.equal(downloaded.coach.saved[0],'hello');assert.match(downloaded.coach.reflection,/recommendation/);assert(downloaded.coach.runs.falls.results.check);
+  const downloaded=JSON.parse(fs.readFileSync(await download.path(),'utf8'));assert.equal(downloaded.coach.saved[0],'hello');assert(downloaded.coach.examples.includes('headache:hello'));assert.match(downloaded.coach.exampleNotes['headache:hello'].text,/private/);assert.match(downloaded.coach.reflection,/recommendation/);assert(downloaded.coach.runs.falls.results.check);
   // Import into a fresh browser profile via the real file input and async merge.
   const other=await browser.newPage();other.on('pageerror',e=>errors.push(e.message));await other.goto(base+'/#progress');
   await other.locator('#import-file').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(downloaded))});
@@ -64,6 +66,6 @@ const assert=require('assert/strict'),fs=require('fs'),path=require('path'),os=r
   }
   await page.screenshot({path:path.join(os.tmpdir(),'sca-coach-mobile.png'),fullPage:true});
   assert.deepEqual(errors,[]);
-  console.log('PASS: Chromium — twelve complete case paths, emergency branch, four-level support tracking, spoken/typed practice, reload persistence, cross-case transfer, saved sentences, recall, real JSON export/import, escaping and mobile layouts.');
+  console.log('PASS: Chromium — fifteen complete case paths, emergency branch, four-level support tracking, spoken/typed practice, reload persistence, cross-case transfer, saved sentences, recall, real JSON export/import, escaping and mobile layouts.');
  } finally {await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

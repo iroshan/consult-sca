@@ -2,7 +2,7 @@
 
 A portable static website for UK GP consultation learning. The application entry points are `index.html` and `clinical/index.html`; no Sites platform, server-side service or build installation is required to run them.
 
-- Guided Structure Coach: 12 consultations, 148 exchanges, 16 core/recovery sentence patterns, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
+- Guided Structure Coach: 15 consultations, 184 exchanges, 16 core/recovery sentence patterns, saved case wording and personal versions, sentence-by-sentence rehearsal, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 46 core cases and 138 management permutations in mental health, paediatrics, and older-person/palliative care.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.

@@ -3,17 +3,17 @@
 window.CoachLearning = (() => {
   const groups = [
     ['children','Children and young people','Consultations with people under 19.',['eczema','fever','constipation'],'paediatrics'],
-    ['reproductive','Gender, reproductive and sexual health','Include sexual health, reproductive concerns and inclusive care.',[],null],
+    ['reproductive','Gender, reproductive and sexual health','Include sexual health, reproductive concerns and inclusive care.',['menopause'],null],
     ['longterm','Long-term conditions and disability','Include cancer, multiple conditions and treatment burden.',['asthma','falls'],null],
     ['older','Older adults, frailty and end-of-life care','Consider function, support, preferences and continuity.',['falls','memory','advance'],'older-palliative'],
     ['mental','Mental health and dependence','Include distress, substance use and dependence-forming medicines.',['distress','anxiety','withdrawal'],'mental-health'],
     ['urgent','Urgent and unscheduled care','Recognise changed urgency and arrange actual escalation.',['headache','asthma','fever'],null],
-    ['vulnerability','Disadvantage and vulnerability','Include access, communication, safeguarding and capacity.',['falls','memory'],null],
-    ['diversity','Culture, ethnicity and inclusive care','Explore the individual’s needs and beliefs without assumptions.',[],null],
+    ['vulnerability','Disadvantage and vulnerability','Include access, communication, safeguarding and capacity.',['falls','memory','interpreter'],null],
+    ['diversity','Culture, ethnicity and inclusive care','Explore the individual’s needs and beliefs without assumptions.',['interpreter'],null],
     ['undifferentiated','New, undifferentiated presentations','Reason through uncertainty and choose proportionate next steps.',['headache'],null],
     ['prescribing','Prescribing and medicine use','Discuss suitability, actual use, harms and monitoring.',['asthma','eczema','falls','withdrawal'],null],
-    ['results','Investigations and results','Explain what is known, confirmation and results ownership.',['result'],null],
-    ['professional','Professional conversations and dilemmas','Practise explaining decisions, duty and working with colleagues.',[],null]
+    ['results','Investigations and results','Explain what is known, confirmation and results ownership.',['result','interpreter'],null],
+    ['professional','Professional conversations and dilemmas','Practise explaining decisions, duty and working with colleagues.',['handover'],null]
   ];
   const domains = [['gathering','Data gathering and diagnosis'],['management','Clinical management and medical complexity'],['relating','Relating to others']];
   const ratings = [['unreviewed','Not observed / not reviewed'],['needs','Needs focused practice'],['developing','Partly demonstrated'],['demonstrated','Demonstrated in this attempt']];

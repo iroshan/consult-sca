@@ -1,5 +1,7 @@
 # Structure Coach implementation handover
 
+Current implementation: 15 guided consultations / 184 exchanges, all twelve preparation areas linked, a personal plan/reflection log, reusable patterns plus saved case wording and personal versions. The chronological checkpoints below explain the progression.
+
 ## Completed scope
 
 The coach extends the existing static Practice Studio and is linked prominently from its home page and navigation. Start at `/#structure/daily`; overview is `/#structure`.
@@ -58,3 +60,14 @@ Validation: `scripts/validate-learning.cjs` checks UK dates/DST, sanitisation, e
 Added six complete guided consultations (anxiety, a long-term benzodiazepine running out, fever in a three-year-old, constipation with overflow/impaction, gradual memory changes and a DNACPR/advance-care discussion). The coach now has twelve consultations and 148 exchanges, including four emergency branches. All new cases link to the appropriate existing Atlas case and official guidance. More specific next-action alternatives address common errors. The urgent replay context excludes the ordinary-path answer at the branch point.
 
 All twelve ordinary paths passed the Chromium UI regression. Deterministic tests now verify every emergency path and that related Atlas/studio targets exist. Planning/reflection browser tests were repeated with the expanded catalogue. A retired NHS diazepam subpage was replaced with the current medicine page; the official GMC CPR page was accessible through the research tool but returned a bot/access 403 to the direct link checker. Other new links returned 200. No universal medicine regimens, CPR survival percentages or readiness grades were added.
+
+
+## Follow-up checkpoint: breadth and sentence rehearsal
+
+Added menopause/HRT discussion, a results consultation through a professional interpreter, and a professional pharmacist–GP conversation about a prescribing discrepancy and confirmed error. The coach now contains fifteen consultations and 184 exchanges. All twelve revision areas link to at least one relevant guided case; this is activity coverage, not evidence of competence across the blueprint.
+
+The professional case uses the colleague’s role and custom exchange titles rather than treating a pharmacist as the patient. Selected clinical/professional facts were checked against current NICE, NHS and GMC pages, including current menopause review advice. No universal anticoagulant dose or unverified HRT regimen is supplied.
+
+Added optional sentence-by-sentence rehearsal with listen buttons and pause cues. Saving from case feedback now keeps that case’s actual wording, rather than only the generic core pattern. Personal versions autosave, are escaped on display, merge by timestamp, survive the existing JSON backup and can be compared with the model during a case-specific recall drill. Core patterns retain their separate saved filter.
+
+Validation for the fifteen-case checkpoint: all fifteen ordinary consultation paths passed Chromium UI checks, including the professional role label, sentence-by-sentence rehearsal, case-specific sentence saving, personal wording, case-specific recall and real backup import/export. All four emergency paths and linked Atlas/studio IDs pass deterministic checks. The official BNF and some GMC pages return bot/access 403 to a direct HTTP checker; they remain official references, and relevant GMC content was checked through the research tool. Other new official clinical links returned 200.
