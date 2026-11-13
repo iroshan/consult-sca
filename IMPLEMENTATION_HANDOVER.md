@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **66 cases / 198 variations across ten areas**, spoken discussion rehearsal, 282 one-exchange drills and 207 shorter alternatives across forty-one cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **66 cases / 198 variations across ten areas**, spoken discussion rehearsal, 282 one-exchange drills and 252 shorter alternatives across fifty-six cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -263,3 +263,9 @@ Added 42 meaning-preserving shorter alternatives across the cardiovascular, resp
 The fuller responses and checked management recommendations are retained, as are clinical-check dates and permanent discussion IDs. This is a language revision, not a new universal medicine regimen. The full validator and expanded Atlas discussion browser regression pass, including actual model/shorter playback dispatch, saved notes, backup round-trip and mobile layouts.
 
 Next: provide shorter alternatives for the remaining paediatric and older-person/palliative exchanges, preserving their clinical meaning and urgency, so every current drill offers both versions.
+
+## Continued checkpoint: plain paediatric wording
+
+Added 45 shorter alternatives across all 15 paediatric cases, preserving the existing full response, clinical meaning, IDs and management dates. There are now 252 shorter alternatives across fifty-six cases. The versions retain uncertainty by telephone, assessment before reassurance, feeding/hydration, safe infant sleep, constipation without blame, developmental assessment, age-specific treatment pathways, medicine-specific fluid/cream instructions, accessible contact, neonatal eye urgency and lice advice. No new dose or universal regimen was introduced.
+
+The full validator and expanded Atlas discussion browser regression pass for model/shorter listening, notes and backup round-trip, mobile rendering and existing drill IDs. Next: finish the thirty older-person/palliative alternatives and check any wording that could misdescribe medicine effects.
