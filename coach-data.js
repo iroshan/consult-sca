@@ -6942,6 +6942,24 @@ window.SCA_COACH = {
       "title": "Knee osteoarthritis: movement, pain support and referral",
       "areaId": "musculoskeletal",
       "areaTitle": "Musculoskeletal"
+    },
+    {
+      "id": "atlas:neuro-migraine",
+      "title": "Migraine: a clear explanation and an individual treatment plan",
+      "areaId": "neurology",
+      "areaTitle": "Neurology and headache"
+    },
+    {
+      "id": "atlas:neuro-medication-overuse",
+      "title": "Medication-overuse headache: explain a supported withdrawal plan",
+      "areaId": "neurology",
+      "areaTitle": "Neurology and headache"
+    },
+    {
+      "id": "atlas:neuro-suspected-tia",
+      "title": "Resolved focal symptoms: act on a possible TIA",
+      "areaId": "neurology",
+      "areaTitle": "Neurology and headache"
     }
   ],
   "stageLessons": [
