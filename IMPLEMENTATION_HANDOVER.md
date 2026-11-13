@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **60 cases / 180 variations across eight areas**, spoken discussion rehearsal and 105 shorter alternatives across twenty-one cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **60 cases / 180 variations across eight areas**, spoken discussion rehearsal and 135 shorter alternatives across twenty-seven cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -215,3 +215,11 @@ Current CG192, NG134 and NG69 recommendations were read over verified HTTPS. The
 The full validator and expanded discussion Chromium regression pass, including playback text/fallback, mobile views and real notes/backup round-trip. Previous content checkpoint f3a568c deployed successfully in Actions run 43521975803.
 
 Next: complete the remaining six mental-health discussion sets (psychosis, relapse, mania, opioids, gambling and alcohol) using current official recommendations.
+
+## Continued checkpoint: all twenty-one mental-health discussions deepened
+
+The remaining six original mental-health cases (first psychosis, schizophrenia relapse, possible mania, opioid review, gambling-related harms and alcohol withdrawal) now each have five fuller/shorter exchanges. All 21 mental-health cases have five authored exchanges. The Atlas contains 200 discussion exchanges in total, with 135 shorter alternatives across twenty-seven cases.
+
+Current CG178, CG185, NG248, CG100 and NG215 recommendations were read over verified HTTPS. New wording covers non-confrontational response, direct safety questions, early-intervention/urgent handover, specialist first-antipsychotic advice, individual restart review, medicine harms, safe supported withdrawal and real follow-up ownership. Gambling content now distinguishes group/individual CBT, immediate post-episode suicide risk and specialist naltrexone eligibility/checks, including current opioid use. NHS co-codamol advice was checked for excess-dose advice even if well and emergency breathing symptoms. No universal restart, taper, detoxification or drug regimen is supplied.
+
+The complete validator and expanded discussion browser regression pass, covering all 21 mental-health cases plus GI/MSK rehearsal, listening/fallback, saved notes, real backup round-trip and mobile layouts. Next unit: make the large discussion collection easier to practise one exchange at a time with saved personal wording and delayed retrieval, preserving existing Atlas backups.
