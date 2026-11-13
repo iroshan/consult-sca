@@ -6978,6 +6978,12 @@ window.SCA_COACH = {
       "title": "Brief positional vertigo: explain BPPV without missing a changed syndrome",
       "areaId": "hearing-eyes-balance",
       "areaTitle": "Hearing, eyes and balance"
+    },
+    {
+      "id": "atlas:renal-reduced-egfr",
+      "title": "A first reduced eGFR: confirm the pattern before labelling CKD",
+      "areaId": "renal-urinary",
+      "areaTitle": "Kidney and urinary health"
     }
   ],
   "stageLessons": [
