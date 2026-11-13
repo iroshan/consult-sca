@@ -6960,6 +6960,24 @@ window.SCA_COACH = {
       "title": "Resolved focal symptoms: act on a possible TIA",
       "areaId": "neurology",
       "areaTitle": "Neurology and headache"
+    },
+    {
+      "id": "atlas:sense-sudden-hearing-loss",
+      "title": "Sudden hearing loss: explain why assessment cannot wait",
+      "areaId": "hearing-eyes-balance",
+      "areaTitle": "Hearing, eyes and balance"
+    },
+    {
+      "id": "atlas:sense-red-eye",
+      "title": "Red eye: safe assessment before calling it conjunctivitis",
+      "areaId": "hearing-eyes-balance",
+      "areaTitle": "Hearing, eyes and balance"
+    },
+    {
+      "id": "atlas:sense-positional-vertigo",
+      "title": "Brief positional vertigo: explain BPPV without missing a changed syndrome",
+      "areaId": "hearing-eyes-balance",
+      "areaTitle": "Hearing, eyes and balance"
     }
   ],
   "stageLessons": [

@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **63 cases / 189 variations across nine areas**, spoken discussion rehearsal, 267 one-exchange drills and 150 shorter alternatives across thirty cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **66 cases / 198 variations across ten areas**, spoken discussion rehearsal, 282 one-exchange drills and 165 shorter alternatives across thirty-three cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -245,3 +245,13 @@ Current CG150, NG128 and NG215 recommendations plus NHS migraine/headache/TIA, M
 Validation: all 378 Atlas case sections and 267 drill routes pass. New neurology notes/bookmarks survive import. Neurology, updated learning-picker, discussion-drill and expanded Atlas discussion browser regressions pass, including native tabs, persistence, real backup round-trips and mobile views. Earlier feature checkpoint 1bfd4e6 deployed successfully in Actions run 43525435504; live new module, Atlas JS/HTML and catalogue hashes matched the checkout over verified HTTPS.
 
 Next: continue the next medical area (for example hearing/eye/balance presentations), checking current official urgency and referral criteria before writing cases.
+
+## Continued checkpoint: hearing, eye and balance cases
+
+Added unexplained sudden hearing loss, an assessed uncomplicated red-eye/conjunctivitis presentation with urgent variations, and brief assessed BPPV. Each has five fuller/shorter exchanges, three variations, management/reasoning, safety/review and recall. Totals: **66 cases / 198 variations / 282 discussion drills**, with 165 shorter alternatives across thirty-three cases. The learning picker and import/route checks are updated; existing IDs are unchanged.
+
+Current NG98/NG127 and NHS hearing loss, red eye, conjunctivitis, eye injury and vertigo pages were read over verified HTTPS. New text preserves sudden-hearing-loss onset/referral windows, distinguishes urgent ENT from stroke/medical danger, checks accessible handover, uses cause-appropriate eye care and immediate chemical irrigation/emergency care, and restricts Hallpike/Epley/HINTS to appropriate syndromes and trained expertise. New vertigo with deafness or a changed acute syndrome needs immediate reassessment. NHS dexamethasone and propranolol suitability information was also checked, and the migraine asthma explanation clarified. No universal steroid or manoeuvre instruction is supplied.
+
+All 396 Atlas case sections and 282 drill routes pass. Hearing/eye/balance, updated learning-picker, discussion-coach and expanded Atlas discussion browser regressions pass, including native tabs, imported notes/bookmarks, real backups, help tracking, playback/fallback and mobile layouts. Neurology checkpoint ba49039 deployed successfully in Actions run 43526686002.
+
+Next manageable unit: add shorter, meaning-preserving wording to the cardiovascular, respiratory and endocrine discussions; keep clinical recommendations and permanent IDs stable.
