@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **66 cases / 198 variations across ten areas**, spoken discussion rehearsal, 282 one-exchange drills and 165 shorter alternatives across thirty-three cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **66 cases / 198 variations across ten areas**, spoken discussion rehearsal, 282 one-exchange drills and 207 shorter alternatives across forty-one cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -255,3 +255,11 @@ Current NG98/NG127 and NHS hearing loss, red eye, conjunctivitis, eye injury and
 All 396 Atlas case sections and 282 drill routes pass. Hearing/eye/balance, updated learning-picker, discussion-coach and expanded Atlas discussion browser regressions pass, including native tabs, imported notes/bookmarks, real backups, help tracking, playback/fallback and mobile layouts. Neurology checkpoint ba49039 deployed successfully in Actions run 43526686002.
 
 Next manageable unit: add shorter, meaning-preserving wording to the cardiovascular, respiratory and endocrine discussions; keep clinical recommendations and permanent IDs stable.
+
+## Continued checkpoint: shorter medical management wording
+
+Added 42 meaning-preserving shorter alternatives across the cardiovascular, respiratory and endocrine cases. There are now 207 shorter alternatives across forty-one cases. They clarify blood-pressure confirmation/targets/access, rhythm versus stroke-prevention purposes, bleeding/falls and prescription-specific missed doses, acute chest-pain action, actual inhaler instructions, oxygen assessment, rehabilitation, diabetes treatment sequencing, urgent diabetes symptoms and thyroid administration/review.
+
+The fuller responses and checked management recommendations are retained, as are clinical-check dates and permanent discussion IDs. This is a language revision, not a new universal medicine regimen. The full validator and expanded Atlas discussion browser regression pass, including actual model/shorter playback dispatch, saved notes, backup round-trip and mobile layouts.
+
+Next: provide shorter alternatives for the remaining paediatric and older-person/palliative exchanges, preserving their clinical meaning and urgency, so every current drill offers both versions.
