@@ -6,6 +6,7 @@ A portable static website for UK GP consultation learning. The application entry
 - Guided Structure Coach: 17 consultations, 211 exchanges, 16 core/recovery sentence patterns, saved case wording and personal versions, sentence-by-sentence rehearsal, four help levels, emergency branches, full worked examples, targeted replay, cross-case transfer, spaced recall and a printable trainer sheet. Start at `/#structure/daily`.
 - Original practice studio: 12 modules, 48 annotated phrases, 16 consultation cases and decision drills.
 - Clinical Atlas: 60 core cases and 180 management permutations in mental health, paediatrics, older-person/palliative care, cardiovascular, respiratory, endocrine/metabolic, gastrointestinal and musculoskeletal medicine.
+- One-exchange discussion drills: 252 prompts across all 60 cases, searchable by concern/condition/medicine, personal wording, saved collection, supported/unaided recall, hidden-wording retries and dated spaced practice at `/clinical/#discussion`.
 - Atlas discussion rehearsal: hide/reveal model replies, speak–compare–retry, browser listening and 135 shorter alternatives across selected mental-health, gastrointestinal and musculoskeletal cases.
 - UK consultation English: 50 phrases with natural/shorter versions and tone notes, 8 conversations and a glossary.
 - Personal weekly plan, twelve preparation-area priorities, evidence-led feedback records linked to all guided and Atlas cases, fictional context and dated repeat tasks at `/#structure/learning`.
@@ -52,3 +53,11 @@ No patient data, personal learning records, raw study files or account credentia
 This is independent educational material with fictional scenarios. Original Atlas/studio recommendations were checked on 11 November 2026; selected new coach facts were checked on 12 November 2026. Content is not automatically updated or independently clinician peer-reviewed, and does not cover every clinical condition, regimen or examination requirement. Use current official prescribing guidance, local pathways, clinical judgement and the legal framework of the relevant UK nation. Self-ratings and practice totals are not clinical grades or pass predictions.
 
 Other specialty areas remain to be added. Official clinical links are included in the cases.
+
+## Discussion-drill content and progress
+
+`clinical/discussion-coach.js` reuses authored discussion entries from the catalogue. Each entry has a permanent `id` such as `mh-gambling-talk-5`; preserve it when editing wording or reordering entries. Give new entries new IDs. Do not regenerate existing IDs from array positions, because notes and recall use those IDs. The validator checks uniqueness, fields and routes.
+
+The additive `dialogue` state lives inside the existing version-1 Atlas backup. Older Atlas imports preserve newer drill progress. Model exposure on the case Discussion tab marks an unfinished matching drill as supported; feedback after an attempt does not retroactively do so. Personal/previous wording stays hidden during unaided retrieval. Recall is self-reviewed, not automatic clinical marking.
+
+Run `node scripts/browser-discussion-coach.cjs` for search/filter, attempt/retry, model exposure, playback fallback, extensive/legacy backup and mobile checks. Atlas import accepts valid files up to 20 MB, with bounded field sanitisation and known-case/phrase filtering. Studio/Coach and Atlas still have separate exports.
