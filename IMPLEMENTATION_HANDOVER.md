@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **60 cases / 180 variations across eight areas**, spoken discussion rehearsal and 80 shorter alternatives across sixteen cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **60 cases / 180 variations across eight areas**, spoken discussion rehearsal and 105 shorter alternatives across twenty-one cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -205,3 +205,13 @@ Current NG222, NG116, CG138, NG142 and GOV.UK fit-note guidance were read over v
 Full validator and the expanded Atlas discussion browser regression pass, including spoken rehearsal, shorter replies, fallback, real backup round-trip and mobile layouts. The starting checkout and origin/main were clean and aligned; prior publication 4c054b7 was successful.
 
 Next: perinatal, young-person and eating-disorder discussion sets, after checking CG192, NG134 and NG69.
+
+## Continued checkpoint: perinatal and adolescent discussions
+
+Expanded antenatal depression, postnatal depression, postpartum psychosis, adolescent anxiety/depression and eating-disorder discussions to five fuller/shorter exchanges each. There are now 105 shorter alternatives across twenty-one cases. The wording explains pregnancy-specific risk decisions, prompt review after stopping medicine, unwanted thoughts versus intent, honest safeguarding, accessible support, immediate postpartum escalation, hearing a young person privately and physical eating-disorder risk across weights.
+
+Current CG192, NG134 and NG69 recommendations were read over verified HTTPS. The case text preserves the immediate assessment/within-four-hours-of-referral rule for sudden suspected postpartum psychosis and emergency action for immediate danger. Adolescent antidepressant treatment is distinguished from adult pathways, including prior child/adolescent psychiatrist assessment and individually documented close monitoring (for example weekly contact for the first four weeks). The eating-disorder case now explicitly calls for assessment today in the supplied faint/rapid-weight-loss scenario and immediate age-appropriate specialist referral after suspicion, without waiting for a BMI threshold or delaying acute medical care. No restart dose, universal nutrition regimen or safeguarding outcome is promised.
+
+The full validator and expanded discussion Chromium regression pass, including playback text/fallback, mobile views and real notes/backup round-trip. Previous content checkpoint f3a568c deployed successfully in Actions run 43521975803.
+
+Next: complete the remaining six mental-health discussion sets (psychosis, relapse, mania, opioids, gambling and alcohol) using current official recommendations.

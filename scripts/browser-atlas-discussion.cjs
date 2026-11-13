@@ -5,7 +5,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict'),fs=requir
   const base=process.env.SCA_BASE_URL||'http://127.0.0.1:8011',page=await browser.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.addInitScript(()=>{window.__played=[];window.SpeechSynthesisUtterance=function(text){this.text=text;};Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{cancel(){},getVoices(){return[];},speak(u){window.__played.push({text:u.text,lang:u.lang,rate:u.rate});}}});});
-  for(const id of ['gi-ibs','gi-rectal-bleeding','gi-dyspepsia','msk-back-pain','msk-gout','msk-knee-oa','mh-depression','mh-gad','mh-panic','mh-sleep','mh-dependence','mh-minority-stress','mh-palliative','mh-adjustment','mh-ptsd','mh-bullying']){
+  for(const id of ['gi-ibs','gi-rectal-bleeding','gi-dyspepsia','msk-back-pain','msk-gout','msk-knee-oa','mh-depression','mh-gad','mh-panic','mh-sleep','mh-dependence','mh-minority-stress','mh-palliative','mh-adjustment','mh-ptsd','mh-bullying','mh-antenatal','mh-postnatal','mh-postpartum-psychosis','mh-young-person','mh-eating']){
    await page.goto(base+'/clinical/#case/'+id);await page.locator('[role="tab"][data-tab="discussion"]').click();
    const count=await page.locator('.discussion-model').count();assert(count>=1,id);
    assert.equal(await page.locator('.discussion-model[open]').count(),count);
