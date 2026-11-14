@@ -174,13 +174,16 @@ window.StructureCoach = (() => {
     const candidates=data.cases.filter(x=>x.id!==c.id).map(x=>({c:x,n:nodeById(x,n.id)||x.nodes.find(other=>other.phrase===n.phrase&&!other.alternative&&other.id!=='urgent')})).filter(x=>x.n);
     return candidates.filter(x=>{const run=state.coach.runs[x.c.id];return !run||run.complete||!(run.draft?.trim()||run.spoken||run.phase==='feedback');}).sort((a,b)=>(state.coach.runs[a.c.id]?.results[a.n.id]?.at||0)-(state.coach.runs[b.c.id]?.results[b.n.id]?.at||0))[0]||null;
   }
-  function recommendation(){
+  function recommendation(now=Date.now()){
     const unfinished=data.cases.filter(c=>state.coach.runs[c.id]&&!state.coach.runs[c.id].complete).sort((a,b)=>state.coach.runs[b.id].updated-state.coach.runs[a.id].updated)[0];
     if(unfinished)return {c:unfinished,node:state.coach.runs[unfinished.id].node,resume:true,reason:'Resume the exchange you were working on. Your draft and help level are kept.'};
     const weak=[];for(const c of data.cases)for(const [id,r]of Object.entries(state.coach.runs[c.id]?.results||{}))if(r.rating!=='independent'){const n=nodeById(c,id);weak.push({c,node:id,result:r,gap:r.checks.length<n.essential.length||r.mistake});}
     weak.sort((a,b)=>a.result.at-b.result.at);
-    if(weak.length){const w=weak[0];return {...w,level:w.gap?0:Math.min(3,w.result.support+1),reason:w.gap?'Revisit an exchange with an essential-action gap. Start with the full explanation, then try again.':'Repeat a previously supported exchange with one fewer level of help. You can request more help at any time.'};}
-    const next=data.cases.find(c=>!state.coach.runs[c.id]?.complete)||data.cases[0];return {c:next,node:next.nodes[0].id,level:state.coach.level,reason:'Try a complete consultation, or start with just two exchanges.'};
+    const due=weak.filter(w=>w.result.at+(w.result.rating==='again'?600000:86400000)<=now);
+    if(due.length){const w=due[0];return {...w,level:w.gap?0:Math.min(3,w.result.support+1),reason:w.gap?'This exchange is due after a delay and had an essential-action gap. Revisit the explanation, then try again.':'This supported exchange is due after a delay. Try one fewer level of help; request more whenever you need it.'};}
+    const next=data.cases.find(c=>!state.coach.runs[c.id]?.complete);if(next)return {c:next,node:next.nodes[0].id,level:state.coach.level,reason:'Try a new consultation, or start with just two exchanges. Supported exchanges will return after a delay.'};
+    if(weak.length){const w=weak[0],target=transferTarget(w.c,nodeById(w.c,w.node));if(target)return {c:target.c,node:target.n.id,level:w.gap?0:Math.min(3,w.result.support+1),reason:'Your supported exchanges are not due yet. Use the same purpose with a different patient now, then revisit the earlier attempt after a delay.'};}
+    const optional=data.cases.slice().sort((a,b)=>(state.coach.runs[a.id]?.updated||0)-(state.coach.runs[b.id]?.updated||0))[0];return {c:optional,node:optional.nodes[0].id,level:state.coach.level,reason:'Choose an optional fresh run in a less recently practised case. Practice records do not establish readiness.'};
   }
   function daily() {
     const suggestion=recommendation(), next=suggestion.c;
