@@ -7,7 +7,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
   const click=async(type,value)=>page.locator(`[data-coach="${type}"]${value===undefined?'':`[data-value="${value}"]`}`).first().click();
   await page.goto(base+'/#structure');await click('level','0');
   const branches=await page.evaluate(()=>window.SCA_COACH.cases.flatMap(c=>c.nodes.filter(n=>n.branch).map(n=>({caseId:c.id,source:n.id,ordinaryReply:n.reply,...n.branch}))));
-  assert.equal(branches.length,6);
+  assert.equal(branches.length,9);
   for(const branch of branches){
    await page.goto(base+'/#structure/case/'+branch.caseId);await click('jump',branch.source);
    await page.locator('summary').filter({hasText:branch.label}).click();await click('branch',branch.next);
@@ -19,7 +19,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
     await click('finish','cue');assert(++count<10);
    }
    assert.match(await page.locator('.coach-exchange').innerText(),/path is complete/);
-   if(branch.caseId==='dyspepsia')assert.equal(count,2,'Choosing an empirical trial has its own two-exchange path');
+   if(branch.next!=='urgent')assert.equal(count,2,'Each informed-choice path has its own two-exchange ending');
    await page.reload();assert.match(await page.locator('.coach-exchange').innerText(),/path is complete/);
   }
   await page.goto(base+'/#structure/worked/dyspepsia');
@@ -29,6 +29,6 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
   assert.match(await page.locator('.patient-quote').first().innerText(),/planned medicine trial/);
   await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   await page.screenshot({path:'/tmp/sca-branch-mobile.png',fullPage:true});assert.deepEqual(errors,[]);
-  console.log('PASS: Chromium — five emergency paths, two-exchange shared-choice branch, branch-specific facts, completed-path reload, worked-example handoff and mobile layout.');
+  console.log('PASS: Chromium — five emergency paths, four two-exchange shared-choice branches, branch-specific facts, completed-path reload, worked-example handoff and mobile layout.');
  } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

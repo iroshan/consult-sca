@@ -909,7 +909,12 @@ window.SCA_COACH = {
           "improve": [
             "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers."
           ],
-          "next": "safety"
+          "next": "safety",
+          "branch": {
+            "label": "Practise a different patient answer: I cannot lose more wages",
+            "patient": "I cannot afford to miss another morning of work. Could we just leave the blood test for now?",
+            "next": "access-explore"
+          }
         },
         {
           "id": "safety",
@@ -966,6 +971,66 @@ window.SCA_COACH = {
             "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
           ],
           "next": null
+        },
+        {
+          "id": "access-explore",
+          "title": "Alternative: understand the cost of attending",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I cannot afford to miss another morning of work. Could we just leave the blood test for now?",
+          "task": "Explore the actual access barrier while keeping the reason for confirmation clear.",
+          "model": "I can see that missing work has a real cost for you. The repeat test still matters because we need to confirm what the result means. What would make attending most difficult? Let’s look for a practical arrangement rather than leave the result unresolved.",
+          "simple": "Missing work has a cost. The test still matters. What is the main difficulty, and what arrangement might help?",
+          "starter": "Missing work… The reason for the test… What would…",
+          "purpose": "Use the person’s answer to make a clinically needed next step feasible.",
+          "tip": "Ask one question, listen, then check real availability. Do not promise a slot or treat an access barrier as proof that the patient does not care.",
+          "reply": "The barrier is losing wages. An early appointment would help. In this fictional branch the practice checks and confirms a 7.30 am blood-test slot on Thursday that the patient can attend.",
+          "options": [
+            "Explore the actual access barrier while keeping the reason for confirmation clear.",
+            "Say it is the patient’s fault if they cannot attend.",
+            "Cancel confirmation indefinitely because attendance is difficult."
+          ],
+          "answer": 0,
+          "why": "A barrier calls for practical problem-solving, not blame or abandonment of a significant result.",
+          "essential": [
+            "Acknowledged the cost without blame",
+            "Retained the clinical reason and explored a feasible arrangement"
+          ],
+          "improve": [
+            "Ask one question, listen, then check real availability. Do not promise a slot or treat an access barrier as proof that the patient does not care."
+          ],
+          "next": "access-close",
+          "alternative": true
+        },
+        {
+          "id": "access-close",
+          "title": "Alternative: confirm an appointment and result ownership",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "The early slot works. What happens after the test?",
+          "task": "Confirm the supplied arrangement, own result review and check earlier-help advice.",
+          "model": "The practice has confirmed the 7.30 am slot on Thursday, and you have said you can attend. I will review the result and we will agree when and how you will hear, using the actual laboratory turnaround. If that contact does not happen, please call us; we will also track the result. Do not wait for the test if you develop marked thirst, frequent urination or unexplained weight loss: contact us promptly. Vomiting or abdominal pain with deep breathing, sleepiness or confusion needs emergency help: call 999 or go to A&E immediately, and do not drive yourself. Could you talk me through the next steps?",
+          "simple": "Your Thursday 7.30 am slot is confirmed. I will review the result and agree how you hear. New diabetes symptoms need earlier advice; severe illness needs emergency care. What will you do next?",
+          "starter": "Your appointment is… I will review… If… Could you…",
+          "purpose": "Finish a feasible test plan with named ownership, a contingency and understanding.",
+          "tip": "The time is a supplied fictional arrangement, not a promise about a real service. Complete contact timing from the actual pathway. Severe illness needs 999/A&E and no self-driving.",
+          "reply": "The patient confirms the early appointment, the agreed result contact and the earlier-help plan. The practice retains responsibility for reviewing the unresolved result.",
+          "options": [
+            "Confirm the supplied arrangement, own result review and check earlier-help advice.",
+            "Assume taking the sample completes all responsibility.",
+            "Ask the patient to interpret the result alone or wait despite severe illness."
+          ],
+          "answer": 0,
+          "why": "An appointment solves access only when the review loop and deterioration plan are also clear.",
+          "essential": [
+            "Confirmed the supplied feasible appointment and who reviews the result",
+            "Explained earlier help and checked understanding"
+          ],
+          "improve": [
+            "The time is a supplied fictional arrangement, not a promise about a real service. Complete contact timing from the actual pathway. Severe illness needs 999/A&E and no self-driving."
+          ],
+          "next": null,
+          "alternative": true
         }
       ],
       "atlasLabel": "After confirmation: type 2 management ↗"
@@ -1268,7 +1333,12 @@ window.SCA_COACH = {
           "improve": [
             "Respond to the specific answer. Keep a necessary clinical recommendation clear while addressing practical barriers."
           ],
-          "next": "safety"
+          "next": "safety",
+          "branch": {
+            "label": "Practise a different patient answer: I hide my inhaler at work",
+            "patient": "I feel embarrassed using an inhaler in front of colleagues, so I sometimes skip it. Should I just stop it?",
+            "next": "work-inhaler"
+          }
         },
         {
           "id": "safety",
@@ -1325,6 +1395,66 @@ window.SCA_COACH = {
             "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
           ],
           "next": null
+        },
+        {
+          "id": "work-inhaler",
+          "title": "Alternative: respond to embarrassment without blame",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I feel embarrassed using an inhaler in front of colleagues, so I sometimes skip it. Should I just stop it?",
+          "task": "Understand the social barrier and retain a safe anti-inflammatory treatment plan.",
+          "model": "Thank you for telling me. It sounds uncomfortable feeling watched at work. What worries you most about someone seeing the inhaler? I would not recommend simply stopping needed asthma treatment. Let’s find a way for you to use the agreed treatment safely and comfortably.",
+          "simple": "What worries you about using it at work? Please do not simply stop needed treatment. Let’s make the plan workable.",
+          "starter": "Thank you… What worries… Let’s…",
+          "purpose": "Elicit a barrier that a routine adherence question may miss.",
+          "tip": "Do not prescribe secrecy or insist on disclosure to an employer. Explore the individual’s preference and check the actual regimen, device technique and treatment access.",
+          "reply": "The patient worries about being judged, not about a medicine side effect. They prefer a private place without disclosing medical details to colleagues. The clinician checks technique and agrees a feasible private-use arrangement that does not delay needed reliever access.",
+          "options": [
+            "Understand the social barrier and retain a safe anti-inflammatory treatment plan.",
+            "Tell the patient they are being silly and must use it publicly.",
+            "Agree to stop anti-inflammatory treatment without reassessment."
+          ],
+          "answer": 0,
+          "why": "Responding to embarrassment can improve use without blame, unnecessary disclosure or unsafe stopping.",
+          "essential": [
+            "Acknowledged and explored the real concern",
+            "Kept needed treatment and actual device checks in the plan"
+          ],
+          "improve": [
+            "Do not prescribe secrecy or insist on disclosure to an employer. Explore the individual’s preference and check the actual regimen, device technique and treatment access."
+          ],
+          "next": "work-action-plan",
+          "alternative": true
+        },
+        {
+          "id": "work-action-plan",
+          "title": "Alternative: keep treatment and urgent help accessible",
+          "phrase": "safety",
+          "stage": "close",
+          "patient": "A private place would help. What if I suddenly need the reliever?",
+          "task": "Agree usable access, the actual action plan and follow-up.",
+          "model": "You should be able to reach your reliever when you need it. Let’s check that the private-use arrangement does not get in the way of that. We will go through your actual inhaler instructions and written asthma action plan, and agree a review to check symptoms, technique and how the plan is working. If you are having an attack and getting worse, or the reliever is not helping, call 999 and do not drive yourself. Could you tell me how you will manage the inhalers at work and what you will do if symptoms worsen?",
+          "simple": "Keep the reliever accessible. Let’s check your inhaler instructions, action plan and review. An attack getting worse or not helped by the reliever needs 999. What will you do at work?",
+          "starter": "Keep… Let’s check… If… Could you tell me…",
+          "purpose": "Do not let a social workaround obstruct urgent treatment.",
+          "tip": "The reliever and dose instructions must match the actual regimen. Increased symptoms or needing relief more often needs prompt medical advice; do not wait for a routine review.",
+          "reply": "The patient explains the agreed private-use plan, immediate reliever access and the action-plan/emergency steps. A specific review arrangement is agreed using the actual service.",
+          "options": [
+            "Agree usable access, the actual action plan and follow-up.",
+            "Tell the patient to leave all inhalers somewhere inaccessible to avoid embarrassment.",
+            "Give a generic reliever dose without checking the actual prescribed regimen."
+          ],
+          "answer": 0,
+          "why": "A workable plan must preserve both everyday treatment and rapid access during deterioration.",
+          "essential": [
+            "Confirmed actual instructions and accessible reliever/action plan",
+            "Gave severity-matched earlier help and a review/understanding check"
+          ],
+          "improve": [
+            "The reliever and dose instructions must match the actual regimen. Increased symptoms or needing relief more often needs prompt medical advice; do not wait for a routine review."
+          ],
+          "next": null,
+          "alternative": true
         }
       ]
     },
@@ -4927,7 +5057,12 @@ window.SCA_COACH = {
           "improve": [
             "Discuss relevant alternatives, risks and the consequences of no change when appropriate. Urgency affects available choices."
           ],
-          "next": "barrier"
+          "next": "barrier",
+          "branch": {
+            "label": "Practise a different patient answer: I prefer not to start HRT",
+            "patient": "I understand there are benefits, but I do not want HRT at the moment. I would like another way to cope with the symptoms.",
+            "next": "hrt-preference"
+          }
         },
         {
           "id": "barrier",
@@ -5012,6 +5147,66 @@ window.SCA_COACH = {
             "Make teach-back about the clarity of your explanation. Resolve any misunderstanding before closing."
           ],
           "next": null
+        },
+        {
+          "id": "hrt-preference",
+          "title": "Alternative: explore an informed preference",
+          "phrase": "barrier",
+          "stage": "plan",
+          "patient": "I understand there are benefits, but I do not want HRT at the moment. I would like another way to cope with the symptoms.",
+          "task": "Respect the preference, clarify the main concern and discuss suitable alternatives.",
+          "model": "That is your choice, and we can still help with the symptoms. Could you tell me what matters most in that decision? We can clarify any questions and discuss other suitable approaches, including menopause-specific CBT, without pressuring you to start HRT.",
+          "simple": "You can choose not to start HRT. What matters most to you? Let’s discuss other suitable help.",
+          "starter": "That is your choice… What matters… We can…",
+          "purpose": "Use an informed preference to shape an active plan rather than end the consultation.",
+          "tip": "Do not assume refusal is a misunderstanding. Clarify the concern and explain individual benefits/risks if wanted. A preference not to take HRT is not automatically the same as clinical unsuitability for every alternative medicine.",
+          "reply": "Claire has heard the balanced information, prefers not to start HRT and would like menopause-specific CBT. Her symptoms affect sleep/work but the supplied assessment has no acute danger or concerning unexplained bleeding.",
+          "options": [
+            "Respect the preference, clarify the main concern and discuss suitable alternatives.",
+            "Keep arguing until the patient accepts HRT.",
+            "Say there is no help available unless the patient takes hormones."
+          ],
+          "answer": 0,
+          "why": "Shared decisions retain support and suitable alternatives after an informed preference.",
+          "essential": [
+            "Respected the choice and explored what mattered",
+            "Offered an appropriate alternative without a blanket promise"
+          ],
+          "improve": [
+            "Do not assume refusal is a misunderstanding. Clarify the concern and explain individual benefits/risks if wanted. A preference not to take HRT is not automatically the same as clinical unsuitability for every alternative medicine."
+          ],
+          "next": "hrt-alternative-plan",
+          "alternative": true
+        },
+        {
+          "id": "hrt-alternative-plan",
+          "title": "Alternative: arrange support and leave a route back",
+          "phrase": "check",
+          "stage": "close",
+          "patient": "I would like to try that. How will we arrange it, and can I revisit the decision later?",
+          "task": "Agree actual access, interim support, review and a route to reconsider.",
+          "model": "Yes, we can revisit the decision. I will check how you can access menopause-specific CBT locally and explain the available route and any wait. Let’s agree practical support for sleep and work while that is arranged, and a date to review how you are managing. Contact us sooner about new concerning symptoms or unexpected, heavy or persistent bleeding; we should assess those rather than assume they are menopause. Could you tell me the next steps we have agreed?",
+          "simple": "I will check the CBT route and explain the wait. Let’s agree support and a review date. You can reconsider HRT later; concerning symptoms or bleeding need earlier assessment. What are the next steps?",
+          "starter": "I will check… While we arrange… Let’s agree… Could you…",
+          "purpose": "Turn a suitable preference into an owned plan with continued access to care.",
+          "tip": "Do not invent service availability or leave a referral untracked. Other medicines require their own eligibility/safety checks; this is not a universal non-HRT regimen.",
+          "reply": "Claire understands the access check, interim support, review contact and earlier-help advice. The practice owns the next contact, and the option to reconsider treatment remains open.",
+          "options": [
+            "Agree actual access, interim support, review and a route to reconsider.",
+            "Promise an immediately available service without checking.",
+            "Close with “come back if you change your mind” and no practical support."
+          ],
+          "answer": 0,
+          "why": "A non-prescribing decision still needs arrangements, safety and follow-up ownership.",
+          "essential": [
+            "Agreed access checking, support and a definite review plan",
+            "Kept earlier-help advice, understanding and a route to reconsider"
+          ],
+          "improve": [
+            "Do not invent service availability or leave a referral untracked. Other medicines require their own eligibility/safety checks; this is not a universal non-HRT regimen."
+          ],
+          "next": null,
+          "alternative": true
         }
       ]
     },

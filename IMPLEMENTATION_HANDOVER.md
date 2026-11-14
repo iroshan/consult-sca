@@ -1,6 +1,6 @@
 # Structure Coach implementation handover
 
-Current implementation: **17 guided consultations / 211 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and a two-exchange shared-choice branch. The Atlas has **72 cases / 216 variations across twelve areas**, spoken discussion rehearsal, 315 one-exchange drills, each with fuller and shorter wording across all seventy-two cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
+Current implementation: **17 guided consultations / 217 exchanges**, six stage lessons (19 sentence sequences, six filled-in examples and twelve changed-answer drills), four support levels, five emergency paths and four two-exchange shared-choice branches. The Atlas has **72 cases / 216 variations across twelve areas**, spoken discussion rehearsal, 315 one-exchange drills, each with fuller and shorter wording across all seventy-two cases. All twelve preparation groups are linked; this is activity coverage, not competence. Personal plans/reflections, due repeat tasks, saved case wording and own versions use browser-local version-1 progress and backups.
 
 Resume at https://sca.iroshan.com/#structure/daily or /#structure/stages. The canonical checkout is /workspace/github/consult-sca. Inspect git status, fetch and compare the remote before edits. The exact checkpoint containing this file is given by `git log -1 --oneline`; chronological notes below record prior content/deployment hashes. No automatic quota monitoring or background continuation is assumed.
 
@@ -322,3 +322,14 @@ Current official NICE NG23/NG88/NG126/NG12, TA1143, NHS and MHRA content was rea
 All thirteen distinct references in the new area returned HTTPS 200. Full validator and Chromium reproductive (all cases/tabs), all-case learning picker, feedback recipe, all-seventeen guided paths, model-exposure/help and expanded all-case discussion regressions pass. Existing permanent discussion IDs, local notes and version-1 imports remain compatible; all three new cases are also explicitly checked for imported notes/bookmarks. No independent clinical peer review or automated speech grading is implied.
 
 The preceding recipe checkpoint 67f499e deployed successfully in Actions run 43532568504. Next: verify this release’s Actions/build/live assets, then add the next guidance-checked specialty or deepen the authored branching/transfer tasks. Inspect git state before continuing and do not publish private study material.
+
+
+## Continued checkpoint: three further changed-answer paths
+
+Added six guided exchanges in three two-exchange paths: blood-test access and lost wages; embarrassment about inhalers at work; and an informed preference not to start HRT. Totals: **17 guided consultations / 217 exchanges**, five emergency paths and four two-exchange shared-choice paths. Each new exchange includes full/shorter wording, sentence beginnings, a task cue, no-model practice, a clinical/communication explanation, supplied patient response and essential/optional self-review.
+
+The branches retain the need to confirm a significant result, protect reliever access and an actual asthma action plan, and respect an informed HRT preference with suitable alternatives, interim support and review. Fictional appointment availability is explicitly supplied, not promised about real services. They add communication practice rather than a new medicine regimen. Existing ordinary paths, case/node IDs and completed reviews remain stable; alternatives are hidden from the ordinary worked model.
+
+Full validator, Chromium all-nine-branch and model-exposure/help regressions pass, including branch-specific context, complete-path reload and mobile layout. New deterministic checks verify that ordinary worked examples do not expose these alternative models and that Let me try/help tracking remains honest. The preceding 72-case checkpoint dcde657 deployed successfully in Actions run 43533520158.
+
+Next: improve transfer from an alternative exchange to the same communication purpose in another case (its unique node ID currently has no match). Preserve unfinished target drafts while doing so. Then verify publication and continue the next guidance-checked specialty or teaching improvement.
