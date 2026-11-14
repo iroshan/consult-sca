@@ -8,3 +8,4 @@
 .dialogue-filter select{max-width:100%}.dialogue-filters{margin:14px 0 24px}.dialogue-rating{display:flex;flex-direction:column;gap:10px;margin:18px 0}.dialogue-rating .btn{white-space:normal;text-align:left;justify-content:flex-start}textarea[data-dialogue-field],textarea[data-dialogue-note]{font-size:16px;min-height:130px}.dialogue-filter input{min-width:0}#dialogue-results .case-row{gap:20px}#dialogue-results .case-row h3{font-size:18px}
 
 #dialogue-results .case-row{margin:12px 0}.dialogue-filters [aria-pressed="true"]{background:var(--green);color:#fff}#dialogue-workspace:focus{outline:2px solid #a9bf96;outline-offset:3px}
+.sentence-rehearsal{border:1px solid var(--line);border-radius:10px;padding:20px;margin:18px 0;background:#fbfcf8;overflow-wrap:anywhere}.sentence-rehearsal:focus{outline:2px solid #587c61;outline-offset:3px}.sentence-line{min-height:100px}.sentence-rehearsal .clinician-line{margin:12px 0}.sentence-rehearsal .actions{flex-wrap:wrap}
