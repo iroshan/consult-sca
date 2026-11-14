@@ -63,3 +63,5 @@ The additive `dialogue` state lives inside the existing version-1 Atlas backup. 
 Run `node scripts/browser-discussion-coach.cjs` for search/filter, attempt/retry, model exposure, playback fallback, extensive/legacy backup and mobile checks. Atlas import accepts valid files up to 20 MB, with bounded field sanitisation and known-case/phrase filtering. Studio/Coach and Atlas still have separate exports.
 
 Feedback-to-retry teaching: six original practice recipes at `/#structure/learning` connect an observed gap to natural wording, a contrasting patient reply, an adapted next task and delayed transfer. They fill only empty goal/action/sentence fields, never fabricate feedback, and remain in the existing draft/backup. Run `node scripts/browser-feedback-recipes.cjs` for the UI regression.
+
+Transfer practice uses the same exchange or reusable communication purpose in a different case. It avoids overwriting an unfinished destination response; resume those attempts from the coach if all suitable cases are busy. Run `node scripts/browser-coach-transfer.cjs` to check alternative paths and draft/backup preservation.

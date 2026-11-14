@@ -333,3 +333,12 @@ The branches retain the need to confirm a significant result, protect reliever a
 Full validator, Chromium all-nine-branch and model-exposure/help regressions pass, including branch-specific context, complete-path reload and mobile layout. New deterministic checks verify that ordinary worked examples do not expose these alternative models and that Let me try/help tracking remains honest. The preceding 72-case checkpoint dcde657 deployed successfully in Actions run 43533520158.
 
 Next: improve transfer from an alternative exchange to the same communication purpose in another case (its unique node ID currently has no match). Preserve unfinished target drafts while doing so. Then verify publication and continue the next guidance-checked specialty or teaching improvement.
+
+
+## Continued checkpoint: transfer by purpose without losing drafts
+
+Fixed transfer from the new alternative exchanges: a unique exchange ID now falls back to its reusable sentence purpose in a different case. Selection still favours less recently practised matching exchanges. It skips a destination with an unfinished written/spoken response or unreviewed feedback. If all suitable cases are busy, it retains every attempt and explains how to resume one, rather than clearing user work. Existing results and backup schema are unchanged.
+
+Full validator, dedicated Chromium transfer regression and all-seventeen-case Chromium regression pass. Tests cover fallback from three alternative purposes, a protected unrelated draft, retained source feedback, reload, real JSON download/import and mobile layout. Deterministic tests also cover all-targets-busy without state mutation. The preceding branch checkpoint 45b482f deployed successfully in Actions run 43533992404; build.json and all fifteen committed application assets were checked over strict HTTPS and matched SHA-256.
+
+Next: verify this checkpoint’s deployment, then build the next guidance-checked area. Initial official-source checks for acne (NG198), cellulitis (NG141) and suspicious skin lesions (NG12) have been made, but no skin cases have yet been authored. Recheck selected details during authoring, especially pregnancy/antibiotics, escalation and current isotretinoin safety arrangements.

@@ -170,6 +170,10 @@ window.StructureCoach = (() => {
   function sentences() {
     return navigation('phrases') + head('YOUR DEPENDABLE SENTENCES','A small collection you can say naturally.','Save sentences that help you. Practise from a situation, then use the skill in a consultation.') + caseSentences()+`<h2>Reusable core and recovery patterns</h2><div class="actions">${action(onlySaved?'Show all core patterns':'Show saved core patterns ('+state.coach.saved.length+')','saved-filter','','secondary')}</div>${onlySaved&&!state.coach.saved.length?'<p>No core patterns saved yet. Show all core patterns to choose a useful example.</p>':''}<div class="grid two coach-core-sentences">${data.phrases.filter(p=>!onlySaved||state.coach.saved.includes(p.id)).map(p=>`<article class="card"><span class="tag">${esc(p.stage)}</span><h2>${esc(p.title)}</h2><p>${esc(p.cue)}</p><blockquote class="model">${esc(p.model)}</blockquote><p><strong>Shorter:</strong> ${esc(p.simple)}</p><p>${esc(p.tip)}</p><div class="actions">${action(state.coach.saved.includes(p.id)?'★ Saved':'☆ Save','save',p.id,'secondary')}${action('Recall this sentence','recall',p.id,'secondary')}<p class="tiny">Practised in ${new Set(state.coach.cards[p.id]?.cases||[]).size} case contexts · ${state.coach.cards[p.id]?.reviews||0} recall / case reviews</p>${link('Use it with a patient',href((data.cases.find(c=>c.nodes.some(n=>n.phrase===p.id))||data.cases[0]).id),'secondary')}</div></article>`).join('')}</div>`;
   }
+  function transferTarget(c,n){
+    const candidates=data.cases.filter(x=>x.id!==c.id).map(x=>({c:x,n:nodeById(x,n.id)||x.nodes.find(other=>other.phrase===n.phrase&&!other.alternative&&other.id!=='urgent')})).filter(x=>x.n);
+    return candidates.filter(x=>{const run=state.coach.runs[x.c.id];return !run||run.complete||!(run.draft?.trim()||run.spoken||run.phase==='feedback');}).sort((a,b)=>(state.coach.runs[a.c.id]?.results[a.n.id]?.at||0)-(state.coach.runs[b.c.id]?.results[b.n.id]?.at||0))[0]||null;
+  }
   function recommendation(){
     const unfinished=data.cases.filter(c=>state.coach.runs[c.id]&&!state.coach.runs[c.id].complete).sort((a,b)=>state.coach.runs[b.id].updated-state.coach.runs[a.id].updated)[0];
     if(unfinished)return {c:unfinished,node:state.coach.runs[unfinished.id].node,resume:true,reason:'Resume the exchange you were working on. Your draft and help level are kept.'};
@@ -230,7 +234,7 @@ window.StructureCoach = (() => {
     if(type==='print') {window.print();return;}
     if(type==='stop') {if('speechSynthesis'in window)speechSynthesis.cancel();return;}
     if(!a)return;
-    if(type==='transfer'){const candidates=data.cases.filter(x=>x.id!==c.id&&nodeById(x,n.id));const next=candidates.sort((x,y)=>(state.coach.runs[x.id]?.results[n.id]?.at||0)-(state.coach.runs[y.id]?.results[n.id]?.at||0))[0];if(!next){toast('Choose another exchange to transfer.');return;}state.coach.runs[next.id]=fresh(next,n.id,state.coach.runs[next.id]);store();location.hash='structure/case/'+next.id;return;}
+    if(type==='transfer'){const next=transferTarget(c,n);if(!next){toast('The other suitable cases have unfinished attempts. Resume one from the coach; your drafts have been kept.');return;}state.coach.runs[next.c.id]=fresh(next.c,next.n.id,state.coach.runs[next.c.id]);store();location.hash='structure/case/'+next.c.id;return;}
     if(type==='choose'&&r.phase==='decide'&&r.choice===null) {const choice=Number(value);if(!Number.isInteger(choice)||choice<0||choice>=n.options.length)return;r.choice=choice;if(choice!==n.answer)r.mistake=true;}
     else if(type==='decision-retry'&&r.phase==='decide'){r.choice=null;}
     else if(type==='decision-help'&&r.phase==='decide'){r.choicesShown=true;r.decisionHelp=true;}
@@ -273,5 +277,5 @@ window.StructureCoach = (() => {
   });
   window.addEventListener('hashchange',()=>window.speechSynthesis?.cancel());
   setInterval(()=>{const a=active(), el=$('#coach-clock');if(a&&el)el.textContent=formatTime(timerRemaining(a.r.timer));},1000);
-  return {defaults,clean,merge,page,banner,handle,contextPath,scheduleCard,rateAttempt,timerRemaining,recommendation,sentenceParts,levels};
+  return {defaults,clean,merge,page,banner,handle,contextPath,scheduleCard,rateAttempt,timerRemaining,recommendation,transferTarget,sentenceParts,levels};
 })();
