@@ -300,3 +300,14 @@ Current official NG109, NG111, NG12, CG97 and NHS UTI/nitrofurantoin/blood-in-ur
 Validation: full deterministic validator; Chromium kidney-area regression (all three cases and six tabs), all 69-case learning-picker regression, discussion-coach regression and expanded all-case discussion regression pass. These include persistent notes/bookmarks, actual JSON exports/imports, supported versus unaided practice, speech dispatch/text fallback and mobile layouts. Audio checks verify dispatch, not voice quality. The first kidney case deployed successfully in Actions run 43531014786.
 
 Next: assess the supplied study planner for useful learning methods without publishing its identity or raw material; expand the next guidance-checked clinical area. Check matching Actions/build.json and live asset hashes after publication.
+
+
+## Continued checkpoint: guided feedback-to-retry recipes
+
+Assessed a supplied study planner read-only. Its useful general methods (small goals, broad preparation, observed domain evidence and a repeat action) largely already existed here. Added six original recipes for opening priorities, following cues, summary/transition, recommendation, feasible arrangements and follow-up ownership. Each has a full model, shorter wording, changed patient answer, explanation of how to use it and a specific retry/transfer task. They supplement clinical assessment and do not reproduce private text, branding, prompts, ratings or source links.
+
+A recipe fills only empty Goal/Next action/Sentence draft fields. Existing user words, actual observations, case, dates and feedback source are retained. It creates no practice record or fabricated observation; browser-local version-1 draft/backup compatibility is unchanged. Current RCGP preparation and feedback pages returned HTTPS 200 and were read, including the importance of relevant questions, listening to answers, flexible individual communication, feasible management and owned follow-up. There is no AI examiner, automated transcript inference or readiness score.
+
+Full validator and Chromium recipe, learning and all-case picker regressions pass, including non-overwrite, reload and actual JSON backup/import. Local mobile screenshot is in /tmp, not published. The preceding 69-case release deployed successfully in Actions run 43532137734; build.json matched 0be53ca and all fifteen committed application assets returned strict HTTPS 200 with matching SHA-256.
+
+Next: guidance-check a reproductive-health area; recheck the matching Actions/build/live assets after this checkpoint is pushed. All 69 cases and 297 fuller/shorter drills remain intact.
