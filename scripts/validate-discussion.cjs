@@ -4,7 +4,7 @@ const nodes=new Map(),node=k=>{if(!nodes.has(k))nodes.set(k,{innerHTML:'',textCo
 const ctx={assert,console,window:{addEventListener(){}},document:{querySelector:node,querySelectorAll:()=>[],addEventListener(){}},location:{hash:'#discussion'},localStorage:{getItem:()=>null,setItem(){}},setTimeout(){},clearTimeout(){},URL,Blob};vm.createContext(ctx);
 vm.runInContext(['clinical/catalogue.js','clinical/language-data.js','clinical/language.js','clinical/discussion-coach.js','clinical/atlas.js'].map(f=>fs.readFileSync(f,'utf8')).join('\n'),ctx);
 vm.runInContext(`(async()=>{
- const coach=window.AtlasDiscussion,id='mh-gambling-talk-5',other='gi-ibs-talk-1';assert.equal(coach.items.length,287);assert.equal(new Set(coach.items.map(i=>i.id)).size,287);
+ const coach=window.AtlasDiscussion,id='mh-gambling-talk-5',other='gi-ibs-talk-1';assert.equal(coach.items.length,297);assert.equal(new Set(coach.items.map(i=>i.id)).size,297);
  for(const item of coach.items){const html=coach.session(item.id);assert(html.includes(esc(item.d.cue)));assert(!html.includes('undefined'));assert(!html.includes(esc(item.d.response)),'An initial attempt must hide the response');}
  location.hash='#discussion/'+id;coach.handle('compare',id);assert.equal(data.dialogue.runs[id].phase,'attempt');
  data.dialogue.runs[id].draft='My fictional response';coach.handle('compare',id);assert.equal(data.dialogue.runs[id].phase,'feedback');coach.handle('rate',id+'|independent');assert(!data.dialogue.cards[id],'Comparison is required before a rating');
@@ -21,5 +21,5 @@ vm.runInContext(`(async()=>{
  const exported={version:1,saved:[],read:[],dialogue:JSON.parse(snapshot)};data.dialogue=coach.defaults();await importData({target:{files:[{size:3500000,text:async()=>JSON.stringify(exported)}]}});assert.equal(JSON.stringify(data.dialogue),snapshot,'Extensive valid Atlas backups must remain importable above the former 3MB cap');
  await importData({target:{files:[{size:100,text:async()=>JSON.stringify({version:1,saved:[],read:[],notes:{'language-uk-999999':'unknown','language-uk-1':'valid published note'}})}]}});assert(!data.notes['language-uk-999999']);assert.equal(data.notes['language-uk-1'],'valid published note');
  const before=JSON.stringify(data);await importData({target:{files:[{size:21*1024*1024,text:async()=>'{'}]}});assert.equal(JSON.stringify(data),before);assert.match(document.querySelector('#toast').textContent,/20 MB/);
- console.log('PASS: 287 discussion routes, attempt/review guards, hidden retry, model exposure, supported recall, spacing, sanitisation, escaping, timestamp merges and legacy/new/extensive backup imports.');
+ console.log('PASS: 297 discussion routes, attempt/review guards, hidden retry, model exposure, supported recall, spacing, sanitisation, escaping, timestamp merges and legacy/new/extensive backup imports.');
 })()`,ctx).catch(e=>{console.error(e);process.exitCode=1;});

@@ -6984,6 +6984,18 @@ window.SCA_COACH = {
       "title": "A first reduced eGFR: confirm the pattern before labelling CKD",
       "areaId": "renal-urinary",
       "areaTitle": "Kidney and urinary health"
+    },
+    {
+      "id": "atlas:renal-lower-uti",
+      "title": "Lower UTI: a treatment choice that fits the actual patient",
+      "areaId": "renal-urinary",
+      "areaTitle": "Kidney and urinary health"
+    },
+    {
+      "id": "atlas:renal-visible-haematuria",
+      "title": "Visible blood in urine: explain investigation without premature reassurance",
+      "areaId": "renal-urinary",
+      "areaTitle": "Kidney and urinary health"
     }
   ],
   "stageLessons": [
