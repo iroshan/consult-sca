@@ -7209,6 +7209,24 @@ window.SCA_COACH = {
       "title": "Early-pregnancy pain and bleeding: act safely while the diagnosis is uncertain",
       "areaId": "reproductive-health",
       "areaTitle": "Reproductive and menstrual health"
+    },
+    {
+      "id": "atlas:skin-changing-lesion",
+      "title": "A changing skin lesion: explain a suspected-cancer referral clearly",
+      "areaId": "dermatology",
+      "areaTitle": "Skin and acne"
+    },
+    {
+      "id": "atlas:skin-cellulitis",
+      "title": "Cellulitis: a suitable antibiotic plan with an early reassessment threshold",
+      "areaId": "dermatology",
+      "areaTitle": "Skin and acne"
+    },
+    {
+      "id": "atlas:skin-acne",
+      "title": "Acne: explain a treatment course and protect confidence as well as skin",
+      "areaId": "dermatology",
+      "areaTitle": "Skin and acne"
     }
   ],
   "stageLessons": [
