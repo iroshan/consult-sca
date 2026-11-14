@@ -3,7 +3,7 @@
 window.CoachLearning = (() => {
   const groups = [
     ['children','Children and young people','Consultations with people under 19.',['eczema','fever','constipation'],'paediatrics'],
-    ['reproductive','Gender, reproductive and sexual health','Include sexual health, reproductive concerns and inclusive care.',['menopause'],null],
+    ['reproductive','Gender, reproductive and sexual health','Include sexual health, reproductive concerns and inclusive care.',['menopause'],'reproductive-health'],
     ['longterm','Long-term conditions and disability','Include cancer, multiple conditions and treatment burden.',['asthma','falls'],'cardiovascular'],
     ['older','Older adults, frailty and end-of-life care','Consider function, support, preferences and continuity.',['falls','memory','advance'],'older-palliative'],
     ['mental','Mental health and dependence','Include distress, substance use and dependence-forming medicines.',['distress','anxiety','withdrawal'],'mental-health'],

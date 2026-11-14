@@ -4660,7 +4660,7 @@ window.SCA_COACH = {
       "patient": "Claire West, 49 · Telephone",
       "brief": "Claire has hot flushes, night sweats and changing periods, with effects on work and sleep. Explore the whole picture, abnormal bleeding and other causes; explain appropriate clinical identification of perimenopause and discuss individual treatment choices, contraception and review. This is not a complete HRT prescribing protocol.",
       "goal": "Practise clear assessment, a proportionate explanation and a workable shared plan; repeat the hardest exchange with less help.",
-      "atlas": null,
+      "atlas": "rh-menopause",
       "studio": null,
       "links": [
         {
@@ -6996,6 +6996,24 @@ window.SCA_COACH = {
       "title": "Visible blood in urine: explain investigation without premature reassurance",
       "areaId": "renal-urinary",
       "areaTitle": "Kidney and urinary health"
+    },
+    {
+      "id": "atlas:rh-menopause",
+      "title": "Menopause symptoms: choose treatment through an individual risk discussion",
+      "areaId": "reproductive-health",
+      "areaTitle": "Reproductive and menstrual health"
+    },
+    {
+      "id": "atlas:rh-heavy-periods",
+      "title": "Heavy periods: agree treatment around impact, cause and fertility",
+      "areaId": "reproductive-health",
+      "areaTitle": "Reproductive and menstrual health"
+    },
+    {
+      "id": "atlas:rh-early-pregnancy",
+      "title": "Early-pregnancy pain and bleeding: act safely while the diagnosis is uncertain",
+      "areaId": "reproductive-health",
+      "areaTitle": "Reproductive and menstrual health"
     }
   ],
   "stageLessons": [

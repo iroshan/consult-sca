@@ -5,7 +5,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict'),fs=requir
     const base=process.env.SCA_BASE_URL||'http://127.0.0.1:8011',page=await browser.newPage(),errors=[];
     page.on('pageerror',error=>errors.push(error.message));
     await page.goto(base+'/#structure/learning');
-    assert.equal(await page.locator('#learning-caseId option[value^="atlas:"]').count(),69);
+    assert.equal(await page.locator('#learning-caseId option[value^="atlas:"]').count(),72);
     await page.locator('#learning-learned').fill('I treated a low FIT as a complete explanation.');
     await page.locator('#learning-action').fill('Explain the limits and agree the actual next assessment.');
     await page.locator('#learning-caseSummary').fill('<b>Fictional case: continuing bleeding after a low FIT.</b>');
